@@ -1,0 +1,13 @@
+services:
+  website:
+    image: joseluisq/static-web-server:2-alpine
+    container_name: "versiongamma.com"
+    ports:
+      - 4173:80
+    restart: unless-stopped
+    environment:
+      - SERVER_ROOT=/var/public
+      - SERVER_CONFIG_FILE=/etc/config.toml
+    volumes:
+      - ./build:/var/public
+      - ./sws.config.toml:/etc/config.toml                                                                                                                                                                                                                 1,1            All

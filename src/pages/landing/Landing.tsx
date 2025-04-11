@@ -10,8 +10,8 @@ const Landing = () => {
           </p>
         </div>
         <div className='flex flex-col gap-3 m-8'>
-        <h1 className="font-heading text-4xl font-bold">Hey! I'm Matt</h1>
-        <h2 className="font-heading text-2xl font-semibold">
+        <h1 className="font-heading text-4xl font-bold">Hey! I'm Matt.</h1>
+        <h2 className="font-heading text-2xl font-semibold mb-10">
           I’m a Software Engineer, Videographer, and overall maker of things.
           <br />
           If you’d like to learn more, you can at the links below:
