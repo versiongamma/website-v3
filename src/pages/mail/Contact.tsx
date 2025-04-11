@@ -1,5 +1,8 @@
+import { NavBarDesktop } from "@components";
+import { SiteRoute } from "@utils/routes";
+
 const Contact = () => {
-    return <h1>Contact</h1>
+    return <NavBarDesktop path={SiteRoute.CONTACT} />
 }
 
 export default Contact;

@@ -1,1 +1,0 @@
-export const tw = (style: TemplateStringsArray) => style.toString();

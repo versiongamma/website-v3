@@ -9,8 +9,9 @@
       "react": ["./node_modules/preact/compat/"],
       "react-dom": ["./node_modules/preact/compat/"],
       "@utils/*": ["./src/utils/*"],
+      "@utils": ["./src/utils"],
       "@pages/*": ["./src/pages/*"],
-      "@components/*": ["./src/components"]
+      "@components": ["./src/components"]
     },
 
     /* Bundler mode */

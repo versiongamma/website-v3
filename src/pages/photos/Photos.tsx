@@ -1,5 +1,8 @@
+import { NavBarDesktop } from "@components";
+import { SiteRoute } from "@utils/routes";
+
 const Photos = () => {
-    return <h1>Photos</h1>
+    return <NavBarDesktop path={SiteRoute.PHOTO} />
 }
 
 export default Photos;

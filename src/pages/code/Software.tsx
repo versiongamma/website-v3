@@ -1,5 +1,8 @@
+import { NavBarDesktop } from "@components";
+import { SiteRoute } from "@utils/routes";
+
 const Software = () => {
-    return <h1>Software</h1>
+    return <NavBarDesktop path={SiteRoute.SOFTWARE} />
 }
 
 export default Software;
