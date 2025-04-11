@@ -1,3 +1,4 @@
+import InputField from "./InputField";
 import Links from "./Links";
 
 const Landing = () => {
@@ -17,6 +18,7 @@ const Landing = () => {
           If you’d like to learn more, you can at the links below:
         </h2>
         <Links />
+        <InputField />
         </div>
       </div>
     </div>

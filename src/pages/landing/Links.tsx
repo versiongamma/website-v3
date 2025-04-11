@@ -6,7 +6,7 @@ import {
   FiVideo
 } from 'react-icons/fi';
 
-const linkStyle = tw`text-blue-500 font-mono text-2xl/loose flex items-center gap-4`;
+const linkStyle = tw`text-blue-500 font-mono text-2xl/loose flex items-center gap-4 w-fit`;
 const iconSize = 40;
 
 const Links = () => (
