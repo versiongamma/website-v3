@@ -11,9 +11,10 @@ const InputField = () => {
   }, []);
 
   return (
-    <div className="flex gap-2 font-mono text-lg">
+    <div className="flex gap-2 font-mono text-lg p-6 w-full">
       <p>https://versiongamma.com {">"} </p>
       <form
+      className="w-[486px]"
         onSubmit={(event: SubmitEvent) => {
           event.preventDefault();
           const data = new FormData(event.currentTarget as HTMLFormElement);
@@ -29,7 +30,7 @@ const InputField = () => {
           ref={inputRef}
           type="text"
           name="path"
-          className="flex-1/2 outline-0"
+          className="w-full outline-0"
         />
       </form>
     </div>

@@ -2,7 +2,7 @@
 
 @theme {
     --font-mono: "JetBrains Mono", monospace;
-    --font-heading: "Josefin Sans";
+    --font-heading: "Josefin Sans" sans-serif;
 }
 
 body {
@@ -15,4 +15,8 @@ body {
 #app {
     width: 100%;
     height: 100%;
+}
+
+.link-color {
+    @apply text-blue-500 hover:text-blue-700 transition-colors
 }
