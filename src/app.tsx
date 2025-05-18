@@ -3,6 +3,7 @@ import { ErrorBoundary, lazy, LocationProvider, Route, Router } from "preact-iso
 
 import NotFound from "@pages/404";
 import Landing from '@pages/landing';
+import Teapot from "@pages/teapot";
 import { SiteRoute } from "@utils/routes";
 import "./app.css";
 
@@ -13,7 +14,7 @@ const Contact = lazy(() => import('@pages/mail'));
 
 const routes: Record<SiteRoute, AnyComponent> = {
   [SiteRoute.LANDING]: Landing,
-  [SiteRoute.VIDEO]: Video, 
+  [SiteRoute.VIDEO]: Video,
   [SiteRoute.PHOTO]: Photos,
   [SiteRoute.SOFTWARE]: Software,
   [SiteRoute.CONTACT]: Contact,
@@ -27,6 +28,7 @@ const App = () => {
           {Object.entries(routes).map(([path, component]) => (
             <Route path={path} component={component} />
           ))}
+          <Route path={"/coffee"} component={Teapot} />
           <Route default component={NotFound} />
         </Router>
       </ErrorBoundary>
