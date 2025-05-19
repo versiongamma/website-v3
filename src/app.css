@@ -20,3 +20,26 @@ body {
 .link-color {
     @apply text-blue-500 hover:text-blue-700 transition-colors
 }
+
+.background-gradient-transparent {
+    background: rgba(109,42,186, 0.4);
+    background: linear-gradient(135deg, rgba(109,42,186,0.4) 12%, rgba(204,58,161,0.4) 50%, rgba(222,126,9,0.4) 96%);
+}
+
+.dropshadow {
+    filter: drop-shadow(12px 12px 15px #000000);
+}
+
+.caret-blink {
+    animation: caret-blink 1.5s cubic-bezier(.6,.04,.4,.9) 0s infinite normal forwards;
+}
+
+@keyframes caret-blink {
+	0%, 5%, 95%, 100% {
+        opacity: 1;
+    }
+
+    45%, 55% {
+        opacity: 0;
+    }
+}
