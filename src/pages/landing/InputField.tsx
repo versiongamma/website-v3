@@ -1,39 +1,60 @@
-import { createRef } from "preact";
+import { RefObject } from "preact";
 import { useLocation } from "preact-iso";
-import { useEffect } from "preact/hooks";
+import { useEffect, useState } from "preact/hooks";
+import { Controller, useForm } from "react-hook-form";
+import InputCaret from "./InputCaret";
 
-const InputField = () => {
+const INPUT_ID = "input";
+
+type FormData = {
+  path: string
+}
+
+type Props = {
+  inputRef: RefObject<HTMLInputElement>;
+}
+
+const InputField = ({ inputRef }: Props) => {
   const { route } = useLocation();
-  const inputRef = createRef<HTMLInputElement>();
+  const { handleSubmit, control } = useForm<FormData>({ defaultValues: { path: "" }});
+  const [showCaret, setShowCaret] = useState(true);
 
   useEffect(() => {
     inputRef.current?.focus();
   }, []);
 
-  const handleSubmit = (event: SubmitEvent) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget as HTMLFormElement);
-    route((data.get("path") as string) ?? "/");
-  }
+  const onSubmit = ({ path }: FormData) => route(path);
 
   return (
     <div className="flex gap-2 font-mono text-lg p-6 w-full">
       <p>https://versiongamma.com {">"} </p>
       <form
-      className="w-[486px]"
-        onSubmit={handleSubmit}
+        className="w-[486px] relative"
+        onSubmit={handleSubmit(onSubmit)}
       >
-        <input
-          autoFocus
-          onBlur={(event) => {
-            event.preventDefault();
-            event.currentTarget.focus();
-          }}
-          ref={inputRef}
-          type="text"
+        <Controller
           name="path"
-          className="w-full outline-0"
+          control={control}
+          render={({ field: { onChange, value, name } }) => (
+            <input
+              id={INPUT_ID}
+              name={name}
+              value={value}
+              autoFocus
+              onFocus={() => {
+                setShowCaret(true);
+              }}
+              onBlur={() => {
+                setShowCaret(false);
+              }}
+              ref={inputRef}
+              type="text"
+              onChange={onChange}
+              className="w-full outline-0 caret-[rgba(0,0,0,0)]"
+            />
+          )}
         />
+       <InputCaret inputRef={inputRef} show={showCaret} />
       </form>
     </div>
   );
