@@ -1,9 +1,9 @@
 import { createRef } from 'preact';
-import bg from '../../assets/001.jpg';
-import face from '../../assets/face.jpg';
-import InputField from "./InputField";
-import Links from "./Links";
-import useClock from "./useClock";
+// import bg from '../../assets/001.jpg';
+import face from '../../../assets/face.jpg';
+import InputField from "../InputField";
+import Links from "../Links";
+import useClock from "../useClock";
 
 const Landing = () => {
   const time = useClock();
@@ -12,7 +12,7 @@ const Landing = () => {
   return (
     <div className="flex items-center justify-center w-full h-full">
       <div className="fixed w-full h-full flex items-center justify-center">
-        <img src={bg} className="fixed object-cover min-h-full min-w-full"/>
+        {/* <img src={bg} className="fixed object-cover min-h-full min-w-full"/> */}
         <span className="fixed w-full h-full background-gradient-transparent"></span>
       </div>
       <div className="w-[1000px] h-[770px] bg-[#171717]/60 bg-opacity-8 op rounded-3xl relative dropshadow" onClick={() => inputRef.current?.focus()}>
