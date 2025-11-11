@@ -7,16 +7,18 @@ import InputCaret from "./InputCaret";
 const INPUT_ID = "input";
 
 type FormData = {
-  path: string
-}
+  path: string;
+};
 
 type Props = {
   inputRef: RefObject<HTMLInputElement>;
-}
+};
 
 const InputField = ({ inputRef }: Props) => {
   const { route } = useLocation();
-  const { handleSubmit, control } = useForm<FormData>({ defaultValues: { path: "" }});
+  const { handleSubmit, control } = useForm<FormData>({
+    defaultValues: { path: "" },
+  });
   const [showCaret, setShowCaret] = useState(true);
 
   useEffect(() => {
@@ -28,10 +30,7 @@ const InputField = ({ inputRef }: Props) => {
   return (
     <div className="flex gap-2 font-mono text-lg p-6 w-full">
       <p>https://versiongamma.com {">"} </p>
-      <form
-        className="w-[486px] relative"
-        onSubmit={handleSubmit(onSubmit)}
-      >
+      <form className="w-[486px] relative" onSubmit={handleSubmit(onSubmit)}>
         <Controller
           name="path"
           control={control}
@@ -54,7 +53,7 @@ const InputField = ({ inputRef }: Props) => {
             />
           )}
         />
-       <InputCaret inputRef={inputRef} show={showCaret} />
+        <InputCaret inputRef={inputRef} show={showCaret} />
       </form>
     </div>
   );

@@ -1,16 +1,22 @@
 import { AnyComponent } from "preact";
-import { ErrorBoundary, lazy, LocationProvider, Route, Router } from "preact-iso";
+import {
+  ErrorBoundary,
+  lazy,
+  LocationProvider,
+  Route,
+  Router,
+} from "preact-iso";
 
 import NotFound from "@pages/404";
-import Landing from '@pages/landing';
+import Landing from "@pages/landing";
 import Teapot from "@pages/teapot";
 import { SiteRoute } from "@utils/routes";
 import "./app.css";
 
 const Video = lazy(() => import("@pages/video"));
 const Photos = lazy(() => import("@pages/photos"));
-const Software = lazy(() => import('@pages/code'));
-const Contact = lazy(() => import('@pages/mail'));
+const Software = lazy(() => import("@pages/software"));
+const Contact = lazy(() => import("@pages/contact"));
 
 const routes: Record<SiteRoute, AnyComponent> = {
   [SiteRoute.LANDING]: Landing,
@@ -18,7 +24,7 @@ const routes: Record<SiteRoute, AnyComponent> = {
   [SiteRoute.PHOTO]: Photos,
   [SiteRoute.SOFTWARE]: Software,
   [SiteRoute.CONTACT]: Contact,
-}
+};
 
 const App = () => {
   return (
@@ -34,6 +40,6 @@ const App = () => {
       </ErrorBoundary>
     </LocationProvider>
   );
-}
+};
 
 export default App;

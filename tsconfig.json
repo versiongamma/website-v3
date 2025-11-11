@@ -11,7 +11,8 @@
       "@utils/*": ["./src/utils/*"],
       "@utils": ["./src/utils"],
       "@pages/*": ["./src/pages/*"],
-      "@components": ["./src/components"]
+      "@components": ["./src/components"],
+      "~assets/*": ["./public/assets/*"]
     },
 
     /* Bundler mode */
@@ -28,7 +29,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true,
+    "noUncheckedSideEffectImports": true
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
