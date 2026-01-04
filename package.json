@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
-    "preview": "yarn build && docker compose up"
+    "preview": "bun run build && docker compose up"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.3",
