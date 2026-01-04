@@ -6,6 +6,7 @@ import {
   Route,
   Router,
 } from "preact-iso";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import NotFound from "@pages/404";
 import Landing from "@pages/landing";
@@ -18,6 +19,8 @@ const Photos = lazy(() => import("@pages/photos"));
 const Software = lazy(() => import("@pages/software"));
 const Contact = lazy(() => import("@pages/contact"));
 
+const queryClient = new QueryClient();
+
 const routes: Record<SiteRoute, AnyComponent> = {
   [SiteRoute.LANDING]: Landing,
   [SiteRoute.VIDEO]: Video,
@@ -29,15 +32,17 @@ const routes: Record<SiteRoute, AnyComponent> = {
 const App = () => {
   return (
     <LocationProvider>
-      <ErrorBoundary>
-        <Router>
-          {Object.entries(routes).map(([path, component]) => (
-            <Route path={path} component={component} />
-          ))}
-          <Route path={"/coffee"} component={Teapot} />
-          <Route default component={NotFound} />
-        </Router>
-      </ErrorBoundary>
+      <QueryClientProvider client={queryClient}>
+        <ErrorBoundary>
+          <Router>
+            {Object.entries(routes).map(([path, component]) => (
+              <Route path={path} component={component} />
+            ))}
+            <Route path={"/coffee"} component={Teapot} />
+            <Route default component={NotFound} />
+          </Router>
+        </ErrorBoundary>
+      </QueryClientProvider>
     </LocationProvider>
   );
 };

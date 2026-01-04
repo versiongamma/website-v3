@@ -1,7 +1,7 @@
 import { createRef } from "preact";
 // import bg from '../../assets/001.jpg';
 
-import face from "~assets/face_400px.webp";
+import face from "/assets/face_400px.webp";
 import InputField from "../components/InputField";
 import Links from "../components/Links";
 import useClock from "../useClock";
@@ -20,14 +20,14 @@ const Landing = () => {
         <span className="fixed w-full h-full background-gradient-transparent"></span>
       </div>
       <div
-        className="w-[1000px] h-[770px] bg-[#171717]/60 bg-opacity-8 op rounded-3xl relative dropshadow"
+        className="w-250 h-192.5 bg-[#171717]/60 bg-opacity-8 op rounded-3xl relative dropshadow"
         onClick={() => inputRef.current?.focus()}
       >
         <img
           src={face}
-          className="absolute w-[200px] bottom-4 right-4 rounded-full"
+          className="absolute w-50 bottom-4 right-4 rounded-full"
         />
-        <div className="bg-[#D8D8D8] w-full h-[64px] rounded-t-3xl flex items-center justify-center">
+        <div className="bg-[#D8D8D8] w-full h-16 rounded-t-3xl flex items-center justify-center">
           <p className="text-black text-2xl font-mono">
             https versiongamma.com
           </p>
