@@ -12,7 +12,6 @@ const getDimensions = (aspectRatio: number) => ({
 
 const Photos = () => {
   const { photos } = usePhotosQuery();
-  console.log(photos);
 
   return (
     <div className="flex w-screen h-screen flex-col">

@@ -6,6 +6,7 @@ import {
   Route,
   Router,
 } from "preact-iso";
+import { HeroUIProvider } from "@heroui/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import NotFound from "@pages/404";
@@ -34,13 +35,15 @@ const App = () => {
     <LocationProvider>
       <QueryClientProvider client={queryClient}>
         <ErrorBoundary>
-          <Router>
-            {Object.entries(routes).map(([path, component]) => (
-              <Route path={path} component={component} />
-            ))}
-            <Route path={"/coffee"} component={Teapot} />
-            <Route default component={NotFound} />
-          </Router>
+          <HeroUIProvider>
+            <Router>
+              {Object.entries(routes).map(([path, component]) => (
+                <Route path={path} component={component} />
+              ))}
+              <Route path={"/coffee"} component={Teapot} />
+              <Route default component={NotFound} />
+            </Router>
+          </HeroUIProvider>
         </ErrorBoundary>
       </QueryClientProvider>
     </LocationProvider>

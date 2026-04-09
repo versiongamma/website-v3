@@ -3,7 +3,7 @@ import { useLocation } from "preact-iso";
 const NotFound = () => {
   const { path } = useLocation();
   return (
-    <div className="flex flex-col w-full h-full items-center justify-center gap-6">
+    <div className="flex flex-col w-screen h-screen items-center justify-center gap-6">
       <p className="font-mono mb-10 text-lg">
         {">"} GET https://versiongamma.com{path} returned 404 Not Found
       </p>

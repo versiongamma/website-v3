@@ -14,7 +14,7 @@ const Landing = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="flex items-center justify-center w-full h-full">
+    <div className="flex items-center justify-center w-screen h-screen">
       <div className="fixed w-full h-full flex items-center justify-center">
         {/* <img src={bg} className="fixed object-cover min-h-full min-w-full"/> */}
         <span className="fixed w-full h-full background-gradient-transparent"></span>
