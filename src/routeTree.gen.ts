@@ -9,13 +9,31 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as VideoRouteImport } from './routes/video'
+import { Route as SoftwareRouteImport } from './routes/software'
 import { Route as PhotoRouteImport } from './routes/photo'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CoffeeRouteImport } from './routes/coffee'
 import { Route as IndexRouteImport } from './routes/index'
 
+const VideoRoute = VideoRouteImport.update({
+  id: '/video',
+  path: '/video',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SoftwareRoute = SoftwareRouteImport.update({
+  id: '/software',
+  path: '/software',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PhotoRoute = PhotoRouteImport.update({
   id: '/photo',
   path: '/photo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CoffeeRoute = CoffeeRouteImport.update({
@@ -32,40 +50,80 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/coffee': typeof CoffeeRoute
+  '/contact': typeof ContactRoute
   '/photo': typeof PhotoRoute
+  '/software': typeof SoftwareRoute
+  '/video': typeof VideoRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/coffee': typeof CoffeeRoute
+  '/contact': typeof ContactRoute
   '/photo': typeof PhotoRoute
+  '/software': typeof SoftwareRoute
+  '/video': typeof VideoRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/coffee': typeof CoffeeRoute
+  '/contact': typeof ContactRoute
   '/photo': typeof PhotoRoute
+  '/software': typeof SoftwareRoute
+  '/video': typeof VideoRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/coffee' | '/photo'
+  fullPaths: '/' | '/coffee' | '/contact' | '/photo' | '/software' | '/video'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/coffee' | '/photo'
-  id: '__root__' | '/' | '/coffee' | '/photo'
+  to: '/' | '/coffee' | '/contact' | '/photo' | '/software' | '/video'
+  id:
+    | '__root__'
+    | '/'
+    | '/coffee'
+    | '/contact'
+    | '/photo'
+    | '/software'
+    | '/video'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CoffeeRoute: typeof CoffeeRoute
+  ContactRoute: typeof ContactRoute
   PhotoRoute: typeof PhotoRoute
+  SoftwareRoute: typeof SoftwareRoute
+  VideoRoute: typeof VideoRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/video': {
+      id: '/video'
+      path: '/video'
+      fullPath: '/video'
+      preLoaderRoute: typeof VideoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/software': {
+      id: '/software'
+      path: '/software'
+      fullPath: '/software'
+      preLoaderRoute: typeof SoftwareRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/photo': {
       id: '/photo'
       path: '/photo'
       fullPath: '/photo'
       preLoaderRoute: typeof PhotoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/coffee': {
@@ -88,7 +146,10 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CoffeeRoute: CoffeeRoute,
+  ContactRoute: ContactRoute,
   PhotoRoute: PhotoRoute,
+  SoftwareRoute: SoftwareRoute,
+  VideoRoute: VideoRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

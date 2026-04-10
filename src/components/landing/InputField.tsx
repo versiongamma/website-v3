@@ -11,7 +11,7 @@ type FormData = {
 }
 
 type Props = {
-  inputRef: RefObject<HTMLInputElement>
+  inputRef: RefObject<HTMLInputElement | null>
 }
 
 const InputField = ({ inputRef }: Props) => {

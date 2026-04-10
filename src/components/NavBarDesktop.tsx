@@ -6,7 +6,7 @@ type Props = {
   path: SiteRoute
 }
 
-const NavBarDesktop = ({ path }: Props) => {
+export const NavBarDesktop = ({ path }: Props) => {
   const getLinkStyle = (linkPath: string) =>
     selectiveStyle(
       'text-orange-500 cursor-default',
@@ -40,5 +40,3 @@ const NavBarDesktop = ({ path }: Props) => {
     </div>
   )
 }
-
-export default NavBarDesktop

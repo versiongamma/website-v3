@@ -1,8 +1,8 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { NavBarDesktop } from '~components'
 import { SiteRoute } from '~utils/routes'
 import { RowsPhotoAlbum } from 'react-photo-album'
 import 'react-photo-album/rows.css'
+import { NavBarDesktop } from 'src/components/NavBarDesktop'
 
 const getDimensions = (aspectRatio: number) => ({
   width: aspectRatio > 1 ? 640 : 640 * aspectRatio,

@@ -1,30 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { createMiddleware } from '@tanstack/react-start'
-import {
-  getResponseHeaders,
-  setResponseHeaders,
-  setResponseStatus,
-} from '@tanstack/react-start/server'
 
 export const Route = createFileRoute('/coffee')({
-  server: {
-    middleware: [
-      createMiddleware().server(async ({ next }) => {
-        console.log('Running middleware')
-        const headers = getResponseHeaders()
-        headers.set('Test', 'This should be set if it works')
-        setResponseHeaders(headers)
-        setResponseStatus(418)
-        return next()
-      }),
-    ],
-    handlers: {
-      GET: async ({}) => {
-        return new Response(null)
-      },
-    },
-  },
-  // component: RouteComponent,
+  component: RouteComponent,
 })
 
 function RouteComponent() {

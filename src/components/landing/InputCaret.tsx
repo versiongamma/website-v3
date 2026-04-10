@@ -5,7 +5,7 @@ const CARET_SPACING = 10.84444444444444
 const MAX_CARET_DISTANCE = 488
 
 type Props = {
-  inputRef: RefObject<HTMLInputElement>
+  inputRef: RefObject<HTMLInputElement | null>
   show: boolean
 }
 

@@ -1,3 +1,4 @@
+import { HeroUIProvider } from '@heroui/react'
 import { TanStackDevtools } from '@tanstack/react-devtools'
 import type { QueryClient } from '@tanstack/react-query'
 import {
@@ -6,11 +7,10 @@ import {
   createRootRouteWithContext,
 } from '@tanstack/react-router'
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
+import NotFound from 'src/components/404'
 import TanStackQueryDevtools from '../integrations/tanstack-query/devtools'
 import TanStackQueryProvider from '../integrations/tanstack-query/root-provider'
 import appCss from '../styles.css?url'
-import { HeroUIProvider } from '@heroui/react'
-import { NotFound } from '~components'
 
 interface MyRouterContext {
   queryClient: QueryClient
