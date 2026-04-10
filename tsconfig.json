@@ -1,36 +1,29 @@
 {
+  "include": ["**/*.ts", "**/*.tsx", "eslint.config.js", "prettier.config.js", "vite.config.js"],
+
   "compilerOptions": {
-    "target": "ES2020",
-    "useDefineForClassFields": true,
+    "target": "ES2022",
+    "jsx": "react-jsx",
     "module": "ESNext",
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "skipLibCheck": true,
+    "baseUrl": ".",
     "paths": {
-      "react": ["./node_modules/preact/compat/"],
-      "react-dom": ["./node_modules/preact/compat/"],
-      "@utils/*": ["./src/utils/*"],
-      "@utils": ["./src/utils"],
-      "@pages/*": ["./src/pages/*"],
-      "@components": ["./src/components"],
-      "~assets/*": ["./public/assets/*"]
+      "#/*": ["./src/*"],
+      "@/*": ["./src/*"]
     },
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "types": ["vite/client"],
 
     /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
-    "isolatedModules": true,
-    "moduleDetection": "force",
+    "verbatimModuleSyntax": true,
     "noEmit": true,
-    "jsx": "react-jsx",
-    "jsxImportSource": "preact",
-
     /* Linting */
+    "skipLibCheck": true,
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
-  },
-  "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  }
 }
