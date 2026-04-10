@@ -2,6 +2,7 @@ import type { RefObject } from 'react'
 import { useEffect, useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import InputCaret from './InputCaret'
+import { useNavigate } from '@tanstack/react-router'
 
 const INPUT_ID = 'input'
 
@@ -14,6 +15,7 @@ type Props = {
 }
 
 const InputField = ({ inputRef }: Props) => {
+  const navigate = useNavigate()
   const { handleSubmit, control } = useForm<FormData>({
     defaultValues: { path: '' },
   })
@@ -23,12 +25,14 @@ const InputField = ({ inputRef }: Props) => {
     inputRef.current?.focus()
   }, [])
 
-  const onSubmit = ({ path }: FormData) => {}
+  const onSubmit = ({ path }: FormData) => {
+    navigate({ to: path })
+  }
 
   return (
     <div className="flex gap-2 font-mono text-lg p-6 w-full">
       <p>https://versiongamma.com {'>'} </p>
-      <form className="w-[486px] relative" onSubmit={handleSubmit(onSubmit)}>
+      <form className="w-121.5 relative" onSubmit={handleSubmit(onSubmit)}>
         <Controller
           name="path"
           control={control}

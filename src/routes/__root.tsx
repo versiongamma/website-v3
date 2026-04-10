@@ -10,6 +10,7 @@ import TanStackQueryDevtools from '../integrations/tanstack-query/devtools'
 import TanStackQueryProvider from '../integrations/tanstack-query/root-provider'
 import appCss from '../styles.css?url'
 import { HeroUIProvider } from '@heroui/react'
+import { NotFound } from '~components'
 
 interface MyRouterContext {
   queryClient: QueryClient
@@ -37,6 +38,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
     ],
   }),
   shellComponent: RootDocument,
+  notFoundComponent: NotFound,
 })
 
 function RootDocument({ children }: { children: React.ReactNode }) {

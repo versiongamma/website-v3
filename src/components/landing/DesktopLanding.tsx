@@ -5,13 +5,12 @@ import face from '/assets/face_400px.webp'
 import InputField from './InputField'
 import Links from './Links'
 import useClock from './useClock'
-import { useTranslation } from 'react-i18next'
 import { textStyle } from './style'
+import { en } from 'src/en'
 
 const DesktopLanding = () => {
   const time = useClock()
   const inputRef = createRef<HTMLInputElement>()
-  const { t } = useTranslation()
 
   return (
     <div className="flex items-center justify-center w-screen h-screen">
@@ -38,10 +37,10 @@ const DesktopLanding = () => {
               current time: {time.toLocaleTimeString()}
             </p>
             <h1 className="font-heading text-4xl font-bold mb-6">
-              {t('landing.title')}
+              {en.landing.title}
             </h1>
-            <p className={textStyle}>{t('landing.message.part1')}</p>
-            <p className={textStyle}>{t('landing.message.part2')}</p>
+            <p className={textStyle}>{en.landing.message.part1}</p>
+            <p className={textStyle}>{en.landing.message.part2}</p>
             <div className="mt-8">
               <Links />
             </div>

@@ -1,5 +1,6 @@
 import { tw } from '~utils'
 import { FiCamera, FiGitPullRequest, FiMail, FiVideo } from 'react-icons/fi'
+import { Link } from '@tanstack/react-router'
 
 const linkStyle = tw`link-color font-mono text-2xl/loose flex items-center gap-4 w-fit`
 const iconSize = 40
@@ -10,10 +11,10 @@ const Links = () => (
       <FiVideo size={iconSize} />
       /video
     </a>
-    <a href="/photo" className={linkStyle}>
+    <Link to="/photo" className={linkStyle}>
       <FiCamera size={iconSize} />
       /photo
-    </a>
+    </Link>
     <a href="/software" className={linkStyle}>
       <FiGitPullRequest size={iconSize} />
       /software
