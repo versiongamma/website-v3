@@ -13,7 +13,6 @@ dist-ssr
 *.local
 build
 *.env
-*.env.*
 temp
 
 # Editor directories and files
