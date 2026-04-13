@@ -30,7 +30,7 @@ const InputField = ({ inputRef }: Props) => {
   }
 
   return (
-    <div className="flex gap-2 font-mono text-lg p-6 w-full">
+    <div className="flex gap-2 font-mono text-lg p-6 w-full max-[840px]:hidden">
       <p>https://versiongamma.com {'>'} </p>
       <form className="w-121.5 relative" onSubmit={handleSubmit(onSubmit)}>
         <Controller

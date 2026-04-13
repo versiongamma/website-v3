@@ -6,7 +6,7 @@ type Props = {
   path: SiteRoute
 }
 
-export const NavBarDesktop = ({ path }: Props) => {
+export const NavBar = ({ path }: Props) => {
   const getLinkStyle = (linkPath: string) =>
     selectiveStyle(
       'text-orange-500 cursor-default',
@@ -15,7 +15,7 @@ export const NavBarDesktop = ({ path }: Props) => {
     )
 
   return (
-    <div className="bg-black/40 h-20 w-full flex items-center justify-center">
+    <div className="bg-black/40 h-16 w-full flex items-center justify-center shrink-0">
       <div className="font-mono text-xl flex gap-4">
         <Link className={getLinkStyle('/')} to="/">
           home

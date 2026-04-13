@@ -1,14 +1,11 @@
 import { HeroUIProvider } from '@heroui/react'
-import { TanStackDevtools } from '@tanstack/react-devtools'
 import type { QueryClient } from '@tanstack/react-query'
 import {
   HeadContent,
   Scripts,
   createRootRouteWithContext,
 } from '@tanstack/react-router'
-import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
-import NotFound from 'src/components/404'
-import TanStackQueryDevtools from '../integrations/tanstack-query/devtools'
+import { NotFound } from 'src/components/NotFound'
 import TanStackQueryProvider from '../integrations/tanstack-query/root-provider'
 import appCss from '../styles.css?url'
 
@@ -49,21 +46,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         <TanStackQueryProvider>
-          <HeroUIProvider>
-            {children}
-            <TanStackDevtools
-              config={{
-                position: 'bottom-right',
-              }}
-              plugins={[
-                {
-                  name: 'Tanstack Router',
-                  render: <TanStackRouterDevtoolsPanel />,
-                },
-                TanStackQueryDevtools,
-              ]}
-            />
-          </HeroUIProvider>
+          <HeroUIProvider>{children}</HeroUIProvider>
         </TanStackQueryProvider>
         <Scripts />
       </body>

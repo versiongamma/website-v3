@@ -17,9 +17,8 @@ export const getPhotos = createServerFn({ method: 'GET' }).handler(
     })
     const result = await fetch(
       `https://www.googleapis.com/drive/v3/files?${params.toString()}`,
+      { headers: { Referer: 'https://versiongamma.com' } },
     ).then((res) => res.json())
-
-    console.log(result)
 
     return result.files ?? []
   },

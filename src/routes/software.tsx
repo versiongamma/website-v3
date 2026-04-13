@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { NavBarDesktop } from 'src/components/NavBarDesktop'
+import { NavBar } from 'src/components/NavBar'
 import { SiteRoute } from '~utils/routes'
 
 export const Route = createFileRoute('/software')({
@@ -9,7 +9,7 @@ export const Route = createFileRoute('/software')({
 function RouteComponent() {
   return (
     <div className="flex w-screen h-screen flex-col">
-      <NavBarDesktop path={SiteRoute.SOFTWARE} />
+      <NavBar path={SiteRoute.SOFTWARE} />
     </div>
   )
 }

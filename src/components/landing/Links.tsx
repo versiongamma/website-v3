@@ -6,7 +6,7 @@ const linkStyle = tw`link-color font-mono text-2xl/loose flex items-center gap-4
 const iconSize = 40
 
 const Links = () => (
-  <div className="flex flex-col">
+  <div className="flex flex-col items-center md:items-start">
     <a href="/video" className={linkStyle}>
       <FiVideo size={iconSize} />
       /video

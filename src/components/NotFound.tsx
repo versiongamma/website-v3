@@ -1,6 +1,6 @@
 import { useLocation } from '@tanstack/react-router'
 
-const NotFound = () => {
+export const NotFound = () => {
   const { pathname } = useLocation()
   return (
     <div className="flex flex-col w-screen h-screen items-center justify-center gap-6">
@@ -17,5 +17,3 @@ const NotFound = () => {
     </div>
   )
 }
-
-export default NotFound
