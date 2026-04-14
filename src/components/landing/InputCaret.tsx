@@ -33,7 +33,7 @@ const InputCaret = ({ inputRef, show }: Props) => {
 
   return (
     <div
-      className="w-[10px] h-[24px] mt-[2px] bg-white absolute top-0 caret-blink mix-blend-difference"
+      className="w-2.5 h-6 mt-0.5 bg-white absolute top-0 caret-blink mix-blend-difference"
       style={{ left: caretPosition, display: show ? 'block' : 'none' }}
     />
   )

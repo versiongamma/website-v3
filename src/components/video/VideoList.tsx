@@ -1,4 +1,4 @@
-import type { YoutubeApiPlaylistResponse } from 'src/types'
+import type { YoutubeApiPlaylistResponse } from '~/types'
 import { VideoThumbnail } from './VideoThumbnail'
 
 type Props = {

@@ -1,5 +1,6 @@
 import { BiVideoRecording } from 'react-icons/bi'
-import useWaitForImgLoad from '~hooks/useWaitForImgLoad'
+
+import useWaitForImgLoad from '~/hooks/useWaitForImgLoad'
 import Skeleton from '../Skeleton'
 
 type Props = {

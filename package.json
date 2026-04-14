@@ -12,6 +12,7 @@
     "lint": "eslint",
     "format": "prettier --check .",
     "check": "prettier --write . && eslint --fix",
+    "typecheck": "tsc --noEmit",
     "prod:build": "docker compose build",
     "prod:start": "docker compose up -d",
     "prod:deploy": "bun prod:build && bun prod:start"

@@ -13,10 +13,7 @@
     "module": "ESNext",
     "baseUrl": ".",
     "paths": {
-      "~utils/*": ["./src/utils/*"],
-      "~hooks/*": ["./src/hooks/*"],
-      "~utils": ["./src/utils"],
-      "~components": ["./src/components"],
+      "~/*": ["./src/*"],
       "~assets/*": ["./public/assets/*"],
     },
     "lib": ["ES2022", "DOM", "DOM.Iterable"],

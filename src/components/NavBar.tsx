@@ -1,6 +1,6 @@
 import { Link } from '@tanstack/react-router'
-import { classNames, selectiveStyle } from '~utils'
-import { SiteRoute } from '~utils/routes'
+import { classNames, selectiveStyle } from '~/utils/styles'
+import type { SiteRoute } from '~/utils/routes'
 
 type Props = {
   path: SiteRoute
