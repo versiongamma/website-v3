@@ -6,7 +6,7 @@ import Links from '~/components/landing/Links'
 import { TerminalContainer } from '~/components/TerminalContainer'
 import { en } from '~/en'
 import useClock from '~/hooks/useClock'
-import { tw } from '~/utils/index'
+import { tw } from '~/utils/styles'
 import face from '/assets/face_400px.webp'
 
 export const Route = createFileRoute('/')({ component: Index })

@@ -1,5 +1,5 @@
 import { Link } from '@tanstack/react-router'
-import { classNames, selectiveStyle } from '~/utils'
+import { classNames, selectiveStyle } from '~/utils/styles'
 import type { SiteRoute } from '~/utils/routes'
 
 type Props = {
