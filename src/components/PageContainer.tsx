@@ -1,0 +1,16 @@
+import type { SiteRoute } from '~utils/routes'
+import { NavBar } from './NavBar'
+
+type Props = {
+  path: SiteRoute
+  children: React.ReactNode
+}
+
+export const PageContainer = ({ path, children }: Props) => {
+  return (
+    <div className="flex flex-col items-center w-screen h-screen pt-16 overflow-y-scroll">
+      <NavBar path={path} className="fixed top-0" />
+      {children}
+    </div>
+  )
+}

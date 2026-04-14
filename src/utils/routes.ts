@@ -1,7 +1,6 @@
 export enum SiteRoute {
-    LANDING = "/",
-    VIDEO = "/video",
-    PHOTO = "/photo",
-    SOFTWARE = "/software",
-    CONTACT = "/contact",
+  INDEX = '/',
+  VIDEO = '/video',
+  PHOTO = '/photo',
+  SOFTWARE = '/software',
 }
