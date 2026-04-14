@@ -1,4 +1,3 @@
-import { HeroUIProvider } from '@heroui/react'
 import type { QueryClient } from '@tanstack/react-query'
 import {
   HeadContent,
@@ -47,9 +46,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body>
-        <TanStackQueryProvider>
-          <HeroUIProvider>{children}</HeroUIProvider>
-        </TanStackQueryProvider>
+        <TanStackQueryProvider>{children}</TanStackQueryProvider>
         <Scripts />
       </body>
     </html>

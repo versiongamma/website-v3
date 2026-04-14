@@ -40,7 +40,9 @@ export const VideoThumbnail = ({ id, title, img, publishedDate }: Props) => {
 
 // https://github.com/themesberg/flowbite/blob/main/content/components/skeleton.md
 export const ThumbnailSkeleton = () => (
-  <Skeleton className="w-[320px] h-45 sm:w-105 sm:h-59 md:w-[320px] md:h-45 xl:w-120 xl:h-67.5 m-4">
-    <BiVideoRecording className="w-12 h-12" />
-  </Skeleton>
+  <div className="w-[320px] h-63.5 md:h-64.5 xl:w-120 xl:h-91 p-0 md:p-4">
+    <Skeleton className="w-full h-full">
+      <BiVideoRecording className="w-12 h-12" />
+    </Skeleton>
+  </div>
 )
