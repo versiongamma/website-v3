@@ -1,8 +1,9 @@
-import type { IconType } from 'react-icons/lib'
-import type { YoutubeApiPlaylistResponse } from 'src/types'
-import { VideoList } from './VideoList'
-import { TerminalContainer } from '../TerminalContainer'
 import { FiChevronRight } from 'react-icons/fi'
+import type { IconType } from 'react-icons/lib'
+
+import type { YoutubeApiPlaylistResponse } from '~/types'
+import { TerminalContainer } from '../TerminalContainer'
+import { VideoList } from './VideoList'
 
 type Props = {
   title: string

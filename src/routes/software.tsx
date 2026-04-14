@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { NavBar } from 'src/components/NavBar'
-import { SiteRoute } from '~utils/routes'
+import { SiteRoute } from '~/utils/routes'
 
 export const Route = createFileRoute('/software')({
   component: Software,

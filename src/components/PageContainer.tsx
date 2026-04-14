@@ -1,4 +1,4 @@
-import type { SiteRoute } from '~utils/routes'
+import type { SiteRoute } from '~/utils/routes'
 import { NavBar } from './NavBar'
 
 type Props = {

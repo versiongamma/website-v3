@@ -1,5 +1,3 @@
-import type { RegisteredRouter } from '@tanstack/react-router'
-
 export type GoogleDriveFilesApiFields = {
   parents: Array<string>
   lastModifyingUser: {

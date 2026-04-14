@@ -1,11 +1,11 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { RowsPhotoAlbum } from 'react-photo-album'
 import 'react-photo-album/rows.css'
-import { NavBar } from 'src/components/NavBar'
-import { PageContainer } from 'src/components/PageContainer'
-import { en } from 'src/en'
-import { loadPhotos } from 'src/functions/photos.function'
-import { SiteRoute } from '~utils/routes'
+
+import { PageContainer } from '~/components/PageContainer'
+import { en } from '~/en'
+import { loadPhotos } from '~/functions/photos.function'
+import { SiteRoute } from '~/utils/routes'
 
 const getDimensions = (aspectRatio: number) => ({
   width: aspectRatio > 1 ? 640 : 640 * aspectRatio,
@@ -40,7 +40,7 @@ function Photo() {
           </div>
         </div>
 
-        {photos && (
+        {photos.length && (
           <RowsPhotoAlbum
             componentsProps={{
               image: {

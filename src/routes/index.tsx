@@ -1,12 +1,13 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { createRef } from 'react'
-import Links from 'src/components/landing/Links'
+
+import InputField from '~/components/landing/InputField'
+import Links from '~/components/landing/Links'
+import { TerminalContainer } from '~/components/TerminalContainer'
+import { en } from '~/en'
+import useClock from '~/hooks/useClock'
+import { tw } from '~/utils/index'
 import face from '/assets/face_400px.webp'
-import useClock from '~hooks/useClock'
-import { tw } from '~utils/index'
-import { en } from 'src/en'
-import InputField from 'src/components/landing/InputField'
-import { TerminalContainer } from 'src/components/TerminalContainer'
 
 export const Route = createFileRoute('/')({ component: Index })
 

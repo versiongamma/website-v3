@@ -3,16 +3,14 @@ import { devtools } from '@tanstack/devtools-vite'
 import { tanstackStart } from '@tanstack/react-start/plugin/vite'
 import viteReact from '@vitejs/plugin-react'
 import { nitro } from 'nitro/vite'
-import path from 'path'
+import path from 'node:path'
 import { defineConfig } from 'vite'
 import tsconfigPaths from 'vite-tsconfig-paths'
 
 const config = defineConfig({
   resolve: {
     alias: {
-      '~utils': path.resolve(__dirname, './src/utils'),
-      '~hooks': path.resolve(__dirname, './src/hooks'),
-      '~components': path.resolve(__dirname, './src/components'),
+      '~': path.resolve(__dirname, './src'),
       '~assets': path.resolve(__dirname, '/assets'),
     },
   },

@@ -1,8 +1,9 @@
+import { useNavigate } from '@tanstack/react-router'
 import type { RefObject } from 'react'
 import { useEffect, useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
+
 import InputCaret from './InputCaret'
-import { useNavigate } from '@tanstack/react-router'
 
 const INPUT_ID = 'input'
 

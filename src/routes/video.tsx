@@ -1,10 +1,11 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { FiVideo, FiYoutube } from 'react-icons/fi'
-import { PageContainer } from 'src/components/PageContainer'
-import { VideoCategory } from 'src/components/video/VideoCategory'
-import { en } from 'src/en'
-import { loadVideos } from 'src/functions/videos.function'
-import { SiteRoute } from '~utils/routes'
+
+import { PageContainer } from '~/components/PageContainer'
+import { VideoCategory } from '~/components/video/VideoCategory'
+import { en } from '~/en'
+import { loadVideos } from '~/functions/videos.function'
+import { SiteRoute } from '~/utils/routes'
 
 export const Route = createFileRoute('/video')({
   component: Video,
