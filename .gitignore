@@ -12,6 +12,7 @@ dist
 dist-ssr
 *.local
 build
+.output
 *.env
 temp
 
