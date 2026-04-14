@@ -14,10 +14,6 @@ export const VideoThumbnail = ({ id, title, img, publishedDate }: Props) => {
   const url = `https://youtu.be/${id}`
   const thumbnailLoaded = useWaitForImgLoad(img)
 
-  if (!thumbnailLoaded) {
-    return <ThumbnailSkeleton />
-  }
-
   return (
     <a
       className="flex flex-col p-4 rounded-xl hover:opacity-80 w-[320px] xl:w-120 shrink-0 transition-opacity bg-[#171717]/60 md:bg-transparent"
@@ -25,7 +21,13 @@ export const VideoThumbnail = ({ id, title, img, publishedDate }: Props) => {
       target="_blank"
       rel="noreferrer"
     >
-      <img src={img} className="rounded-xl" />
+      {thumbnailLoaded ? (
+        <img src={img} className="rounded-xl" />
+      ) : (
+        <Skeleton className="w-[288px] h-40.5 xl:w-md xl:h-63">
+          <BiVideoRecording className="w-10 h-10 xl:w-12 xl:h-12" />
+        </Skeleton>
+      )}
       <h1 className="font-heading font-semibold text-sm xl:text-lg mt-1 text-white">
         {title}
       </h1>
@@ -37,12 +39,3 @@ export const VideoThumbnail = ({ id, title, img, publishedDate }: Props) => {
     </a>
   )
 }
-
-// https://github.com/themesberg/flowbite/blob/main/content/components/skeleton.md
-export const ThumbnailSkeleton = () => (
-  <div className="w-[320px] h-63.5 md:h-64.5 xl:w-120 xl:h-91 p-0 md:p-4">
-    <Skeleton className="w-full h-full">
-      <BiVideoRecording className="w-12 h-12" />
-    </Skeleton>
-  </div>
-)

@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { RowsPhotoAlbum } from 'react-photo-album'
 import 'react-photo-album/rows.css'
 
@@ -13,6 +13,11 @@ const SESSION_KEY = 'notFirstVisit'
 const getDimensions = (aspectRatio: number) => ({
   width: aspectRatio > 1 ? 640 : 640 * aspectRatio,
   height: aspectRatio < 1 ? 640 : 640 / aspectRatio,
+})
+
+const getDimensionsWithFixedHeight = (aspectRatio: number) => ({
+  height: 360,
+  width: 360 * aspectRatio,
 })
 
 export const Route = createFileRoute('/photo')({
@@ -29,18 +34,12 @@ export const Route = createFileRoute('/photo')({
 
 function Photo() {
   const photos = Route.useLoaderData()
-  const [open, setOpen] = useState<boolean>(
-    sessionStorage.getItem(SESSION_KEY) !== 'true',
-  )
-
-  useEffect(() => {
-    sessionStorage.setItem(SESSION_KEY, 'true')
-  }, [])
+  const [open, setOpen] = useState<boolean>(false)
 
   return (
     <PageContainer path={SiteRoute.PHOTO}>
       <div className="px-8 pb-4">
-        <div className="flex w-full justify-center p-6 "></div>
+        <div className="flex w-full justify-center p-6"></div>
 
         <InfoModal open={open} onClose={() => setOpen(false)} />
 
@@ -53,7 +52,7 @@ function Photo() {
               },
             }}
             photos={photos.map((photo) => ({
-              src: photo.url,
+              src: `${photo.url}=s640`,
               ...getDimensions(photo.aspectRatio),
             }))}
           />
