@@ -12,7 +12,6 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as VideoRouteImport } from './routes/video'
 import { Route as SoftwareRouteImport } from './routes/software'
 import { Route as PhotoRouteImport } from './routes/photo'
-import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CoffeeRouteImport } from './routes/coffee'
 import { Route as IndexRouteImport } from './routes/index'
 
@@ -31,11 +30,6 @@ const PhotoRoute = PhotoRouteImport.update({
   path: '/photo',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ContactRoute = ContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const CoffeeRoute = CoffeeRouteImport.update({
   id: '/coffee',
   path: '/coffee',
@@ -50,7 +44,6 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/coffee': typeof CoffeeRoute
-  '/contact': typeof ContactRoute
   '/photo': typeof PhotoRoute
   '/software': typeof SoftwareRoute
   '/video': typeof VideoRoute
@@ -58,7 +51,6 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/coffee': typeof CoffeeRoute
-  '/contact': typeof ContactRoute
   '/photo': typeof PhotoRoute
   '/software': typeof SoftwareRoute
   '/video': typeof VideoRoute
@@ -67,30 +59,21 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/coffee': typeof CoffeeRoute
-  '/contact': typeof ContactRoute
   '/photo': typeof PhotoRoute
   '/software': typeof SoftwareRoute
   '/video': typeof VideoRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/coffee' | '/contact' | '/photo' | '/software' | '/video'
+  fullPaths: '/' | '/coffee' | '/photo' | '/software' | '/video'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/coffee' | '/contact' | '/photo' | '/software' | '/video'
-  id:
-    | '__root__'
-    | '/'
-    | '/coffee'
-    | '/contact'
-    | '/photo'
-    | '/software'
-    | '/video'
+  to: '/' | '/coffee' | '/photo' | '/software' | '/video'
+  id: '__root__' | '/' | '/coffee' | '/photo' | '/software' | '/video'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CoffeeRoute: typeof CoffeeRoute
-  ContactRoute: typeof ContactRoute
   PhotoRoute: typeof PhotoRoute
   SoftwareRoute: typeof SoftwareRoute
   VideoRoute: typeof VideoRoute
@@ -119,13 +102,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PhotoRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/coffee': {
       id: '/coffee'
       path: '/coffee'
@@ -146,7 +122,6 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CoffeeRoute: CoffeeRoute,
-  ContactRoute: ContactRoute,
   PhotoRoute: PhotoRoute,
   SoftwareRoute: SoftwareRoute,
   VideoRoute: VideoRoute,

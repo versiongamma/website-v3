@@ -2,7 +2,9 @@ import { createServerFn } from '@tanstack/react-start'
 import { getEnv } from './env.server'
 import type { GoogleDriveFilesApiFields } from 'src/types'
 
-export const getPhotos = createServerFn({ method: 'GET' }).handler(
+export const fetchPhotosFromDriveFolder = createServerFn({
+  method: 'GET',
+}).handler(
   async (): Promise<
     Pick<
       GoogleDriveFilesApiFields,
@@ -17,7 +19,6 @@ export const getPhotos = createServerFn({ method: 'GET' }).handler(
     })
     const result = await fetch(
       `https://www.googleapis.com/drive/v3/files?${params.toString()}`,
-      { headers: { Referer: 'https://versiongamma.com' } },
     ).then((res) => res.json())
 
     return result.files ?? []

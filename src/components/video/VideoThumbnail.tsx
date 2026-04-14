@@ -19,17 +19,19 @@ export const VideoThumbnail = ({ id, title, img, publishedDate }: Props) => {
 
   return (
     <a
-      className="flex flex-col p-4 rounded-xl bg-slate-600/40 hover-bg w-[320px] sm:w-105 md:w-[320px] xl:w-120 -md:m-4 shrink-0"
+      className="flex flex-col p-4 rounded-xl hover:opacity-80 w-[320px] xl:w-120 shrink-0 transition-opacity bg-[#171717]/60 md:bg-transparent"
       href={url}
       target="_blank"
       rel="noreferrer"
     >
       <img src={img} className="rounded-xl" />
-      <h1 className="font-heading font-semibold text-lg mt-1 text-white">
+      <h1 className="font-heading font-semibold text-sm xl:text-lg mt-1 text-white">
         {title}
       </h1>
-      <div className="flex items-end justify-end h-full">
-        <p className="text-white">{publishedDate.toLocaleDateString()}</p>
+      <div className="flex items-end grow justify-end md:justify-start md:grow-0">
+        <p className="text-white text-xs md:text-sm xl:text-md">
+          {publishedDate.toLocaleDateString()}
+        </p>
       </div>
     </a>
   )

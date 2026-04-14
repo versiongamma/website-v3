@@ -1,12 +1,13 @@
 import { Link } from '@tanstack/react-router'
-import { selectiveStyle } from '~utils'
+import { classNames, selectiveStyle } from '~utils'
 import { SiteRoute } from '~utils/routes'
 
 type Props = {
   path: SiteRoute
+  className?: string
 }
 
-export const NavBar = ({ path }: Props) => {
+export const NavBar = ({ path, className }: Props) => {
   const getLinkStyle = (linkPath: string) =>
     selectiveStyle(
       'text-orange-500 cursor-default',
@@ -15,27 +16,28 @@ export const NavBar = ({ path }: Props) => {
     )
 
   return (
-    <div className="bg-black/40 h-16 w-full flex items-center justify-center shrink-0">
-      <div className="font-mono text-xl flex gap-4">
+    <div
+      className={classNames(
+        'bg-black/40 h-16 w-full flex items-center justify-center shrink-0 z-1 backdrop-blur-md drop-shadow',
+        className ?? '',
+      )}
+    >
+      <div className="font-mono md:text-xl flex gap-4">
         <Link className={getLinkStyle('/')} to="/">
           home
         </Link>
         <p>/</p>
-        <a className={getLinkStyle('/video')} href="/video">
+        <Link className={getLinkStyle('/video')} to="/video">
           video
-        </a>
+        </Link>
         <p>/</p>
         <Link className={getLinkStyle('/photo')} to="/photo">
           photo
         </Link>
         <p>/</p>
-        <a className={getLinkStyle('/software')} href="/software">
+        <Link className={getLinkStyle('/software')} to="/software">
           software
-        </a>
-        <p>/</p>
-        <a className={getLinkStyle('/contact')} href="contact">
-          contact
-        </a>
+        </Link>
       </div>
     </div>
   )

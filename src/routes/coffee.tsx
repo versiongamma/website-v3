@@ -2,6 +2,13 @@ import { createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/coffee')({
   component: RouteComponent,
+  head: () => ({
+    meta: [
+      {
+        title: "418 I'm a Teapot",
+      },
+    ],
+  }),
 })
 
 function RouteComponent() {

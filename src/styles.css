@@ -30,6 +30,15 @@ body {
   @apply text-blue-500 hover:text-blue-700 transition-colors;
 }
 
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
 .background-gradient-transparent {
   background: rgba(109, 42, 186, 0.4);
   background: linear-gradient(

@@ -14,7 +14,7 @@ interface MyRouterContext {
 }
 
 export const Route = createRootRouteWithContext<MyRouterContext>()({
-  head: () => ({
+  head: (ctx) => ({
     meta: [
       {
         charSet: 'utf-8',
@@ -24,7 +24,9 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
         content: 'width=device-width, initial-scale=1',
       },
       {
-        title: 'Version Gamma',
+        title: ctx.match.globalNotFound
+          ? '404 Not Found - Version Gamma'
+          : 'Version Gamma',
       },
     ],
     links: [
