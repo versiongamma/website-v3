@@ -1,14 +1,13 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { useEffect, useState } from 'react'
 import { RowsPhotoAlbum } from 'react-photo-album'
 import 'react-photo-album/rows.css'
 
 import { PageContainer } from '~/components/PageContainer'
+import { GalleryPhoto } from '~/components/photo/GalleryPhoto'
 import { InfoModal } from '~/components/photo/InfoModal'
 import { loadPhotos } from '~/functions/photos.function'
+import { isFirstVisit } from '~/functions/session.function'
 import { SiteRoute } from '~/utils/routes'
-
-const SESSION_KEY = 'notFirstVisit'
 
 const getDimensions = (aspectRatio: number) => ({
   width: aspectRatio > 1 ? 640 : 640 * aspectRatio,
@@ -29,35 +28,30 @@ export const Route = createFileRoute('/photo')({
 
 function Photo() {
   const photos = Route.useLoaderData()
-  const [open, setOpen] = useState<boolean>(
-    sessionStorage.getItem(SESSION_KEY) !== 'true',
-  )
-
-  useEffect(() => {
-    sessionStorage.setItem(SESSION_KEY, 'true')
-  }, [])
+  const showInfoModal = isFirstVisit()
 
   return (
     <PageContainer path={SiteRoute.PHOTO}>
-      <div className="px-8 pb-4">
-        <div className="flex w-full justify-center p-6 "></div>
-
-        <InfoModal open={open} onClose={() => setOpen(false)} />
-
-        {photos.length && (
-          <RowsPhotoAlbum
-            componentsProps={{
-              image: {
-                loading: 'eager',
-                className: 'rounded-lg',
-              },
-            }}
-            photos={photos.map((photo) => ({
-              src: photo.url,
-              ...getDimensions(photo.aspectRatio),
-            }))}
-          />
-        )}
+      <InfoModal initialState={showInfoModal} />
+      <div className="w-full h-full px-8 pb-4">
+        <RowsPhotoAlbum
+          componentsProps={{
+            image: {
+              loading: 'eager',
+              className: 'rounded-lg',
+            },
+            container: {
+              className: 'no-scrollbar',
+            },
+          }}
+          photos={photos.map((photo) => ({
+            src: `${photo.url}=s640`,
+            ...getDimensions(photo.aspectRatio),
+          }))}
+          render={{
+            image: (props) => <GalleryPhoto {...props} />,
+          }}
+        />
       </div>
     </PageContainer>
   )

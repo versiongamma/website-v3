@@ -70,3 +70,33 @@ body {
     opacity: 0;
   }
 }
+
+.fade-in {
+  animation: fade-in 0.25s ease-in-out forwards;
+}
+
+.fade-out {
+  animation: fade-out 0.25s ease-in-out forwards;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}

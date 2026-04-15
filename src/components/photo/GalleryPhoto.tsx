@@ -1,0 +1,27 @@
+import { useState } from 'react'
+
+import { classNames } from '~/utils/styles'
+import Skeleton from '../Skeleton'
+
+type Props = React.ComponentPropsWithoutRef<'img'> & {
+  src: string
+}
+
+export const GalleryPhoto = ({ className, ...rest }: Props) => {
+  const [loaded, setLoaded] = useState(false)
+
+  return (
+    <>
+      {!loaded && <Skeleton className="absolute inset-0" />}
+      <img
+        {...rest}
+        className={classNames(
+          className ?? '',
+          'transition-opacity duration-300',
+          loaded ? 'opacity-100' : 'opacity-0',
+        )}
+        onLoad={() => setLoaded(true)}
+      />
+    </>
+  )
+}
