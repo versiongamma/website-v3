@@ -1,16 +1,13 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { useEffect } from 'react'
 import { RowsPhotoAlbum } from 'react-photo-album'
-import { setCookie, getCookie } from '@tanstack/react-start/server'
 import 'react-photo-album/rows.css'
 
 import { PageContainer } from '~/components/PageContainer'
 import { GalleryPhoto } from '~/components/photo/GalleryPhoto'
 import { InfoModal } from '~/components/photo/InfoModal'
 import { loadPhotos } from '~/functions/photos.function'
+import { isFirstVisit } from '~/functions/session.function'
 import { SiteRoute } from '~/utils/routes'
-
-const SESSION_KEY = 'notFirstVisit'
 
 const getDimensions = (aspectRatio: number) => ({
   width: aspectRatio > 1 ? 640 : 640 * aspectRatio,
@@ -19,17 +16,7 @@ const getDimensions = (aspectRatio: number) => ({
 
 export const Route = createFileRoute('/photo')({
   component: Photo,
-  loader: async () => {
-    const photos = await loadPhotos()
-    const firstVisit = getCookie(SESSION_KEY) !== 'true'
-
-    setCookie(SESSION_KEY, 'true')
-
-    return {
-      photos,
-      firstVisit,
-    }
-  },
+  loader: () => loadPhotos(),
   head: () => ({
     meta: [
       {
@@ -40,12 +27,13 @@ export const Route = createFileRoute('/photo')({
 })
 
 function Photo() {
-  const { photos, firstVisit } = Route.useLoaderData()
+  const photos = Route.useLoaderData()
+  const showInfoModal = isFirstVisit()
 
   return (
     <PageContainer path={SiteRoute.PHOTO}>
+      <InfoModal initialState={showInfoModal} />
       <div className="w-full h-full px-8 pb-4">
-        <InfoModal initialState={firstVisit} />
         <RowsPhotoAlbum
           componentsProps={{
             image: {
