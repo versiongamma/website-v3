@@ -6,7 +6,7 @@ import {
   clearHidePhotoModal,
   isPhotoInfoModalDefaultHidden,
   setHidePhotoModal,
-} from '~/functions/session.function'
+} from '~/functions/photos.function'
 import { SiteRoute } from '~/utils/routes'
 
 export const Route = createFileRoute('/dev')({

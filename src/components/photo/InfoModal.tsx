@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { FiInfo, FiX } from 'react-icons/fi'
 import { en } from '~/en'
-import { setHidePhotoModal } from '~/functions/session.function'
+import { setHidePhotoModal } from '~/functions/photos.function'
 import { classNames } from '~/utils/styles'
 
 type Props = {

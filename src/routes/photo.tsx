@@ -6,7 +6,7 @@ import { PageContainer } from '~/components/PageContainer'
 import { GalleryPhoto } from '~/components/photo/GalleryPhoto'
 import { InfoModal } from '~/components/photo/InfoModal'
 import { loadPhotos } from '~/functions/photos.function'
-import { isPhotoInfoModalDefaultHidden } from '~/functions/session.function'
+import { isPhotoInfoModalDefaultHidden } from '~/functions/photos.function'
 import { SiteRoute } from '~/utils/routes'
 
 const getDimensions = (aspectRatio: number) => ({
