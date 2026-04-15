@@ -6,7 +6,7 @@ import { PageContainer } from '~/components/PageContainer'
 import { GalleryPhoto } from '~/components/photo/GalleryPhoto'
 import { InfoModal } from '~/components/photo/InfoModal'
 import { loadPhotos } from '~/functions/photos.function'
-import { isFirstVisit } from '~/functions/session.function'
+import { isPhotoInfoModalDefaultHidden } from '~/functions/session.function'
 import { SiteRoute } from '~/utils/routes'
 
 const getDimensions = (aspectRatio: number) => ({
@@ -28,7 +28,7 @@ export const Route = createFileRoute('/photo')({
 
 function Photo() {
   const photos = Route.useLoaderData()
-  const showInfoModal = isFirstVisit()
+  const showInfoModal = !isPhotoInfoModalDefaultHidden()
 
   return (
     <PageContainer path={SiteRoute.PHOTO}>

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { FiInfo, FiX } from 'react-icons/fi'
 import { en } from '~/en'
-import { clearFirstVisit } from '~/functions/session.function'
+import { setHidePhotoModal } from '~/functions/session.function'
 import { classNames } from '~/utils/styles'
 
 type Props = {
@@ -12,7 +12,7 @@ export const InfoModal = ({ initialState = false }: Props) => {
   const [open, setOpen] = useState(initialState)
   const handleClose = () => {
     setOpen(false)
-    clearFirstVisit()
+    setHidePhotoModal()
   }
 
   return (
