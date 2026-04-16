@@ -8,6 +8,7 @@ export const getEnv = createServerOnlyFn(() => {
     YOUTUBE_ANALYSIS_PLAYLIST_ID = '',
     YOUTUBE_REVIEWS_PLAYLIST_ID = '',
     VIDEOGRAPHY_PLAYLIST_ID = '',
+    SOFTWARE_PASTEBIN_ID = '',
   } = process.env
   return {
     GOOGLE_DRIVE_API_KEY,
@@ -16,5 +17,6 @@ export const getEnv = createServerOnlyFn(() => {
     YOUTUBE_ANALYSIS_PLAYLIST_ID,
     YOUTUBE_REVIEWS_PLAYLIST_ID,
     VIDEOGRAPHY_PLAYLIST_ID,
+    SOFTWARE_PASTEBIN_ID,
   }
 })
