@@ -1,4 +1,4 @@
-name: Build and Publish
+name: Deploy
 on:
   push:
     branches:
@@ -7,7 +7,8 @@ env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
 jobs:
-  build-publish:
+  build-push:
+    name: Build and Publish Container Image
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -27,17 +28,23 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=ref,event=branch
+            type=sha,prefix=
       - name: Build and push Docker image
         id: push
         uses: docker/build-push-action@v6
         with:
           context: ./
           file: ./Dockerfile
+          build-args: |
+            VITE_SITE_VERSION=${{ github.sha }}
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
   deploy:
     runs-on: ubuntu-latest
+    name: Deploy Container to VPS
     needs: build-publish
     steps:
       - name: Deploy to VPS

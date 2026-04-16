@@ -72,6 +72,9 @@ function Dev() {
           </i>
         </p>
       </div>
+      <p className="mb-2 opacity-50 text-xs">
+        {import.meta.env.VITE_SITE_VERSION}
+      </p>
     </PageContainer>
   )
 }
