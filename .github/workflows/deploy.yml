@@ -56,6 +56,6 @@ jobs:
           key: ${{ secrets.VPS_SSH_KEY }}
           script: |
             docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.SHA }}
-            docker stop website-v3 || true
-            docker rm website-v3 || true
+            docker stop website-v3
+            docker rm website-v3
             docker run -d --name website-v3 -p 4173:4173 ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.SHA }}
