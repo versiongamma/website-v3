@@ -45,7 +45,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     name: Deploy Container to VPS
-    needs: build-publish
+    needs: build-push
     steps:
       - name: Deploy to VPS
         uses: appleboy/ssh-action@master
