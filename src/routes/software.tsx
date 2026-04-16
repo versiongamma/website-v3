@@ -1,5 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { NavBar } from 'src/components/NavBar'
+
+import { PageContainer } from '~/components/PageContainer'
 import { SiteRoute } from '~/utils/routes'
 
 export const Route = createFileRoute('/software')({
@@ -15,8 +16,10 @@ export const Route = createFileRoute('/software')({
 
 function Software() {
   return (
-    <div className="flex w-screen h-screen flex-col">
-      <NavBar path={SiteRoute.SOFTWARE} />
-    </div>
+    <PageContainer path={SiteRoute.SOFTWARE}>
+      <div className="flex flex-col w-full h-full items-center justify-center">
+        <p>Coming soon...</p>
+      </div>
+    </PageContainer>
   )
 }
