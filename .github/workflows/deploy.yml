@@ -8,7 +8,7 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 jobs:
   build-push:
-    name: Build and Publish Container Image
+    name: Build and Publish Image
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -31,6 +31,7 @@ jobs:
           tags: |
             type=ref,event=branch
             type=sha,prefix=
+        run: echo "short_sha=${GITHUB_SHA::7}" >> "$GITHUB_OUTPUT"
       - name: Build and push Docker image
         id: push
         uses: docker/build-push-action@v6
@@ -38,13 +39,13 @@ jobs:
           context: ./
           file: ./Dockerfile
           build-args: |
-            VITE_COMMIT_SHA=${{ github.sha }}
+            VITE_COMMIT_SHA=${{ steps.vars.outputs.short_sha }}
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
   deploy:
     runs-on: ubuntu-latest
-    name: Deploy Container to VPS
+    name: Deploy Image to VPS
     needs: build-push
     steps:
       - name: Deploy to VPS
