@@ -30,6 +30,7 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
+            type=raw,value=latest
             type=ref,event=branch
             type=sha,prefix=
       - name: Build and push Docker image
@@ -55,7 +56,8 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
           script: |
+            echo "${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.SHA }}"
             docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.SHA }}
-            docker stop website-v3
-            docker rm website-v3
+            docker stop website-v3 || true
+            docker rm website-v3 || true
             docker run -d --name website-v3 -p 4173:4173 ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.SHA }}
