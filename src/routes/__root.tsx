@@ -1,47 +1,47 @@
-import type { QueryClient } from '@tanstack/react-query'
+import type { QueryClient } from "@tanstack/react-query";
 import {
   HeadContent,
   Scripts,
   createRootRouteWithContext,
-} from '@tanstack/react-router'
-import { NotFound } from 'src/components/NotFound'
-import TanStackQueryProvider from '../integrations/tanstack-query/root-provider'
-import appCss from '../styles.css?url'
+} from "@tanstack/react-router";
+import { NotFound } from "src/components/NotFound";
+import TanStackQueryProvider from "../integrations/tanstack-query/root-provider";
+import appCss from "../styles.css?url";
 
 interface MyRouterContext {
-  queryClient: QueryClient
+  queryClient: QueryClient;
 }
 
 export const Route = createRootRouteWithContext<MyRouterContext>()({
   head: (ctx) => ({
     meta: [
       {
-        charSet: 'utf-8',
+        charSet: "utf-8",
       },
       {
-        name: 'viewport',
-        content: 'width=device-width, initial-scale=1',
+        name: "viewport",
+        content: "width=device-width, initial-scale=1",
       },
       {
         title: ctx.match.globalNotFound
-          ? '404 Not Found - Version Gamma'
-          : 'Version Gamma',
+          ? "404 Not Found - Version Gamma"
+          : "Version Gamma",
       },
     ],
     links: [
       {
-        rel: 'stylesheet',
+        rel: "stylesheet",
         href: appCss,
       },
     ],
   }),
   shellComponent: RootDocument,
   notFoundComponent: NotFound,
-})
+});
 
 function RootDocument({ children }: { children: React.ReactNode }) {
   return (
-    <html>
+    <html lang="en">
       <head>
         <HeadContent />
       </head>
@@ -50,5 +50,5 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <Scripts />
       </body>
     </html>
-  )
+  );
 }

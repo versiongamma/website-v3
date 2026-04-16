@@ -1,18 +1,18 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from "@tanstack/react-router";
 
-import { PageContainer } from '~/components/PageContainer'
-import { SiteRoute } from '~/utils/routes'
+import { PageContainer } from "~/components/PageContainer";
+import { SiteRoute } from "~/utils/routes";
 
-export const Route = createFileRoute('/software')({
+export const Route = createFileRoute("/software")({
   component: Software,
   head: () => ({
     meta: [
       {
-        title: 'Software - Version Gamma',
+        title: "Software - Version Gamma",
       },
     ],
   }),
-})
+});
 
 function Software() {
   return (
@@ -21,5 +21,5 @@ function Software() {
         <p>Coming soon...</p>
       </div>
     </PageContainer>
-  )
+  );
 }

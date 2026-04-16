@@ -1,22 +1,22 @@
-import tailwindcss from '@tailwindcss/vite'
-import { tanstackStart } from '@tanstack/react-start/plugin/vite'
-import viteReact from '@vitejs/plugin-react'
-import { nitro } from 'nitro/vite'
-import path from 'node:path'
-import { defineConfig } from 'vite'
-import tsconfigPaths from 'vite-tsconfig-paths'
+import tailwindcss from "@tailwindcss/vite";
+import { tanstackStart } from "@tanstack/react-start/plugin/vite";
+import viteReact from "@vitejs/plugin-react";
+import { nitro } from "nitro/vite";
+import path from "node:path";
+import { defineConfig } from "vite";
+import tsconfigPaths from "vite-tsconfig-paths";
 
 const config = defineConfig({
   resolve: {
     alias: {
-      '~': path.resolve(__dirname, './src'),
-      '~assets': path.resolve(__dirname, '/assets'),
+      "~": path.resolve(__dirname, "./src"),
+      "~assets": path.resolve(__dirname, "/assets"),
     },
   },
   environments: {
     client: {
       build: {
-        minify: 'terser',
+        minify: "terser",
         terserOptions: {
           compress: {
             drop_console: true,
@@ -24,9 +24,9 @@ const config = defineConfig({
         },
         rollupOptions: {
           output: {
-            chunkFileNames: 'js/[hash].js',
-            entryFileNames: 'js/[hash].js',
-            assetFileNames: '[ext]/[hash][extname]',
+            chunkFileNames: "js/[hash].js",
+            entryFileNames: "js/[hash].js",
+            assetFileNames: "[ext]/[hash][extname]",
           },
         },
       },
@@ -35,12 +35,12 @@ const config = defineConfig({
       build: {
         ssr: true,
         rollupOptions: {
-          input: 'virtual:tanstack-start-server-entry',
+          input: "virtual:tanstack-start-server-entry",
           output: {
-            format: 'esm',
-            chunkFileNames: 'js/[hash].js',
-            entryFileNames: 'js/[hash].js',
-            assetFileNames: '[ext]/[hash][extname]',
+            format: "esm",
+            chunkFileNames: "js/[hash].js",
+            entryFileNames: "js/[hash].js",
+            assetFileNames: "[ext]/[hash][extname]",
           },
         },
         minify: true,
@@ -51,7 +51,7 @@ const config = defineConfig({
   },
   plugins: [
     nitro({ rollupConfig: { external: [/^@sentry\//] } }),
-    tsconfigPaths({ projects: ['./tsconfig.json'] }),
+    tsconfigPaths({ projects: ["./tsconfig.json"] }),
     tailwindcss(),
     tanstackStart({
       prerender: {
@@ -61,17 +61,17 @@ const config = defineConfig({
     }),
     viteReact({
       babel: {
-        plugins: ['babel-plugin-react-compiler'],
+        plugins: ["babel-plugin-react-compiler"],
       },
     }),
   ],
   server: {
-    host: '0.0.0.0',
+    host: "0.0.0.0",
     port: 5173,
   },
   preview: {
     port: 5173,
   },
-})
+});
 
-export default config
+export default config;

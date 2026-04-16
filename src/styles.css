@@ -1,11 +1,11 @@
-@import 'tailwindcss';
-@source '../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}';
+@import "tailwindcss";
+@source "../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}";
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --font-mono: 'JetBrains Mono', monospace;
-  --font-heading: 'Josefin Sans', sans-serif;
-  --font-text: 'Radio Canada', sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-heading: "Josefin Sans", sans-serif;
+  --font-text: "Radio Canada", sans-serif;
 }
 
 body {

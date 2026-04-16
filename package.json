@@ -7,8 +7,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "test": "vitest run",
-    "lint": "eslint",
-    "format": "prettier --check .",
+    "lint": "biome lint",
+    "format": "biome format",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
@@ -32,6 +32,7 @@
     "tailwindcss": "^4.1.18"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.4.12",
     "@tailwindcss/typography": "^0.5.16",
     "@tanstack/devtools-vite": "latest",
     "@tanstack/eslint-config": "latest",

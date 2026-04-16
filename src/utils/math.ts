@@ -2,5 +2,5 @@ export const roundToNearestMultiple = (
   value: number,
   multiple: number,
 ): number => {
-  return Math.round(value / multiple) * multiple
-}
+  return Math.round(value / multiple) * multiple;
+};

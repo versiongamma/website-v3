@@ -1,36 +1,36 @@
-import { createFileRoute } from '@tanstack/react-router'
-import { RowsPhotoAlbum } from 'react-photo-album'
-import 'react-photo-album/rows.css'
+import { createFileRoute } from "@tanstack/react-router";
+import { RowsPhotoAlbum } from "react-photo-album";
+import "react-photo-album/rows.css";
 
-import { PageContainer } from '~/components/PageContainer'
-import { GalleryPhoto } from '~/components/photo/GalleryPhoto'
-import { InfoModal } from '~/components/photo/InfoModal'
+import { PageContainer } from "~/components/PageContainer";
+import { GalleryPhoto } from "~/components/photo/GalleryPhoto";
+import { InfoModal } from "~/components/photo/InfoModal";
 import {
   isPhotoInfoModalDefaultHidden,
   loadPhotos,
-} from '~/functions/photos.function'
-import { SiteRoute } from '~/utils/routes'
+} from "~/functions/photos.function";
+import { SiteRoute } from "~/utils/routes";
 
 const getDimensions = (aspectRatio: number) => ({
   width: aspectRatio > 1 ? 640 : 640 * aspectRatio,
   height: aspectRatio < 1 ? 640 : 640 / aspectRatio,
-})
+});
 
-export const Route = createFileRoute('/photo')({
+export const Route = createFileRoute("/photo")({
   component: Photo,
   loader: () => loadPhotos(),
   head: () => ({
     meta: [
       {
-        title: 'Photos - Version Gamma',
+        title: "Photos - Version Gamma",
       },
     ],
   }),
-})
+});
 
 function Photo() {
-  const photos = Route.useLoaderData()
-  const showInfoModal = !isPhotoInfoModalDefaultHidden()
+  const photos = Route.useLoaderData();
+  const showInfoModal = !isPhotoInfoModalDefaultHidden();
 
   return (
     <PageContainer path={SiteRoute.PHOTO}>
@@ -39,11 +39,11 @@ function Photo() {
         <RowsPhotoAlbum
           componentsProps={{
             image: {
-              loading: 'eager',
-              className: 'rounded-lg',
+              loading: "eager",
+              className: "rounded-lg",
             },
             container: {
-              className: 'no-scrollbar',
+              className: "no-scrollbar",
             },
           }}
           photos={photos.map((photo) => ({
@@ -56,5 +56,5 @@ function Photo() {
         />
       </div>
     </PageContainer>
-  )
+  );
 }

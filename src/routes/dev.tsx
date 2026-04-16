@@ -1,20 +1,20 @@
-import { createFileRoute } from '@tanstack/react-router'
-import { useState } from 'react'
-import { PageContainer } from '~/components/PageContainer'
-import { TerminalContainer } from '~/components/TerminalContainer'
+import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
+import { PageContainer } from "~/components/PageContainer";
+import { TerminalContainer } from "~/components/TerminalContainer";
 import {
   clearHidePhotoModal,
   isPhotoInfoModalDefaultHidden,
   setHidePhotoModal,
-} from '~/functions/photos.function'
-import { SiteRoute } from '~/utils/routes'
+} from "~/functions/photos.function";
+import { SiteRoute } from "~/utils/routes";
 
-export const Route = createFileRoute('/dev')({
+export const Route = createFileRoute("/dev")({
   component: Dev,
-})
+});
 
 function Dev() {
-  const [hideModal, setHideModal] = useState(isPhotoInfoModalDefaultHidden())
+  const [hideModal, setHideModal] = useState(isPhotoInfoModalDefaultHidden());
 
   return (
     <PageContainer path={SiteRoute.INDEX}>
@@ -29,7 +29,7 @@ function Dev() {
         <p>Nothing for you to exploit today!</p>
 
         <TerminalContainer
-          classes={{ container: 'my-8' }}
+          classes={{ container: "my-8" }}
           header={
             <div className="flex h-10 items-center justify-center">
               <h2 className="text-center text-black text-xl font-bold font-heading ">
@@ -41,19 +41,20 @@ function Dev() {
             <div className="p-4 min-w-xl">
               <div className="flex items-center justify-between">
                 <p>
-                  Photo Info Modal Auto-Hide:{' '}
+                  Photo Info Modal Auto-Hide:{" "}
                   <span className="font-semibold">
-                    {hideModal ? 'TRUE' : 'FALSE'}
+                    {hideModal ? "TRUE" : "FALSE"}
                   </span>
                 </p>
                 <button
+                  type="button"
                   className="bg-black/40 p-4 rounded-2xl hover:bg-black/60 hover:cursor-pointer"
                   onClick={() => {
-                    hideModal ? clearHidePhotoModal() : setHidePhotoModal()
-                    setHideModal(!hideModal)
+                    hideModal ? clearHidePhotoModal() : setHidePhotoModal();
+                    setHideModal(!hideModal);
                   }}
                 >
-                  {hideModal ? 'Clear' : 'Set'} Auto Hide
+                  {hideModal ? "Clear" : "Set"} Auto Hide
                 </button>
               </div>
             </div>
@@ -76,5 +77,5 @@ function Dev() {
         {import.meta.env.VITE_COMMIT_SHA}
       </p>
     </PageContainer>
-  )
+  );
 }
