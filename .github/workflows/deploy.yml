@@ -49,6 +49,7 @@ jobs:
     name: Deploy Image to VPS
     needs: build-push
     steps:
+      - uses: benjlevesque/short-sha@v3.0
       - name: Deploy to VPS
         uses: appleboy/ssh-action@master
         with:
