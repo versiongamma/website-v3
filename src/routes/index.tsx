@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { ClientOnly, createFileRoute } from '@tanstack/react-router'
 import { createRef } from 'react'
 
 import InputField from '~/components/landing/InputField'
@@ -11,7 +11,7 @@ import face from '/assets/face_400px.webp'
 
 export const Route = createFileRoute('/')({
   component: Index,
-  loader: () => ({ serverDate: new Date() }),
+  loader: async () => ({ serverDate: new Date() }),
 })
 
 export const textStyle = tw`font-text text-xl`
@@ -49,7 +49,8 @@ function Index() {
             <div className="flex flex-col justify-between h-full">
               <div className="flex flex-col gap-3 m-8">
                 <p className="font-mono text-lg mb-4">
-                  current time: {time.toLocaleTimeString().toLowerCase()}
+                  current time:{' '}
+                  <ClientOnly>{time.toLocaleTimeString()}</ClientOnly>
                 </p>
                 <h1 className="font-heading text-4xl font-bold mb-6">
                   {en.landing.title}

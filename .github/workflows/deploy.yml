@@ -57,7 +57,6 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
           script: |
-            echo "${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.SHA }}"
             docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.SHA }}
             docker stop website-v3 || true
             docker rm website-v3 || true
