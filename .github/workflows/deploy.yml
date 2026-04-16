@@ -17,6 +17,7 @@ jobs:
       id-token: write
     steps:
       - uses: actions/checkout@v4
+      - uses: benjlevesque/short-sha@v3.0
       - name: Log in to the Container registry
         uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
         with:
@@ -31,7 +32,6 @@ jobs:
           tags: |
             type=ref,event=branch
             type=sha,prefix=
-        run: echo "short_sha=${GITHUB_SHA::7}" >> "$GITHUB_OUTPUT"
       - name: Build and push Docker image
         id: push
         uses: docker/build-push-action@v6
@@ -39,7 +39,7 @@ jobs:
           context: ./
           file: ./Dockerfile
           build-args: |
-            VITE_COMMIT_SHA=${{ steps.vars.outputs.short_sha }}
+            VITE_COMMIT_SHA=${{ env.SHA }}
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
