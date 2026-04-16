@@ -1,6 +1,6 @@
 import { Link } from '@tanstack/react-router'
 import { FiCamera, FiGitPullRequest, FiVideo } from 'react-icons/fi'
-import { tw } from '~/utils/styles'
+import { tw } from '~/utils/style'
 
 const linkStyle = tw`link-color font-mono text-2xl/loose flex items-center gap-4 w-fit`
 const iconSize = 40

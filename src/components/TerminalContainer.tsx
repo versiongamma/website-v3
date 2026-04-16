@@ -1,4 +1,4 @@
-import { classNames } from '~/utils/styles'
+import { classNames } from '~/utils/style'
 
 type Props = {
   header: React.ReactNode
