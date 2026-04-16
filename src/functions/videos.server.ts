@@ -20,7 +20,7 @@ export const fetchYoutubeVideos = createServerOnlyFn(
         .then((videos) => videos),
     ])
 
-    return [...analysisData.items, ...reviewsData.items].sort(
+    return [...(analysisData.items ?? []), ...(reviewsData.items ?? [])].sort(
       (a, b) =>
         new Date(b.snippet.publishedAt).getTime() -
         new Date(a.snippet.publishedAt).getTime(),
@@ -36,5 +36,5 @@ export const fetchVideographyVideos = createServerOnlyFn(async () => {
     .then((res) => res.json())
     .then((videos) => videos)
 
-  return response.items
+  return response.items ?? []
 })
