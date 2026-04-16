@@ -1,4 +1,4 @@
-import { ClientOnly, createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@tanstack/react-router'
 import { createRef } from 'react'
 
 import InputField from '~/components/landing/InputField'
@@ -49,7 +49,7 @@ function Index() {
             <div className="flex flex-col justify-between h-full">
               <div className="flex flex-col gap-3 m-8">
                 <p className="font-mono text-lg mb-4">
-                  current time: {time.toLocaleTimeString()}
+                  current time: {time.toLocaleTimeString().toLowerCase()}
                 </p>
                 <h1 className="font-heading text-4xl font-bold mb-6">
                   {en.landing.title}
