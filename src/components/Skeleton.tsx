@@ -15,7 +15,7 @@ export const Skeleton = ({ className, children, size }: Props) => {
       role="status"
       style={size}
       className={`flex items-center justify-center bg-gray-300 rounded-lg
-      animate-pulse dark:bg-gray-700 ${className ?? ''}`}
+      animate-pulse dark:bg-gray-700 ${className}`}
     >
       {children ?? null}
       <span className="sr-only">Loading...</span>

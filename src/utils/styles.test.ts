@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { classNames, selectiveStyle, tw } from './styles'
+import { classNames, selectiveStyle, tw } from './style'
 
 describe('selectiveStyle', () => {
   it('returns the style when apply is true', () => {

@@ -1,5 +1,5 @@
 import { Link } from '@tanstack/react-router'
-import { classNames, selectiveStyle } from '~/utils/styles'
+import { classNames, selectiveStyle } from '~/utils/style'
 import type { SiteRoute } from '~/utils/routes'
 
 type Props = {
@@ -19,7 +19,7 @@ export const NavBar = ({ path, className }: Props) => {
     <div
       className={classNames(
         'bg-black/40 h-16 w-full flex items-center justify-center shrink-0 z-1 backdrop-blur-md drop-shadow',
-        className ?? '',
+        className,
       )}
     >
       <div className="font-mono md:text-xl flex gap-4">

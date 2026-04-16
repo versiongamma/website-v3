@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { classNames } from '~/utils/styles'
+import { classNames } from '~/utils/style'
 import Skeleton from '../Skeleton'
 
 type Props = React.ComponentPropsWithoutRef<'img'> & {
@@ -16,7 +16,7 @@ export const GalleryPhoto = ({ className, ...rest }: Props) => {
       <img
         {...rest}
         className={classNames(
-          className ?? '',
+          className,
           'transition-opacity duration-300',
           loaded ? 'opacity-100' : 'opacity-0',
         )}
