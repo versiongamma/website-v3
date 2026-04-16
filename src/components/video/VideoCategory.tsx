@@ -1,9 +1,8 @@
-import { FiChevronRight } from 'react-icons/fi'
 import type { IconType } from 'react-icons/lib'
 
 import type { YoutubeApiPlaylistResponse } from '~/types'
 import { TerminalContainer } from '../TerminalContainer'
-import { VideoList } from './VideoList'
+import { VirtualVideoList } from './VirtualVideoList'
 
 type Props = {
   title: string
@@ -21,7 +20,7 @@ export const VideoCategory = ({
   return (
     <TerminalContainer
       classes={{
-        container: 'w-screen md:max-w-3xl xl:max-w-6xl',
+        container: 'w-screen md:max-w-4xl xl:max-w-6xl',
         header: 'h-10 md:h-12 xl:h-16',
       }}
       header={
@@ -38,10 +37,7 @@ export const VideoCategory = ({
             <p className="text-sm xl:text-base">{description}</p>
           </div>
           <div className="w-full">
-            <VideoList videos={videos} />
-          </div>
-          <div className="hidden md:flex w-full justify-end px-4">
-            <FiChevronRight className="text-2xl" />
+            <VirtualVideoList videos={videos} />
           </div>
         </div>
       }

@@ -8,18 +8,26 @@ type Props = {
   title: string
   img: string
   publishedDate: Date
+  style?: React.HTMLAttributes<HTMLAnchorElement>['style']
 }
 
-export const VideoThumbnail = ({ id, title, img, publishedDate }: Props) => {
+export const VideoThumbnail = ({
+  id,
+  title,
+  img,
+  publishedDate,
+  style,
+}: Props) => {
   const url = `https://youtu.be/${id}`
   const thumbnailLoaded = useWaitForImgLoad(img)
 
   return (
     <a
-      className="flex flex-col p-4 rounded-xl hover:opacity-80 w-[320px] xl:w-120 shrink-0 transition-opacity bg-[#171717]/60 md:bg-transparent"
+      className="flex flex-col p-4 md:p-0 rounded-xl hover:opacity-80 w-[320px] xl:w-120 shrink-0 transition-opacity bg-[#171717]/60 md:bg-transparent"
       href={url}
       target="_blank"
       rel="noreferrer"
+      style={style}
     >
       {thumbnailLoaded ? (
         <img src={img} className="rounded-xl" />

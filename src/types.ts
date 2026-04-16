@@ -136,3 +136,5 @@ export type YoutubeApiPlaylistResponse = {
     }
   }[]
 }
+
+export type YoutubeApiVideo = YoutubeApiPlaylistResponse['items'][0]
