@@ -1,5 +1,5 @@
 {
-  "name": "full-stack-template-react",
+  "name": "website-v3",
   "private": true,
   "type": "module",
   "imports": {
@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
+    "preview": "vite preview",
     "test": "vitest run",
     "lint": "eslint",
     "format": "prettier --check .",

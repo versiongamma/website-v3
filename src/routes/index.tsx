@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { ClientOnly, createFileRoute } from '@tanstack/react-router'
 import { createRef } from 'react'
 
 import InputField from '~/components/landing/InputField'
@@ -9,12 +9,16 @@ import useClock from '~/hooks/useClock'
 import { tw } from '~/utils/style'
 import face from '/assets/face_400px.webp'
 
-export const Route = createFileRoute('/')({ component: Index })
+export const Route = createFileRoute('/')({
+  component: Index,
+  loader: () => ({ serverDate: new Date() }),
+})
 
 export const textStyle = tw`font-text text-xl`
 
 function Index() {
-  const time = useClock()
+  const { serverDate } = Route.useLoaderData()
+  const time = useClock(serverDate)
   const inputRef = createRef<HTMLInputElement>()
 
   return (

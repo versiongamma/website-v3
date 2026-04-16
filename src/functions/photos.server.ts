@@ -11,8 +11,6 @@ export const fetchPhotosFromDriveFolder = createServerOnlyFn(
   > => {
     const { GOOGLE_DRIVE_API_KEY, PHOTO_DRIVE_FOLDER_ID } = getEnv()
 
-    console.log(getEnv())
-
     const params = new URLSearchParams({
       q: `'${PHOTO_DRIVE_FOLDER_ID}' in parents`,
       key: GOOGLE_DRIVE_API_KEY,
@@ -21,8 +19,6 @@ export const fetchPhotosFromDriveFolder = createServerOnlyFn(
     const result = await fetch(
       `https://www.googleapis.com/drive/v3/files?${params.toString()}`,
     ).then((res) => res.json())
-
-    console.log(result)
 
     return result.files ?? []
   },

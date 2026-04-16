@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
-const useClock = () => {
-  const [time, setTime] = useState<Date>(new Date())
+const useClock = (date: Date) => {
+  const [time, setTime] = useState<Date>(date)
 
   useEffect(() => {
     const currentTime = new Date()
