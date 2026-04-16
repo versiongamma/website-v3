@@ -1,10 +1,8 @@
-import { createServerFn } from '@tanstack/react-start'
-import { getEnv } from './env.server'
+import { createServerOnlyFn } from '@tanstack/react-start'
 import type { GoogleDriveFilesApiFields } from 'src/types'
+import { getEnv } from './env.server'
 
-export const fetchPhotosFromDriveFolder = createServerFn({
-  method: 'GET',
-}).handler(
+export const fetchPhotosFromDriveFolder = createServerOnlyFn(
   async (): Promise<
     Pick<
       GoogleDriveFilesApiFields,
@@ -12,6 +10,9 @@ export const fetchPhotosFromDriveFolder = createServerFn({
     >[]
   > => {
     const { GOOGLE_DRIVE_API_KEY, PHOTO_DRIVE_FOLDER_ID } = getEnv()
+
+    console.log(getEnv())
+
     const params = new URLSearchParams({
       q: `'${PHOTO_DRIVE_FOLDER_ID}' in parents`,
       key: GOOGLE_DRIVE_API_KEY,
@@ -20,6 +21,8 @@ export const fetchPhotosFromDriveFolder = createServerFn({
     const result = await fetch(
       `https://www.googleapis.com/drive/v3/files?${params.toString()}`,
     ).then((res) => res.json())
+
+    console.log(result)
 
     return result.files ?? []
   },
