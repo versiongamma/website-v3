@@ -60,4 +60,4 @@ jobs:
             docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.SHA }}
             docker stop website-v3 || true
             docker rm website-v3 || true
-            docker run -d --name website-v3 -p 4173:4173 ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.SHA }}
+            docker run -d --name website-v3 -p 4173:4173 --env-file=.env ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.SHA }}
