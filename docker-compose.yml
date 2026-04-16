@@ -1,0 +1,12 @@
+services:
+  website-v3:
+    ports:
+      - 4173:4173
+    env_file:
+      - .env
+    container_name: website-v3
+    build:
+      context: .
+      args:
+        - VITE_COMMIT_SHA=Development Build
+    restart: unless-stopped

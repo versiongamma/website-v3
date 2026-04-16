@@ -17,6 +17,7 @@ COPY --from=install /temp/dev/node_modules node_modules
 COPY . .
 
 ENV NODE_ENV=production
+ARG VITE_COMMIT_SHA
 RUN bun run build
 
 # Run web server

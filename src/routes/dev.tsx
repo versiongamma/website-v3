@@ -73,7 +73,7 @@ function Dev() {
         </p>
       </div>
       <p className="mb-2 opacity-50 text-xs">
-        {import.meta.env.VITE_SITE_VERSION}
+        {import.meta.env.VITE_COMMIT_SHA}
       </p>
     </PageContainer>
   )
