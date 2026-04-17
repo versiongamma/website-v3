@@ -9,6 +9,7 @@ export const fetch = createServerOnlyFn(
       headers?: Headers;
       body?: RequestInit["body"];
       fetchOptions?: Omit<RequestInit, "headers" | "body">;
+      type?: "json" | "text";
     } = {},
   ): Promise<T> => {
     const { params, headers, body: reqBody, fetchOptions } = options;
@@ -29,7 +30,7 @@ export const fetch = createServerOnlyFn(
       body: reqBody,
       headers,
     });
-    const resBody = await response.json();
+    const resBody = await response[options.type ?? "json"]();
 
     logger
       .withMetadata({

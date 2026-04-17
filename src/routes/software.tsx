@@ -1,10 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 
 import { PageContainer } from "~/components/PageContainer";
+import { getSoftwarePageData } from "~/functions/software.function";
 import { SiteRoute } from "~/utils/routes";
 
 export const Route = createFileRoute("/software")({
   component: Software,
+  loader: () => getSoftwarePageData(),
   head: () => ({
     meta: [
       {

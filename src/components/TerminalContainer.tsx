@@ -19,8 +19,9 @@ export const TerminalContainer = ({
   classes,
 }: Props) => {
   return (
-    // biome-ignore lint/a11y/noStaticElementInteractions: fuck off
     <div
+      role="tab"
+      tabIndex={0}
       onClick={onClick}
       onKeyDown={onClick}
       className={classNames(

@@ -57,6 +57,8 @@ const config = defineConfig({
       prerender: {
         enabled: true,
         autoSubfolderIndex: false,
+        filter: ({ path }) =>
+          !["/dev", "/coffee"].some((route) => path.startsWith(route)),
       },
     }),
     viteReact({

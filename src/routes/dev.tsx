@@ -1,5 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
+
 import { PageContainer } from "~/components/PageContainer";
 import { TerminalContainer } from "~/components/TerminalContainer";
 import {
@@ -26,7 +27,7 @@ function Dev() {
           As you can probably tell by it being accessible to the open internet,
           there's nothing here that is dangerous.
         </p>
-        <p>Nothing for you to exploit today!</p>
+        <p> Nothing for you to exploit today! (I hope...)</p>
 
         <TerminalContainer
           classes={{ container: "my-8" }}
@@ -38,14 +39,13 @@ function Dev() {
             </div>
           }
           content={
-            <div className="p-4 min-w-xl">
+            <div className="flex flex-col py-2 m-4 min-w-xl gap-4">
+              <div className="flex">
+                <h2 className="text-lg">
+                  <i>/photo</i>
+                </h2>
+              </div>
               <div className="flex items-center justify-between">
-                <p>
-                  Photo Info Modal Auto-Hide:{" "}
-                  <span className="font-semibold">
-                    {hideModal ? "TRUE" : "FALSE"}
-                  </span>
-                </p>
                 <button
                   type="button"
                   className="bg-black/40 p-4 rounded-2xl hover:bg-black/60 hover:cursor-pointer"
@@ -56,6 +56,27 @@ function Dev() {
                 >
                   {hideModal ? "Clear" : "Set"} Auto Hide
                 </button>
+                <p>
+                  Info Auto-Hide:{" "}
+                  <span className="font-semibold">
+                    {hideModal ? "TRUE" : "FALSE"}
+                  </span>
+                </p>
+              </div>
+              <div className="flex mt-8">
+                <h2 className="text-lg">
+                  <i>/software</i>
+                </h2>
+              </div>
+              <div className="flex">
+                <a
+                  href="/software/edit"
+                  className="bg-black/40 p-4 rounded-2xl hover:bg-black/60 hover:cursor-pointer"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Edit Software Page
+                </a>
               </div>
             </div>
           }
