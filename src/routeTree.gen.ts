@@ -8,131 +8,131 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { Route as rootRouteImport } from "./routes/__root";
-import { Route as VideoRouteImport } from "./routes/video";
-import { Route as SoftwareRouteImport } from "./routes/software";
-import { Route as PhotoRouteImport } from "./routes/photo";
-import { Route as DevRouteImport } from "./routes/dev";
-import { Route as CoffeeRouteImport } from "./routes/coffee";
-import { Route as IndexRouteImport } from "./routes/index";
+import { Route as rootRouteImport } from './routes/__root'
+import { Route as VideoRouteImport } from './routes/video'
+import { Route as SoftwareRouteImport } from './routes/software'
+import { Route as PhotoRouteImport } from './routes/photo'
+import { Route as DevRouteImport } from './routes/dev'
+import { Route as CoffeeRouteImport } from './routes/coffee'
+import { Route as IndexRouteImport } from './routes/index'
 
 const VideoRoute = VideoRouteImport.update({
-  id: "/video",
-  path: "/video",
+  id: '/video',
+  path: '/video',
   getParentRoute: () => rootRouteImport,
-} as any);
+} as any)
 const SoftwareRoute = SoftwareRouteImport.update({
-  id: "/software",
-  path: "/software",
+  id: '/software',
+  path: '/software',
   getParentRoute: () => rootRouteImport,
-} as any);
+} as any)
 const PhotoRoute = PhotoRouteImport.update({
-  id: "/photo",
-  path: "/photo",
+  id: '/photo',
+  path: '/photo',
   getParentRoute: () => rootRouteImport,
-} as any);
+} as any)
 const DevRoute = DevRouteImport.update({
-  id: "/dev",
-  path: "/dev",
+  id: '/dev',
+  path: '/dev',
   getParentRoute: () => rootRouteImport,
-} as any);
+} as any)
 const CoffeeRoute = CoffeeRouteImport.update({
-  id: "/coffee",
-  path: "/coffee",
+  id: '/coffee',
+  path: '/coffee',
   getParentRoute: () => rootRouteImport,
-} as any);
+} as any)
 const IndexRoute = IndexRouteImport.update({
-  id: "/",
-  path: "/",
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
-} as any);
+} as any)
 
 export interface FileRoutesByFullPath {
-  "/": typeof IndexRoute;
-  "/coffee": typeof CoffeeRoute;
-  "/dev": typeof DevRoute;
-  "/photo": typeof PhotoRoute;
-  "/software": typeof SoftwareRoute;
-  "/video": typeof VideoRoute;
+  '/': typeof IndexRoute
+  '/coffee': typeof CoffeeRoute
+  '/dev': typeof DevRoute
+  '/photo': typeof PhotoRoute
+  '/software': typeof SoftwareRoute
+  '/video': typeof VideoRoute
 }
 export interface FileRoutesByTo {
-  "/": typeof IndexRoute;
-  "/coffee": typeof CoffeeRoute;
-  "/dev": typeof DevRoute;
-  "/photo": typeof PhotoRoute;
-  "/software": typeof SoftwareRoute;
-  "/video": typeof VideoRoute;
+  '/': typeof IndexRoute
+  '/coffee': typeof CoffeeRoute
+  '/dev': typeof DevRoute
+  '/photo': typeof PhotoRoute
+  '/software': typeof SoftwareRoute
+  '/video': typeof VideoRoute
 }
 export interface FileRoutesById {
-  __root__: typeof rootRouteImport;
-  "/": typeof IndexRoute;
-  "/coffee": typeof CoffeeRoute;
-  "/dev": typeof DevRoute;
-  "/photo": typeof PhotoRoute;
-  "/software": typeof SoftwareRoute;
-  "/video": typeof VideoRoute;
+  __root__: typeof rootRouteImport
+  '/': typeof IndexRoute
+  '/coffee': typeof CoffeeRoute
+  '/dev': typeof DevRoute
+  '/photo': typeof PhotoRoute
+  '/software': typeof SoftwareRoute
+  '/video': typeof VideoRoute
 }
 export interface FileRouteTypes {
-  fileRoutesByFullPath: FileRoutesByFullPath;
-  fullPaths: "/" | "/coffee" | "/dev" | "/photo" | "/software" | "/video";
-  fileRoutesByTo: FileRoutesByTo;
-  to: "/" | "/coffee" | "/dev" | "/photo" | "/software" | "/video";
-  id: "__root__" | "/" | "/coffee" | "/dev" | "/photo" | "/software" | "/video";
-  fileRoutesById: FileRoutesById;
+  fileRoutesByFullPath: FileRoutesByFullPath
+  fullPaths: '/' | '/coffee' | '/dev' | '/photo' | '/software' | '/video'
+  fileRoutesByTo: FileRoutesByTo
+  to: '/' | '/coffee' | '/dev' | '/photo' | '/software' | '/video'
+  id: '__root__' | '/' | '/coffee' | '/dev' | '/photo' | '/software' | '/video'
+  fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute;
-  CoffeeRoute: typeof CoffeeRoute;
-  DevRoute: typeof DevRoute;
-  PhotoRoute: typeof PhotoRoute;
-  SoftwareRoute: typeof SoftwareRoute;
-  VideoRoute: typeof VideoRoute;
+  IndexRoute: typeof IndexRoute
+  CoffeeRoute: typeof CoffeeRoute
+  DevRoute: typeof DevRoute
+  PhotoRoute: typeof PhotoRoute
+  SoftwareRoute: typeof SoftwareRoute
+  VideoRoute: typeof VideoRoute
 }
 
-declare module "@tanstack/react-router" {
+declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    "/video": {
-      id: "/video";
-      path: "/video";
-      fullPath: "/video";
-      preLoaderRoute: typeof VideoRouteImport;
-      parentRoute: typeof rootRouteImport;
-    };
-    "/software": {
-      id: "/software";
-      path: "/software";
-      fullPath: "/software";
-      preLoaderRoute: typeof SoftwareRouteImport;
-      parentRoute: typeof rootRouteImport;
-    };
-    "/photo": {
-      id: "/photo";
-      path: "/photo";
-      fullPath: "/photo";
-      preLoaderRoute: typeof PhotoRouteImport;
-      parentRoute: typeof rootRouteImport;
-    };
-    "/dev": {
-      id: "/dev";
-      path: "/dev";
-      fullPath: "/dev";
-      preLoaderRoute: typeof DevRouteImport;
-      parentRoute: typeof rootRouteImport;
-    };
-    "/coffee": {
-      id: "/coffee";
-      path: "/coffee";
-      fullPath: "/coffee";
-      preLoaderRoute: typeof CoffeeRouteImport;
-      parentRoute: typeof rootRouteImport;
-    };
-    "/": {
-      id: "/";
-      path: "/";
-      fullPath: "/";
-      preLoaderRoute: typeof IndexRouteImport;
-      parentRoute: typeof rootRouteImport;
-    };
+    '/video': {
+      id: '/video'
+      path: '/video'
+      fullPath: '/video'
+      preLoaderRoute: typeof VideoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/software': {
+      id: '/software'
+      path: '/software'
+      fullPath: '/software'
+      preLoaderRoute: typeof SoftwareRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/photo': {
+      id: '/photo'
+      path: '/photo'
+      fullPath: '/photo'
+      preLoaderRoute: typeof PhotoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dev': {
+      id: '/dev'
+      path: '/dev'
+      fullPath: '/dev'
+      preLoaderRoute: typeof DevRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/coffee': {
+      id: '/coffee'
+      path: '/coffee'
+      fullPath: '/coffee'
+      preLoaderRoute: typeof CoffeeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -143,16 +143,17 @@ const rootRouteChildren: RootRouteChildren = {
   PhotoRoute: PhotoRoute,
   SoftwareRoute: SoftwareRoute,
   VideoRoute: VideoRoute,
-};
+}
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
-  ._addFileTypes<FileRouteTypes>();
+  ._addFileTypes<FileRouteTypes>()
 
-import type { getRouter } from "./router.tsx";
-import type { createStart } from "@tanstack/react-start";
-declare module "@tanstack/react-start" {
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
   interface Register {
-    ssr: true;
-    router: Awaited<ReturnType<typeof getRouter>>;
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
   }
 }

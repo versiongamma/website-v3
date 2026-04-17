@@ -1,10 +1,24 @@
 import { createServerOnlyFn } from "@tanstack/react-start";
 import type { YoutubeApiPlaylistResponse } from "src/types";
 import { getEnv } from "./env.server";
+import { fetch } from "~/utils/fetch";
 
-const getPlaylistUrl = createServerOnlyFn((playlistId: string) => {
+const YOUTUBE_API_PLAYLIST_URL =
+  "https://youtube.googleapis.com/youtube/v3/playlistItems";
+
+const fetchFromPlaylist = createServerOnlyFn((playlistId: string) => {
   const { YOUTUBE_API_KEY } = getEnv();
-  return `https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=${playlistId}&key=${YOUTUBE_API_KEY}`;
+
+  const params = new URLSearchParams({
+    part: "snippet",
+    maxResults: "50",
+    playlistId,
+    key: YOUTUBE_API_KEY,
+  });
+
+  return fetch<YoutubeApiPlaylistResponse>(YOUTUBE_API_PLAYLIST_URL, {
+    params,
+  });
 });
 
 export const fetchYoutubeVideos = createServerOnlyFn(
@@ -12,12 +26,8 @@ export const fetchYoutubeVideos = createServerOnlyFn(
     const { YOUTUBE_REVIEWS_PLAYLIST_ID, YOUTUBE_ANALYSIS_PLAYLIST_ID } =
       getEnv();
     const [analysisData, reviewsData] = await Promise.all([
-      fetch(getPlaylistUrl(YOUTUBE_ANALYSIS_PLAYLIST_ID))
-        .then((res) => res.json())
-        .then((videos) => videos),
-      fetch(getPlaylistUrl(YOUTUBE_REVIEWS_PLAYLIST_ID))
-        .then((res) => res.json())
-        .then((videos) => videos),
+      fetchFromPlaylist(YOUTUBE_ANALYSIS_PLAYLIST_ID),
+      fetchFromPlaylist(YOUTUBE_REVIEWS_PLAYLIST_ID),
     ]);
 
     return [...(analysisData.items ?? []), ...(reviewsData.items ?? [])].sort(
@@ -30,11 +40,7 @@ export const fetchYoutubeVideos = createServerOnlyFn(
 
 export const fetchVideographyVideos = createServerOnlyFn(async () => {
   const { VIDEOGRAPHY_PLAYLIST_ID } = getEnv();
-  const fetchVideographyVideosUrl = getPlaylistUrl(VIDEOGRAPHY_PLAYLIST_ID);
 
-  const response = await fetch(fetchVideographyVideosUrl)
-    .then((res) => res.json())
-    .then((videos) => videos);
-
+  const response = await fetchFromPlaylist(VIDEOGRAPHY_PLAYLIST_ID);
   return response.items ?? [];
 });

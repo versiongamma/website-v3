@@ -19,8 +19,8 @@ export const TerminalContainer = ({
   classes,
 }: Props) => {
   return (
-    <button
-      type="button"
+    // biome-ignore lint/a11y/noStaticElementInteractions: fuck off
+    <div
       onClick={onClick}
       onKeyDown={onClick}
       className={classNames(
@@ -44,6 +44,6 @@ export const TerminalContainer = ({
       >
         {content}
       </div>
-    </button>
+    </div>
   );
 };
