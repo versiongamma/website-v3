@@ -1,8 +1,7 @@
-import type { SiteRoute } from "~/utils/routes";
 import { NavBar } from "./NavBar";
 
 type Props = {
-  path: SiteRoute;
+  path?: string;
   children: React.ReactNode;
 };
 

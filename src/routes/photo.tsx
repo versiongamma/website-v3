@@ -9,7 +9,6 @@ import {
   isPhotoInfoModalDefaultHidden,
   loadPhotos,
 } from "~/functions/photos.function";
-import { SiteRoute } from "~/utils/routes";
 
 const getDimensions = (aspectRatio: number) => ({
   width: aspectRatio > 1 ? 640 : 640 * aspectRatio,
@@ -33,9 +32,9 @@ function Photo() {
   const showInfoModal = !isPhotoInfoModalDefaultHidden();
 
   return (
-    <PageContainer path={SiteRoute.PHOTO}>
+    <PageContainer path="/photo">
       <InfoModal initialState={showInfoModal} />
-      <div className="w-full h-full px-8 pb-4">
+      <div className="w-full h-full px-8 my-4 ">
         <RowsPhotoAlbum
           componentsProps={{
             image: {

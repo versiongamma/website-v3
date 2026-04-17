@@ -9,7 +9,6 @@ import {
   isPhotoInfoModalDefaultHidden,
   setHidePhotoModal,
 } from "~/functions/photos.function";
-import { SiteRoute } from "~/utils/routes";
 
 export const Route = createFileRoute("/dev")({
   component: Dev,
@@ -19,7 +18,7 @@ function Dev() {
   const [hideModal, setHideModal] = useState(isPhotoInfoModalDefaultHidden());
 
   return (
-    <PageContainer path={SiteRoute.INDEX}>
+    <PageContainer>
       <div className="flex flex-col w-full h-full items-center justify-center">
         <h1 className="text-xl font-semibold">{en.dev.welcome}</h1>
         <p>{en.dev.description[0]}</p>
@@ -50,12 +49,12 @@ function Dev() {
                     setHideModal(!hideModal);
                   }}
                 >
-                  {hideModal ? "Clear" : "Set"} Auto Hide
+                  Toggle Info Modal
                 </button>
                 <p>
-                  Info Auto-Hide:{" "}
+                  Info Modal:{" "}
                   <span className="font-semibold">
-                    {hideModal ? "TRUE" : "FALSE"}
+                    {hideModal ? "Hidden" : "Shown"}
                   </span>
                 </p>
               </div>

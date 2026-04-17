@@ -5,6 +5,8 @@ type Props = {
   content: React.ReactNode;
   /** The onClick callback for the root div component */
   onClick?: () => void;
+  /** Whether to keep the background color when in mobile view */
+  keepBackground?: boolean;
   classes?: {
     container?: string;
     header?: string;
@@ -26,7 +28,7 @@ export const TerminalContainer = ({
       onKeyDown={onClick}
       className={classNames(
         classes?.container ?? "",
-        "md:bg-[#171717]/60 bg-opacity-8 md:rounded-3xl md:dropshadow",
+        "bg-[#171717]/60 bg-opacity-8 md:rounded-3xl md:dropshadow",
       )}
     >
       <div
@@ -39,7 +41,7 @@ export const TerminalContainer = ({
       </div>
       <div
         className={classNames(
-          "flex flex-col justify-between h-[calc(100%-64px)]",
+          "flex flex-col justify-between",
           classes?.content ?? "",
         )}
       >

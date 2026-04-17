@@ -2,7 +2,7 @@ import { createServerOnlyFn } from "@tanstack/react-start";
 import { logger } from "../logger";
 
 export const fetch = createServerOnlyFn(
-  async <T extends object>(
+  async <T>(
     url: string,
     options: {
       params?: URLSearchParams;
@@ -25,11 +25,20 @@ export const fetch = createServerOnlyFn(
       })
       .info("Fetch Request");
 
-    const response = await globalThis.fetch(urlWithParams, {
-      ...fetchOptions,
-      body: reqBody,
-      headers,
-    });
+    const response = await globalThis
+      .fetch(urlWithParams, {
+        ...fetchOptions,
+        body: reqBody,
+        headers,
+      })
+      .catch((e) => {
+        logger.error("Fetch Error", e);
+      });
+
+    if (!response) {
+      return options.type === "json" ? ({} as T) : ("" as unknown as T);
+    }
+
     const resBody = await response[options.type ?? "json"]();
 
     logger

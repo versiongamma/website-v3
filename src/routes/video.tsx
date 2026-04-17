@@ -5,7 +5,6 @@ import { PageContainer } from "~/components/PageContainer";
 import { VideoCategory } from "~/components/video/VideoCategory";
 import { en } from "~/en";
 import { loadVideos } from "~/functions/videos.function";
-import { SiteRoute } from "~/utils/routes";
 
 export const Route = createFileRoute("/video")({
   component: Video,
@@ -22,7 +21,7 @@ export const Route = createFileRoute("/video")({
 function Video() {
   const { ytVideos, videographyVideos } = Route.useLoaderData();
   return (
-    <PageContainer path={SiteRoute.VIDEO}>
+    <PageContainer path="/video">
       <div className="flex flex-col md:gap-10 md:my-6">
         <VideoCategory
           title={en.videos.youtube.title}

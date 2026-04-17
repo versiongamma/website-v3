@@ -32,6 +32,7 @@ function Index() {
         classes={{
           container: "w-full h-full relative md:w-250 md:h-192.5",
           header: "h-16",
+          content: "h-[calc(100%-64px)]",
         }}
         header={
           <span className="flex w-full h-full items-center justify-center">

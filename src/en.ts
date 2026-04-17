@@ -9,12 +9,12 @@ export const en = {
   },
   videos: {
     youtube: {
-      title: "Version Gamma",
+      title: "VERSION GAMMA",
       description:
         " I make videos under my channel Version Gamma, in which I mostly focus on analysing media such as video games, shows, or really anything I find interesting.",
     },
     videography: {
-      title: "Videography",
+      title: "VIDEOGRAPHY",
       description:
         "As a video editor & cinematographer, there's a bunch of stuff I've worked on or made that isn't part of my YouTube channel. Music videos for my brother's work as Army of One, various short films I've had a hand in, and a lot of just dicking around with a camera.",
     },

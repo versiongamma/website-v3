@@ -25,7 +25,7 @@ export const VideoCategory = ({
       }}
       header={
         <span className="flex gap-2.5 text-black h-full items-center justify-between mx-4 md:mx-5 xl:mx-6">
-          <h2 className="h-6 xl:h-7 text-xl xl:text-3xl font-heading font-semibold">
+          <h2 className="h-6 xl:h-7 text-2xl xl:text-4xl font-heading font-bold">
             {title}
           </h2>
           <Icon className="text-3xl xl:text-5xl" />
