@@ -47,10 +47,10 @@ export const InfoModal = ({ initialState = false }: Props) => {
                 <FiX className="text-lg" />
               </button>
             </div>
-            <p>{en.photos.description.part1}</p>
+            <p>{en.photos.description[0]}</p>
             <span>
-              <p>{en.photos.description.part2}</p>
-              <p>{en.photos.description.part3}</p>
+              <p>{en.photos.description[1]}</p>
+              <p>{en.photos.description[2]}</p>
             </span>
           </div>
         </div>
