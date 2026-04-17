@@ -1,15 +1,15 @@
-import { BiVideoRecording } from 'react-icons/bi'
+import { BiVideoRecording } from "react-icons/bi";
 
-import useWaitForImgLoad from '~/hooks/useWaitForImgLoad'
-import Skeleton from '../Skeleton'
+import useWaitForImgLoad from "~/hooks/useWaitForImgLoad";
+import Skeleton from "../Skeleton";
 
 type Props = {
-  id: string
-  title: string
-  img: string
-  publishedDate: Date
-  style?: React.HTMLAttributes<HTMLAnchorElement>['style']
-}
+  id: string;
+  title: string;
+  img: string;
+  publishedDate: Date;
+  style?: React.HTMLAttributes<HTMLAnchorElement>["style"];
+};
 
 export const VideoThumbnail = ({
   id,
@@ -18,8 +18,8 @@ export const VideoThumbnail = ({
   publishedDate,
   style,
 }: Props) => {
-  const url = `https://youtu.be/${id}`
-  const thumbnailLoaded = useWaitForImgLoad(img)
+  const url = `https://youtu.be/${id}`;
+  const thumbnailLoaded = useWaitForImgLoad(img);
 
   return (
     <a
@@ -30,7 +30,11 @@ export const VideoThumbnail = ({
       style={style}
     >
       {thumbnailLoaded ? (
-        <img src={img} className="rounded-xl" />
+        <img
+          src={img}
+          className="rounded-xl"
+          aria-label={`thumbnail for ${title}`}
+        />
       ) : (
         <Skeleton className="w-[288px] h-40.5 xl:w-md xl:h-63">
           <BiVideoRecording className="w-10 h-10 xl:w-12 xl:h-12" />
@@ -45,5 +49,5 @@ export const VideoThumbnail = ({
         </p>
       </div>
     </a>
-  )
-}
+  );
+};

@@ -1,13 +1,13 @@
 // https://github.com/themesberg/flowbite/blob/main/content/components/skeleton.md
 
 type Props = {
-  className?: string
-  children?: React.ReactNode
+  className?: string;
+  children?: React.ReactNode;
   size?: {
-    width: number
-    height: number
-  }
-}
+    width: number;
+    height: number;
+  };
+};
 
 export const Skeleton = ({ className, children, size }: Props) => {
   return (
@@ -20,7 +20,7 @@ export const Skeleton = ({ className, children, size }: Props) => {
       {children ?? null}
       <span className="sr-only">Loading...</span>
     </div>
-  )
-}
+  );
+};
 
-export default Skeleton
+export default Skeleton;

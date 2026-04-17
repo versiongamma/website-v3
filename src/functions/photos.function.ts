@@ -2,63 +2,63 @@ import {
   createClientOnlyFn,
   createIsomorphicFn,
   createServerFn,
-} from '@tanstack/react-start'
-import { fetchPhotosFromDriveFolder } from './photos.server'
+} from "@tanstack/react-start";
+import { fetchPhotosFromDriveFolder } from "./photos.server";
 import {
   setCookie,
   deleteCookie,
   getCookie,
-} from '@tanstack/react-start/server'
+} from "@tanstack/react-start/server";
 
-const HIDE_MODAL_KEY = 'hidePhotoModal'
+const HIDE_MODAL_KEY = "hidePhotoModal";
 
 export const loadPhotos = createServerFn().handler(async () => {
-  const files = await fetchPhotosFromDriveFolder()
+  const files = await fetchPhotosFromDriveFolder();
   return files.map((file) => ({
     url: `https://lh3.googleusercontent.com/d/${file.id}`,
     thumbnailUrl: file.thumbnailLink,
     aspectRatio: file.imageMediaMetadata.width / file.imageMediaMetadata.height,
-  }))
-})
+  }));
+});
 
 const setHidePhotoModalServer = createServerFn().handler(() => {
-  setCookie(HIDE_MODAL_KEY, 'true')
-})
+  setCookie(HIDE_MODAL_KEY, "true");
+});
 
 const setHidePhotoModalClient = createClientOnlyFn(() => {
-  sessionStorage.setItem(HIDE_MODAL_KEY, 'true')
-})
+  sessionStorage.setItem(HIDE_MODAL_KEY, "true");
+});
 
 const clearHidePhotoModalServer = createServerFn().handler(() => {
-  deleteCookie(HIDE_MODAL_KEY)
-})
+  deleteCookie(HIDE_MODAL_KEY);
+});
 
 const clearHidePhotoModalClient = createClientOnlyFn(() => {
-  sessionStorage.removeItem(HIDE_MODAL_KEY)
-})
+  sessionStorage.removeItem(HIDE_MODAL_KEY);
+});
 
 /** Clears the first visit flag for the current session.
  * Different from an isomorphic function, this runs on both client and server simultaneously,
  * instead of just running client/server code based on context. As such, can only be called from the client.
  */
 export const setHidePhotoModal = createClientOnlyFn(() => {
-  setHidePhotoModalClient()
-  setHidePhotoModalServer()
-})
+  setHidePhotoModalClient();
+  setHidePhotoModalServer();
+});
 
 /** Resets the first visit flag for the current session.
  * Different from an isomorphic function, this runs on both client and server simultaneously,
  * instead of just running client/server code based on context. As such, can only be called from the client.
  */
 export const clearHidePhotoModal = createClientOnlyFn(() => {
-  clearHidePhotoModalClient()
-  clearHidePhotoModalServer()
-})
+  clearHidePhotoModalClient();
+  clearHidePhotoModalServer();
+});
 
 export const isPhotoInfoModalDefaultHidden = createIsomorphicFn()
   .server(() => {
-    return getCookie(HIDE_MODAL_KEY) === 'true'
+    return getCookie(HIDE_MODAL_KEY) === "true";
   })
   .client(() => {
-    return sessionStorage.getItem(HIDE_MODAL_KEY) === 'true'
-  })
+    return sessionStorage.getItem(HIDE_MODAL_KEY) === "true";
+  });

@@ -1,11 +1,11 @@
-import { useLocation } from '@tanstack/react-router'
+import { useLocation } from "@tanstack/react-router";
 
 export const NotFound = () => {
-  const { pathname } = useLocation()
+  const { pathname } = useLocation();
   return (
     <div className="flex flex-col w-screen h-screen items-center justify-center gap-6">
       <p className="font-mono mb-10 text-lg">
-        {'>'} GET https://versiongamma.com{pathname} returned{' '}
+        {">"} GET https://versiongamma.com{pathname} returned{" "}
         <span className="font-semibold">404 Not Found</span>
       </p>
       <div className="text-2xl font-semibold text-center">
@@ -19,5 +19,5 @@ export const NotFound = () => {
         Back to Home?
       </a>
     </div>
-  )
-}
+  );
+};

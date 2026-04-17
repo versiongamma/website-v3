@@ -1,6 +1,6 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from "@tanstack/react-router";
 
-export const Route = createFileRoute('/coffee')({
+export const Route = createFileRoute("/coffee")({
   component: RouteComponent,
   head: () => ({
     meta: [
@@ -9,17 +9,18 @@ export const Route = createFileRoute('/coffee')({
       },
     ],
   }),
-})
+});
 
 function RouteComponent() {
   return (
     <div className="flex flex-col w-screen h-screen items-center justify-center font-mono text-lg">
       <p className="mb-6">
-        {'>'} GET https://versiongamma.com/coffee returned{' '}
+        {">"} GET https://versiongamma.com/coffee returned{" "}
         <a
           href="https://www.rfc-editor.org/rfc/rfc2324#section-2.3.2"
           className="underline underline-offset-4"
           target="_blank"
+          rel="noopener"
         >
           418 I'm a Teapot
         </a>
@@ -28,5 +29,5 @@ function RouteComponent() {
         The server has refused to brew coffee because it is, in fact, a teapot.
       </p>
     </div>
-  )
+  );
 }

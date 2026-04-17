@@ -1,11 +1,11 @@
-import type { VirtualItem } from '@tanstack/react-virtual'
-import type { YoutubeApiVideo } from '~/types'
-import { VideoThumbnail } from './VideoThumbnail'
+import type { VirtualItem } from "@tanstack/react-virtual";
+import type { YoutubeApiVideo } from "~/types";
+import { VideoThumbnail } from "./VideoThumbnail";
 
 type Props = {
-  video: YoutubeApiVideo
-  virtualItem: VirtualItem
-}
+  video: YoutubeApiVideo;
+  virtualItem: VirtualItem;
+};
 
 export const VirtualVideoItem = ({
   video: {
@@ -28,12 +28,12 @@ export const VirtualVideoItem = ({
       title={title}
       publishedDate={new Date(publishedAt)}
       style={{
-        position: 'absolute',
+        position: "absolute",
         top: 0,
         left: 0,
         width: `${virtualItem.size}px`,
         transform: `translateX(${virtualItem.start}px)`,
       }}
     />
-  )
-}
+  );
+};

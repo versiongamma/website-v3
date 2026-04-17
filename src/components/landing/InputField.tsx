@@ -1,38 +1,39 @@
-import { useNavigate } from '@tanstack/react-router'
-import type { RefObject } from 'react'
-import { useEffect, useState } from 'react'
-import { Controller, useForm } from 'react-hook-form'
+import { useNavigate } from "@tanstack/react-router";
+import type { RefObject } from "react";
+import { useState } from "react";
+import { Controller, useForm } from "react-hook-form";
 
-import InputCaret from './InputCaret'
+import { useOnComponentMount } from "~/hooks/useOnComponentMount";
+import InputCaret from "./InputCaret";
 
-const INPUT_ID = 'input'
+const INPUT_ID = "input";
 
 type FormData = {
-  path: string
-}
+  path: string;
+};
 
 type Props = {
-  inputRef: RefObject<HTMLInputElement | null>
-}
+  inputRef: RefObject<HTMLInputElement | null>;
+};
 
 const InputField = ({ inputRef }: Props) => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { handleSubmit, control } = useForm<FormData>({
-    defaultValues: { path: '' },
-  })
-  const [showCaret, setShowCaret] = useState(true)
+    defaultValues: { path: "" },
+  });
+  const [showCaret, setShowCaret] = useState(true);
 
-  useEffect(() => {
-    inputRef.current?.focus()
-  }, [])
+  useOnComponentMount(() => {
+    inputRef.current?.focus();
+  });
 
   const onSubmit = ({ path }: FormData) => {
-    navigate({ to: path })
-  }
+    navigate({ to: path });
+  };
 
   return (
     <div className="flex gap-2 font-mono text-lg p-6 w-full max-[840px]:hidden">
-      <p>https://versiongamma.com {'>'} </p>
+      <p>https://versiongamma.com {">"} </p>
       <form className="w-121.5 relative" onSubmit={handleSubmit(onSubmit)}>
         <Controller
           name="path"
@@ -42,12 +43,13 @@ const InputField = ({ inputRef }: Props) => {
               id={INPUT_ID}
               name={name}
               value={value}
+              // biome-ignore lint/a11y/noAutofocus: Only thing to focus on this page is the input field
               autoFocus
               onFocus={() => {
-                setShowCaret(true)
+                setShowCaret(true);
               }}
               onBlur={() => {
-                setShowCaret(false)
+                setShowCaret(false);
               }}
               ref={inputRef}
               type="text"
@@ -59,7 +61,7 @@ const InputField = ({ inputRef }: Props) => {
         <InputCaret inputRef={inputRef} show={showCaret} />
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default InputField
+export default InputField;

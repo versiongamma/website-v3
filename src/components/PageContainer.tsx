@@ -1,10 +1,9 @@
-import type { SiteRoute } from '~/utils/routes'
-import { NavBar } from './NavBar'
+import { NavBar } from "./NavBar";
 
 type Props = {
-  path: SiteRoute
-  children: React.ReactNode
-}
+  path?: string;
+  children: React.ReactNode;
+};
 
 export const PageContainer = ({ path, children }: Props) => {
   return (
@@ -12,5 +11,5 @@ export const PageContainer = ({ path, children }: Props) => {
       <NavBar path={path} className="fixed top-0" />
       {children}
     </div>
-  )
-}
+  );
+};

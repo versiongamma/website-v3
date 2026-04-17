@@ -1,15 +1,15 @@
-import type { IconType } from 'react-icons/lib'
+import type { IconType } from "react-icons/lib";
 
-import type { YoutubeApiPlaylistResponse } from '~/types'
-import { TerminalContainer } from '../TerminalContainer'
-import { VirtualVideoList } from './VirtualVideoList'
+import type { YoutubeApiPlaylistResponse } from "~/types";
+import { TerminalContainer } from "../TerminalContainer";
+import { VirtualVideoList } from "./VirtualVideoList";
 
 type Props = {
-  title: string
-  description: string
-  icon: IconType
-  videos: YoutubeApiPlaylistResponse['items']
-}
+  title: string;
+  description: string;
+  icon: IconType;
+  videos: YoutubeApiPlaylistResponse["items"];
+};
 
 export const VideoCategory = ({
   title,
@@ -20,12 +20,12 @@ export const VideoCategory = ({
   return (
     <TerminalContainer
       classes={{
-        container: 'w-screen md:max-w-4xl xl:max-w-6xl',
-        header: 'h-10 md:h-12 xl:h-16',
+        container: "w-screen md:max-w-4xl xl:max-w-6xl",
+        header: "h-10 md:h-12 xl:h-16",
       }}
       header={
         <span className="flex gap-2.5 text-black h-full items-center justify-between mx-4 md:mx-5 xl:mx-6">
-          <h2 className="h-6 xl:h-7 text-xl xl:text-3xl font-heading font-semibold">
+          <h2 className="h-6 xl:h-7 text-2xl xl:text-4xl font-heading font-bold">
             {title}
           </h2>
           <Icon className="text-3xl xl:text-5xl" />
@@ -42,5 +42,5 @@ export const VideoCategory = ({
         </div>
       }
     />
-  )
-}
+  );
+};

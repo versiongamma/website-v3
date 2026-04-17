@@ -15,6 +15,7 @@ import { Route as PhotoRouteImport } from './routes/photo'
 import { Route as DevRouteImport } from './routes/dev'
 import { Route as CoffeeRouteImport } from './routes/coffee'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as SoftwareEditRouteImport } from './routes/software.edit'
 
 const VideoRoute = VideoRouteImport.update({
   id: '/video',
@@ -46,22 +47,29 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SoftwareEditRoute = SoftwareEditRouteImport.update({
+  id: '/edit',
+  path: '/edit',
+  getParentRoute: () => SoftwareRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/coffee': typeof CoffeeRoute
   '/dev': typeof DevRoute
   '/photo': typeof PhotoRoute
-  '/software': typeof SoftwareRoute
+  '/software': typeof SoftwareRouteWithChildren
   '/video': typeof VideoRoute
+  '/software/edit': typeof SoftwareEditRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/coffee': typeof CoffeeRoute
   '/dev': typeof DevRoute
   '/photo': typeof PhotoRoute
-  '/software': typeof SoftwareRoute
+  '/software': typeof SoftwareRouteWithChildren
   '/video': typeof VideoRoute
+  '/software/edit': typeof SoftwareEditRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -69,15 +77,38 @@ export interface FileRoutesById {
   '/coffee': typeof CoffeeRoute
   '/dev': typeof DevRoute
   '/photo': typeof PhotoRoute
-  '/software': typeof SoftwareRoute
+  '/software': typeof SoftwareRouteWithChildren
   '/video': typeof VideoRoute
+  '/software/edit': typeof SoftwareEditRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/coffee' | '/dev' | '/photo' | '/software' | '/video'
+  fullPaths:
+    | '/'
+    | '/coffee'
+    | '/dev'
+    | '/photo'
+    | '/software'
+    | '/video'
+    | '/software/edit'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/coffee' | '/dev' | '/photo' | '/software' | '/video'
-  id: '__root__' | '/' | '/coffee' | '/dev' | '/photo' | '/software' | '/video'
+  to:
+    | '/'
+    | '/coffee'
+    | '/dev'
+    | '/photo'
+    | '/software'
+    | '/video'
+    | '/software/edit'
+  id:
+    | '__root__'
+    | '/'
+    | '/coffee'
+    | '/dev'
+    | '/photo'
+    | '/software'
+    | '/video'
+    | '/software/edit'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -85,7 +116,7 @@ export interface RootRouteChildren {
   CoffeeRoute: typeof CoffeeRoute
   DevRoute: typeof DevRoute
   PhotoRoute: typeof PhotoRoute
-  SoftwareRoute: typeof SoftwareRoute
+  SoftwareRoute: typeof SoftwareRouteWithChildren
   VideoRoute: typeof VideoRoute
 }
 
@@ -133,15 +164,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/software/edit': {
+      id: '/software/edit'
+      path: '/edit'
+      fullPath: '/software/edit'
+      preLoaderRoute: typeof SoftwareEditRouteImport
+      parentRoute: typeof SoftwareRoute
+    }
   }
 }
+
+interface SoftwareRouteChildren {
+  SoftwareEditRoute: typeof SoftwareEditRoute
+}
+
+const SoftwareRouteChildren: SoftwareRouteChildren = {
+  SoftwareEditRoute: SoftwareEditRoute,
+}
+
+const SoftwareRouteWithChildren = SoftwareRoute._addFileChildren(
+  SoftwareRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CoffeeRoute: CoffeeRoute,
   DevRoute: DevRoute,
   PhotoRoute: PhotoRoute,
-  SoftwareRoute: SoftwareRoute,
+  SoftwareRoute: SoftwareRouteWithChildren,
   VideoRoute: VideoRoute,
 }
 export const routeTree = rootRouteImport
@@ -149,10 +199,11 @@ export const routeTree = rootRouteImport
   ._addFileTypes<FileRouteTypes>()
 
 import type { getRouter } from './router.tsx'
-import type { createStart } from '@tanstack/react-start'
+import type { startInstance } from './start.ts'
 declare module '@tanstack/react-start' {
   interface Register {
     ssr: true
     router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
   }
 }
