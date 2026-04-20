@@ -1,4 +1,4 @@
-# versiongamma.com
+# VersionGamma.com
 A website build in React using the TanStack Start framework 
 
 ## Getting Started

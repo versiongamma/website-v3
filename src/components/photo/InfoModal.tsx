@@ -44,11 +44,11 @@ export const InfoModal = ({ initialState = false }: Props) => {
             open ? "visible" : "invisible",
           ),
           content:
-            "bg-[#171717]/60 max-w-3xl p-4 rounded-2xl drop-shadow-2xl backdrop-blur-2xl max-w-3xl w-screen",
+            "max-w-3xl p-4 md:rounded-b-3xl drop-shadow-2xl backdrop-blur-2xl max-w-3xl w-screen",
         }}
         header={
           <div className="flex w-full justify-between items-center px-4 min-h-12">
-            <h2 className="text-base md:text-lg font-semibold text-black py-2">
+            <h2 className="text-base md:text-lg font-semibold text-black py-2 font-text">
               {en.photos.heading}
             </h2>
             <button

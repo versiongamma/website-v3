@@ -6,10 +6,14 @@
   --font-mono: "JetBrains Mono", monospace;
   --font-heading: "Josefin Sans", sans-serif;
   --font-text: "Radio Canada", sans-serif;
+
+  --breakpoint-3xl: 1676px;
 }
 
 body {
   height: 100vh;
+  font-family: var(--font-text);
+  color: white;
   background: rgb(109, 42, 186);
   background: linear-gradient(
     135deg,
@@ -17,7 +21,6 @@ body {
     rgba(204, 58, 161, 1) 50%,
     rgba(222, 126, 9, 1) 96%
   );
-  color: white;
 }
 
 #app {
@@ -42,14 +45,26 @@ body {
   background: rgba(109, 42, 186, 0.4);
   background: linear-gradient(
     135deg,
-    rgba(109, 42, 186, 0.4) 12%,
-    rgba(204, 58, 161, 0.4) 50%,
-    rgba(222, 126, 9, 0.4) 96%
+    rgba(109, 42, 186, 0.6) 12%,
+    rgba(204, 58, 161, 0.6) 50%,
+    rgba(222, 126, 9, 0.6) 96%
   );
 }
 
 .dropshadow {
   filter: drop-shadow(12px 12px 15px #000000);
+}
+
+.tooltip {
+  @apply invisible opacity-0 absolute transition-opacity z-50 translate-x-[-50%] left-[50%] text-center translate-y-[-120%] p-2 rounded-xl bg-neutral-600;
+}
+
+.has-tooltip {
+  @apply relative;
+}
+
+.has-tooltip:hover .tooltip {
+  @apply visible opacity-100;
 }
 
 .caret-blink {

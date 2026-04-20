@@ -11,7 +11,7 @@ export const JobEntry = ({ entry }: Props) => {
     <TerminalContainer
       key={entry.title}
       classes={{
-        container: "flex flex-col w-full max-w-4xl",
+        container: "flex flex-col w-full max-w-3xl",
         content: "h-full",
       }}
       header={
@@ -19,7 +19,7 @@ export const JobEntry = ({ entry }: Props) => {
           <div className="flex max-h-30 justify-center">
             {entry.logo ? (
               <img
-                className="object-cover max-h-20 drop-shadow-2xl"
+                className="object-cover max-h-12 md:max-h-20 drop-shadow-2xl"
                 src={entry.logo}
                 alt={entry.title}
               />
@@ -34,7 +34,7 @@ export const JobEntry = ({ entry }: Props) => {
       }
       content={
         <div className="flex flex-col m-4 justify-between h-full">
-          <p>{entry.copy}</p>
+          <p className="text-sm md:text-base">{entry.copy}</p>
           <span className="flex w-full justify-between mt-2">
             <p className="opacity-50">{entry.work}</p>
             <a

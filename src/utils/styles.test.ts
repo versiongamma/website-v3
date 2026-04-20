@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { classNames, selectiveStyle, tw } from "./style";
+import { classNames, selectiveStyle } from "./style";
 
 describe("selectiveStyle", () => {
   it("returns the style when apply is true", () => {
@@ -18,12 +18,6 @@ describe("selectiveStyle", () => {
 
   it("returns the style when apply is true even with secondary provided", () => {
     expect(selectiveStyle("font-bold", true, "font-normal")).toBe("font-bold");
-  });
-});
-
-describe("tw", () => {
-  it("returns the template string as a string", () => {
-    expect(tw`flex items-center`).toBe("flex items-center");
   });
 });
 

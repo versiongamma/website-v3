@@ -32,7 +32,7 @@ function Photo() {
   const showInfoModal = !isPhotoInfoModalDefaultHidden();
 
   return (
-    <PageContainer path="/photo">
+    <PageContainer path="/photo" bg="bg-[url(/assets/background/photo.jpg)]">
       <InfoModal initialState={showInfoModal} />
       <div className="w-full h-full px-8 my-4 ">
         <RowsPhotoAlbum
@@ -42,7 +42,7 @@ function Photo() {
               className: "rounded-lg",
             },
             container: {
-              className: "no-scrollbar",
+              className: "no-scrollbar pb-4",
             },
           }}
           photos={photos.map((photo) => ({
