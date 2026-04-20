@@ -3,7 +3,7 @@ import { FiVideo, FiYoutube } from "react-icons/fi";
 
 import { PageContainer } from "~/components/PageContainer";
 import { VideoCategory } from "~/components/video/VideoCategory";
-import { en } from "~/en";
+import en from "~/en.json";
 import { loadVideos } from "~/functions/videos.function";
 
 export const Route = createFileRoute("/video")({

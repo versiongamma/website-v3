@@ -4,7 +4,7 @@ import { useState } from "react";
 import { PageContainer } from "~/components/PageContainer";
 import { TerminalContainer } from "~/components/TerminalContainer";
 import { TextButton } from "~/components/TextButton";
-import { en } from "~/en";
+import en from "~/en.json";
 import {
   clearHidePhotoModal,
   isPhotoInfoModalDefaultHidden,
