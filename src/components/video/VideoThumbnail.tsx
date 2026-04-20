@@ -23,7 +23,7 @@ export const VideoThumbnail = ({
 
   return (
     <a
-      className="flex flex-col p-4 md:p-0 rounded-xl hover:opacity-80 w-[320px] xl:w-120 shrink-0 transition-opacity bg-[#171717]/60 md:bg-transparent"
+      className="flex flex-col p-4 md:p-0 rounded-xl hover:opacity-80 w-[320px] xl:w-120 h-full shrink-0 transition-opacity bg-[#171717]/60 md:bg-transparent"
       href={url}
       target="_blank"
       rel="noreferrer"

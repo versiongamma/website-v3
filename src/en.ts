@@ -1,11 +1,13 @@
 export const en = {
   landing: {
-    title: "Hey! I'm Matt",
-    message: {
-      part1:
-        "I make things! Professionally I make software, non-professionally I make photos and videos, and amateurly I do electronics, 3D printing & CAD, woodworking, and loud noises with drums.",
-      part2: "If you’d like to learn more, you can at the links below:",
-    },
+    header: "https versiongamma.com",
+    welcome: "Welcome to VersionGamma.com!",
+    intro: "I'm Matt, and I make things!",
+    message:
+      "Professionally, I make software. I'm a software engineer by trade, working in the field of full stack web development. I even spent a bunch of money on a piece of paper that says I'm qualified to do that. Non-professionally, I make photos and videos. Mainly for my YouTube channel Version Gamma, but not exclusively, sometimes I work on narrative stuff. And amateurly, I do electronics, 3D printing & CAD, woodworking, and loud noises with drums.",
+
+    links: "See more at the links below:",
+    socials: "Or you can find me at:",
   },
   videos: {
     youtube: {
@@ -26,6 +28,14 @@ export const en = {
       "I shoot with FujiFilm cameras, previously an X-T3 and currently an X-H2S; using the Fuji 16-55mm f2.8 lens for photography, and the various Fuji f1.4 primes for video, mainly the 33mm.",
       "And obviously, the film photos are shot on a 35mm film camera, with Ilford B&W stocks and Fuji colour stocks.",
     ],
+  },
+  software: {
+    projects: {
+      title: "PROJECTS",
+      description:
+        "As my 9-5 is software development, I don't spend a lot of time working on software outside of my job. However, that doesn't mean I never work on projects outside of work, and here are a couple that might catch your interest.",
+    },
+    career: "CAREER",
   },
   dev: {
     welcome: "Congratulations! You've found the dev tools of my site.",

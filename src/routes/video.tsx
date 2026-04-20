@@ -21,8 +21,8 @@ export const Route = createFileRoute("/video")({
 function Video() {
   const { ytVideos, videographyVideos } = Route.useLoaderData();
   return (
-    <PageContainer path="/video">
-      <div className="flex flex-col md:gap-10 md:my-6">
+    <PageContainer path="/video" bg="bg-[url(/assets/background/video.jpg)]">
+      <div className="md:space-y-10 my-6 md:items-center">
         <VideoCategory
           title={en.videos.youtube.title}
           description={en.videos.youtube.description}

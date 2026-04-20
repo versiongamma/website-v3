@@ -3,6 +3,7 @@ import { useState } from "react";
 
 import { PageContainer } from "~/components/PageContainer";
 import { TerminalContainer } from "~/components/TerminalContainer";
+import { TextButton } from "~/components/TextButton";
 import { en } from "~/en";
 import {
   clearHidePhotoModal,
@@ -41,16 +42,14 @@ function Dev() {
                 </h2>
               </div>
               <div className="flex items-center justify-between">
-                <button
-                  type="button"
-                  className="bg-black/40 p-4 rounded-2xl hover:bg-black/60 hover:cursor-pointer"
+                <TextButton
                   onClick={() => {
                     hideModal ? clearHidePhotoModal() : setHidePhotoModal();
                     setHideModal(!hideModal);
                   }}
                 >
                   Toggle Info Modal
-                </button>
+                </TextButton>
                 <p>
                   Info Modal:{" "}
                   <span className="font-semibold">
@@ -64,14 +63,9 @@ function Dev() {
                 </h2>
               </div>
               <div className="flex">
-                <a
-                  href="/software/edit"
-                  className="bg-black/40 p-4 rounded-2xl hover:bg-black/60 hover:cursor-pointer"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <TextButton href="/software/edit">
                   Edit Software Page
-                </a>
+                </TextButton>
               </div>
             </div>
           }

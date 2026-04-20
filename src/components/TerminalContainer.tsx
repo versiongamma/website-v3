@@ -28,7 +28,7 @@ export const TerminalContainer = ({
       onKeyDown={onClick}
       className={classNames(
         classes?.container ?? "",
-        "bg-[#171717]/60 bg-opacity-8 md:rounded-3xl md:dropshadow",
+        "md:bg-[#171717]/60 bg-opacity-8 md:rounded-3xl md:dropshadow",
       )}
     >
       <div

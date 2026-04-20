@@ -1,24 +1,27 @@
-import { Link } from "@tanstack/react-router";
+import { Link, type LinkProps } from "@tanstack/react-router";
 import { FiCamera, FiGitPullRequest, FiVideo } from "react-icons/fi";
-import { tw } from "~/utils/style";
+import type { IconType } from "react-icons/lib";
 
-const linkStyle = tw`link-color font-mono text-2xl/loose flex items-center gap-4 w-fit`;
-const iconSize = 40;
+type IconLinkProps = {
+  icon: IconType;
+  text: string;
+} & LinkProps;
+
+const IconLink = ({ icon: Icon, text, ...props }: IconLinkProps) => (
+  <Link
+    {...props}
+    className="link-color font-mono text-2xl/loose flex items-center gap-4 w-fit"
+  >
+    <Icon className="text-3xl" />
+    {text}
+  </Link>
+);
 
 const Links = () => (
   <div className="flex flex-col items-center md:items-start">
-    <Link to="/video" className={linkStyle}>
-      <FiVideo size={iconSize} />
-      /video
-    </Link>
-    <Link to="/photo" className={linkStyle}>
-      <FiCamera size={iconSize} />
-      /photo
-    </Link>
-    <Link to="/software" className={linkStyle}>
-      <FiGitPullRequest size={iconSize} />
-      /software
-    </Link>
+    <IconLink icon={FiVideo} text="/video" to="/video" />
+    <IconLink icon={FiCamera} text="/photo" to="/photo" />
+    <IconLink icon={FiGitPullRequest} text="/software" to="/software" />
   </div>
 );
 
