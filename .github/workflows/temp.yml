@@ -14,4 +14,4 @@ jobs:
     steps:
       - name: Print event details
         run: |
-          echo "Workflow run: ${{ github.event.workflow_run.actor }}"
+          echo "Workflow run: ${{ github.event.workflow_run.actor.name }}"
