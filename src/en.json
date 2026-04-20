@@ -1,0 +1,46 @@
+{
+  "landing": {
+    "header": "https versiongamma.com",
+    "welcome": "Welcome to VersionGamma.com!",
+    "intro": "I'm Matt, and I make things.",
+    "message": "Professionally, I make software. I'm a software engineer by trade, working in the field of full stack web development. I even spent a bunch of money on a piece of paper that says I'm qualified to do that. Non-professionally, I make photos and videos. Mainly for my YouTube channel Version Gamma, but not exclusively, sometimes I work on narrative stuff. And amateurly, I do electronics, 3D printing & CAD, woodworking, and loud noises with drums.",
+    "links": "See more at the links below:",
+    "socials": "Or find me at:"
+  },
+  "videos": {
+    "youtube": {
+      "title": "VERSION GAMMA",
+      "description": " I make videos under my channel Version Gamma, in which I mostly focus on analysing media such as video games, shows, or really anything I find interesting."
+    },
+    "videography": {
+      "title": "VIDEOGRAPHY",
+      "description": "As a video editor & cinematographer, there's a bunch of stuff I've worked on or made that isn't part of my YouTube channel. Music videos for my brother's work as Army of One, various short films I've had a hand in, and a lot of just dicking around with a camera."
+    }
+  },
+  "photos": {
+    "heading": "Welcome to the gallery of photos I've taken over the years!",
+    "description": [
+      "As you'll notice, I mostly do landscape and setting photography, as I happen to have been graced by getting to live in the beautiful country of Aoteroa. I'm not much for taking photos for social media on trips, but I do try and get a good photo or two.",
+      "I shoot with FujiFilm cameras, previously an X-T3 and currently an X-H2S; using the Fuji 16-55mm f2.8 lens for photography, and the various Fuji f1.4 primes for video, mainly the 33mm.",
+      "And obviously, the film photos are shot on a 35mm film camera, with Ilford B&W stocks and Fuji colour stocks."
+    ]
+  },
+  "software": {
+    "projects": {
+      "title": "PROJECTS",
+      "description": "As my 9-5 is software development, I don't spend a lot of time working on software outside of my job. However, that doesn't mean I never work on projects outside of work, and here are a couple that might catch your interest."
+    },
+    "career": "CAREER"
+  },
+  "dev": {
+    "welcome": "Congratulations! You've found the dev tools of my site.",
+    "description": [
+      "As you can probably tell by it being accessible to the open internet, there's nothing here that is dangerous.",
+      "Nothing for you to exploit today! (I hope...)"
+    ],
+    "secret": {
+      "hint": "Tip: There's a secret route you can find on this site. The only clue I'll give you is the number 418.",
+      "note": "Yes, you could just look at the code, but what's the fun in that?"
+    }
+  }
+}

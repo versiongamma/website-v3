@@ -5,7 +5,7 @@ import { JobEntry } from "~/components/software/JobEntry";
 import { ProjectEntry } from "~/components/software/ProjectEntry";
 import { SpacerHeader } from "~/components/software/SpacerHeader";
 import { TerminalContainer } from "~/components/TerminalContainer";
-import { en } from "~/en";
+import en from "~/en.json";
 import { getSoftwarePageData } from "~/functions/software.function";
 
 export const Route = createFileRoute("/software")({

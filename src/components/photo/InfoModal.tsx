@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FiInfo, FiX } from "react-icons/fi";
 
-import { en } from "~/en";
+import en from "~/en.json";
 import {
   clearHidePhotoModal,
   setHidePhotoModal,
