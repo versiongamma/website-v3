@@ -1,19 +1,35 @@
 # VersionGamma.com
-A website build in React using the TanStack Start framework 
+A personal website build in React 19 using the TanStack Start framework.
 
 ## Getting Started
-
-Running locally:
-
+This project uses Bun for package management.
 ```bash
 bun install
-bun --bun run dev
 ```
-
-Build
+### Running Locally
+- Run dev server:
+```bash
+bun dev
+```
+- Build:
 ```bash
 bun run build
 ```
+- Preview build:
+```bash
+bun preview
+```
+### Testing
+This project uses vitest for unit tests. To run unit tests:
+```bash
+bun test
+```
+### Linting / Formatting
+This project uses Biome for linting and formatting. To run biome:
+```bash
+bun format
+bun lint
+```
 
-### Built With:
-[![](https://skills.syvixor.com/api/icons?i=react,tanstack,tailwind,vite,vitest,nitro,bun,biome,reacthookform,docker,ts)]()
+## Built With:
+[![](https://skills.syvixor.com/api/icons?i=ts,react,tanstack,reacthookform,tailwind,vite,vitest,nitro,bun,biome,docker)]()
