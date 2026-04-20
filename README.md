@@ -1,21 +1,22 @@
 # VersionGamma.com
 A personal website build in React 19 using the TanStack Start framework.
+[![Checks](https://github.com/versiongamma/website-v3/actions/workflows/checks.yml/badge.svg)](https://github.com/versiongamma/website-v3/actions/workflows/checks.yml)
 
 ## Getting Started
-This project uses Bun for package management.
+This project uses Bun for package management. To install packages, run:
 ```bash
 bun install
 ```
 ### Running Locally
-- Run dev server:
+Run dev server:
 ```bash
 bun dev
 ```
-- Build:
+Build production output:
 ```bash
 bun run build
 ```
-- Preview build:
+Preview build:
 ```bash
 bun preview
 ```

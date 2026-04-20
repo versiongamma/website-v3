@@ -1,6 +1,9 @@
 name: Deploy
 on:
-  push:
+  workflow_run:
+    workflows: [Checks]
+    types:
+      - completed
     branches:
       - main
 env:
@@ -9,6 +12,9 @@ env:
 jobs:
   build-push:
     name: Build and Publish Image
+    if: |
+      ${{ github.event.workflow_run.conclusion == 'success' }} &&
+      ${{ github.actor != 'dependabot[bot]' }}
     runs-on: ubuntu-latest
     permissions:
       contents: read
