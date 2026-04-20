@@ -14,7 +14,7 @@ jobs:
     name: Build and Publish Image
     if: |
       ${{ github.event.workflow_run.conclusion == 'success' }} &&
-      ${{ github.actor != 'dependabot[bot]' }}
+      ${{ github.event.workflow_run.actor.name != 'dependabot[bot]' }}
     runs-on: ubuntu-latest
     permissions:
       contents: read
