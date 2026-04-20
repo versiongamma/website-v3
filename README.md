@@ -1,5 +1,6 @@
 # VersionGamma.com
 A personal website build in React 19 using the TanStack Start framework.
+
 [![Checks](https://github.com/versiongamma/website-v3/actions/workflows/checks.yml/badge.svg)](https://github.com/versiongamma/website-v3/actions/workflows/checks.yml)
 
 ## Getting Started
