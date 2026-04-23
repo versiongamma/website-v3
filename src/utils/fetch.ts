@@ -23,7 +23,7 @@ export const fetch = createServerOnlyFn(
         headers,
         fetchOptions,
       })
-      .info("Fetch Request");
+      .debug("Fetch Request");
 
     const response = await globalThis
       .fetch(urlWithParams, {
@@ -47,7 +47,7 @@ export const fetch = createServerOnlyFn(
         length: JSON.stringify(resBody).length,
         body: resBody,
       })
-      .info("Fetch Response");
+      .debug("Fetch Response");
 
     return resBody;
   },
