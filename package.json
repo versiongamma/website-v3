@@ -5,7 +5,6 @@
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
-    "build:telemetry": "bun build instrumentation.ts --outdir .output --target node",
     "preview": "vite preview",
     "test": "vitest run",
     "lint": "biome lint",
@@ -13,6 +12,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@loglayer/transport-pino": "3.0.2",
     "@tailwindcss/vite": "4.2.1",
     "@tanstack/react-devtools": "0.9.10",
     "@tanstack/react-form": "1.28.4",
@@ -26,12 +26,14 @@
     "@tanstack/router-plugin": "1.166.7",
     "loglayer": "9.1.0",
     "nitro": "npm:nitro-nightly@3.0.1-20260310-183745-fc429550",
+    "pino": "10.3.1",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "react-hook-form": "7.72.1",
     "react-icons": "5.6.0",
     "react-photo-album": "3.5.1",
-    "tailwindcss": "4.2.1"
+    "tailwindcss": "4.2.1",
+    "vite": "8.0.10"
   },
   "devDependencies": {
     "@biomejs/biome": "2.4.12",
@@ -49,8 +51,8 @@
     "dotenv": "17.3.1",
     "jsdom": "28.1.0",
     "typescript": "5.9.3",
-    "vite": "7.3.2",
     "vite-tsconfig-paths": "5.1.4",
-    "vitest": "3.2.4"
+    "vitest": "3.2.4",
+    "pino-pretty": "13.1.3"
   }
 }

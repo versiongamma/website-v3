@@ -11,6 +11,9 @@ RUN mkdir -p /temp/prod
 COPY package.json bun.lock /temp/prod/
 RUN cd /temp/prod && bun install --frozen-lockfile --production
 
+FROM base AS logger
+RUN bun install pino-pretty
+
 # Build package
 FROM base AS build
 COPY --from=install /temp/dev/node_modules node_modules
@@ -20,9 +23,10 @@ ARG VITE_COMMIT_SHA
 RUN bun run build
 
 # Run web server
-FROM base AS release
+FROM base AS run
 ENV PORT=4173
 USER bun
 COPY --from=build /usr/src/app/.output .
+COPY --from=logger /usr/src/app/node_modules ./node_modules
 EXPOSE 4173/tcp
-ENTRYPOINT [ "bun", "run", "./server/index.mjs" ]
+ENTRYPOINT [ "/bin/sh", "-c", "bun run ./server/index.mjs | ./node_modules/.bin/pino-pretty -S -i time,pid,hostname" ]

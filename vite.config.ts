@@ -4,10 +4,10 @@ import viteReact from "@vitejs/plugin-react";
 import { nitro } from "nitro/vite";
 import path from "node:path";
 import { defineConfig } from "vite";
-import tsconfigPaths from "vite-tsconfig-paths";
 
 const config = defineConfig({
   resolve: {
+    tsconfigPaths: true,
     alias: {
       "~": path.resolve(__dirname, "./src"),
     },
@@ -15,12 +15,7 @@ const config = defineConfig({
   environments: {
     client: {
       build: {
-        minify: "terser",
-        terserOptions: {
-          compress: {
-            drop_console: true,
-          },
-        },
+        sourcemap: true,
         rollupOptions: {
           output: {
             chunkFileNames: "js/[hash].js",
@@ -36,21 +31,19 @@ const config = defineConfig({
         rollupOptions: {
           input: "virtual:tanstack-start-server-entry",
           output: {
-            format: "esm",
             chunkFileNames: "js/[hash].js",
             entryFileNames: "js/[hash].js",
             assetFileNames: "[ext]/[hash][extname]",
           },
         },
-        minify: true,
-        sourcemap: false,
         copyPublicDir: false,
       },
     },
   },
   plugins: [
-    nitro({ rollupConfig: { external: [/^@sentry\//] } }),
-    tsconfigPaths({ projects: ["./tsconfig.json"] }),
+    nitro({
+      rollupConfig: { external: [/^@sentry\//], output: { sourcemap: true } },
+    }),
     tailwindcss(),
     tanstackStart({
       prerender: {
