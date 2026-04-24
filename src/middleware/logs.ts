@@ -10,13 +10,15 @@ export const requestLoggerMiddleware = createMiddleware({
       url: request.url,
       headers: Object.fromEntries(request.headers.entries()),
     })
-    .info("Request");
+    .info("Request: ", request.url);
   return next();
 });
 
 export const functionLoggerMiddleware = createMiddleware({
   type: "function",
 }).server(({ next, ...context }) => {
-  logger.withMetadata(context).info("Function");
+  logger
+    .withMetadata(context)
+    .info("Server Function: ", context.serverFnMeta.name);
   return next();
 });
