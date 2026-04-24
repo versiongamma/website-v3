@@ -6,8 +6,8 @@ import Links from "~/components/landing/Links";
 import { Socials } from "~/components/landing/Socials";
 import { PageContainer } from "~/components/PageContainer";
 import { TerminalContainer } from "~/components/TerminalContainer";
-import useClock from "~/hooks/useClock";
 import en from "~/en.json";
+import useClock from "~/hooks/useClock";
 
 export const Route = createFileRoute("/")({
   component: Index,

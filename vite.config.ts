@@ -3,14 +3,16 @@ import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import viteReact from "@vitejs/plugin-react";
 import { nitro } from "nitro/vite";
 import path from "node:path";
-import { defineConfig } from "vite";
+import { defineConfig, type AliasOptions } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 
-const config = defineConfig({
+export const aliases: AliasOptions = {
+  "~": path.resolve(__dirname, "./src"),
+};
+
+export default defineConfig({
   resolve: {
-    alias: {
-      "~": path.resolve(__dirname, "./src"),
-    },
+    alias: aliases,
   },
   environments: {
     client: {
@@ -52,14 +54,17 @@ const config = defineConfig({
     nitro({ rollupConfig: { external: [/^@sentry\//] } }),
     tsconfigPaths({ projects: ["./tsconfig.json"] }),
     tailwindcss(),
-    tanstackStart({
-      prerender: {
-        enabled: true,
-        autoSubfolderIndex: false,
-        filter: ({ path }) =>
-          !["/dev", "/coffee"].some((route) => path.startsWith(route)),
-      },
-    }),
+    // Disable TS start plugin in test environment
+    // https://github.com/TanStack/router/issues/6246
+    process.env.VITEST !== "true" &&
+      tanstackStart({
+        prerender: {
+          enabled: true,
+          autoSubfolderIndex: false,
+          filter: ({ path }) =>
+            !["/dev", "/coffee"].some((route) => path.startsWith(route)),
+        },
+      }),
     viteReact({
       babel: {
         plugins: ["babel-plugin-react-compiler"],
@@ -74,5 +79,3 @@ const config = defineConfig({
     port: 5173,
   },
 });
-
-export default config;
