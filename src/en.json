@@ -36,11 +36,12 @@
     "welcome": "Congratulations! You've found the dev tools of my site.",
     "description": [
       "As you can probably tell by it being accessible to the open internet, there's nothing here that is dangerous.",
-      "Nothing for you to exploit today! (I hope...)"
+      "Nothing for you to exploit today! (I hope...)",
+      "This page may not display properly on mobile devices. It is a development page after all."
     ],
     "secret": {
       "hint": "Tip: There's a secret route you can find on this site. The only clue I'll give you is the number 418.",
-      "note": "Yes, you could just look at the code, but what's the fun in that?"
+      "note": "No, it's not in the sitemap, but yes, you could just look at the code. But what's the fun in that?"
     }
   }
 }

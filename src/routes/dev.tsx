@@ -24,7 +24,7 @@ function Dev() {
         <h1 className="text-xl font-semibold">{en.dev.welcome}</h1>
         <p>{en.dev.description[0]}</p>
         <p>{en.dev.description[1]}</p>
-
+        <p className="mt-3 text-xs">{en.dev.description[2]}</p>
         <TerminalContainer
           classes={{ container: "my-8" }}
           header={
@@ -56,16 +56,6 @@ function Dev() {
                     {hideModal ? "Hidden" : "Shown"}
                   </span>
                 </p>
-              </div>
-              <div className="flex mt-8">
-                <h2 className="text-lg">
-                  <i>/software</i>
-                </h2>
-              </div>
-              <div className="flex">
-                <TextButton href="/software/edit">
-                  Edit Software Page
-                </TextButton>
               </div>
             </div>
           }

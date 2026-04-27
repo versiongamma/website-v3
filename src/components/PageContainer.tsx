@@ -24,7 +24,7 @@ export const PageContainer = ({ path, className, bg, children }: Props) => {
             className,
           )}
         >
-          {path && <NavBar path={path} className="fixed top-0" />}
+          <NavBar path={path} className="fixed top-0" />
           {children}
         </div>
       </div>
