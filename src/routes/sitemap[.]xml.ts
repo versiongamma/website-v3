@@ -1,7 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { createServerOnlyFn } from "@tanstack/react-start";
 
-const generateSitemap = createServerOnlyFn((domain: string) => {
+/**
+ * Generates the sitemap XML data based on the request headers
+ */
+const generateSitemap = createServerOnlyFn((headers: Headers) => {
+  const protocol = process.env.NODE_ENV !== "production" ? "http" : "https";
+  const domain = `${protocol}://${headers.get("host") ?? "versiongamma.com"}`;
   return (
     '<?xml version="1.0" encoding="UTF-8"?>' +
     `
@@ -28,10 +33,8 @@ const generateSitemap = createServerOnlyFn((domain: string) => {
 export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
-      GET: ({ request: { url } }) => {
-        const domain = new URL(url).origin;
-        const sitemap = generateSitemap(domain);
-
+      GET: ({ request }) => {
+        const sitemap = generateSitemap(request.headers);
         return new Response(sitemap, {
           headers: {
             "Content-Type": "application/xml",
