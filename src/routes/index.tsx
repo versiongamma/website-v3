@@ -11,18 +11,17 @@ import useClock from "~/hooks/useClock";
 
 export const Route = createFileRoute("/")({
   component: Index,
-  loader: async () => ({ serverDate: new Date() }),
 });
 
 function Index() {
-  const { serverDate } = Route.useLoaderData();
-  const time = useClock(serverDate);
+  const time = useClock();
   const inputRef = createRef<HTMLInputElement>();
 
   return (
     <PageContainer
       className="justify-center"
       bg="bg-[url(/assets/background/index.jpg)]"
+      hideNavBar
     >
       <TerminalContainer
         onClick={() => inputRef.current?.focus()}
