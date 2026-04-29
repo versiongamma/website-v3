@@ -25,7 +25,7 @@ function Software() {
   return (
     <PageContainer
       path="/software"
-      className="3xl:justify-center-safe"
+      className="justify-center-safe"
       bg="bg-[url(/assets/background/software.jpg)]"
     >
       <div className="w-full mt-0 md:m-8 px-0 md:px-6">
