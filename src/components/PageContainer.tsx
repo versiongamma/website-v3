@@ -5,10 +5,17 @@ type Props = {
   path?: string;
   className?: string;
   bg?: string;
+  hideNavBar?: boolean;
   children: React.ReactNode;
 };
 
-export const PageContainer = ({ path, className, bg, children }: Props) => {
+export const PageContainer = ({
+  path,
+  className,
+  bg,
+  hideNavBar,
+  children,
+}: Props) => {
   return (
     <div
       className={classNames(
@@ -20,11 +27,11 @@ export const PageContainer = ({ path, className, bg, children }: Props) => {
         <div
           className={classNames(
             "flex flex-col items-center w-screen h-screen overflow-y-scroll no-scrollbar background-gradient-transparent",
-            path ? "pt-12 md:pt-16" : "",
+            hideNavBar ? "" : "pt-12 md:pt-16",
             className,
           )}
         >
-          <NavBar path={path} className="fixed top-0" />
+          {!hideNavBar && <NavBar path={path} className="fixed top-0" />}
           {children}
         </div>
       </div>
