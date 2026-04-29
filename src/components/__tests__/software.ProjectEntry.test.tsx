@@ -193,8 +193,8 @@ describe("ProjectEntry", () => {
 
     expect(title).toHaveClass("text-3xl");
     expect(title).toHaveClass("md:text-4xl");
-    expect(description.parentElement).toHaveClass("text-sm");
-    expect(description.parentElement).toHaveClass("md:text-base");
+    expect(description).toHaveClass("text-sm");
+    expect(description).toHaveClass("md:text-base");
   });
 
   it("renders link container with proper spacing", () => {

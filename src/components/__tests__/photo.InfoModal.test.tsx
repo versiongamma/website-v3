@@ -217,9 +217,10 @@ describe("InfoModal", () => {
 
     const header = screen.getByTestId("modal-header");
     expect(header).toBeInTheDocument();
-    expect(header).toHaveClass("flex");
-    expect(header).toHaveClass("w-full");
-    expect(header).toHaveClass("justify-between");
+    const headerInner = header.firstChild as HTMLElement;
+    expect(headerInner).toHaveClass("flex");
+    expect(headerInner).toHaveClass("w-full");
+    expect(headerInner).toHaveClass("justify-between");
   });
 
   it("modal content is properly structured", async () => {
@@ -227,19 +228,21 @@ describe("InfoModal", () => {
 
     const content = screen.getByTestId("modal-content");
     expect(content).toBeInTheDocument();
-    expect(content).toHaveClass("flex");
-    expect(content).toHaveClass("flex-col");
+    const contentInner = content.firstChild as HTMLElement;
+    expect(contentInner).toHaveClass("flex");
+    expect(contentInner).toHaveClass("flex-col");
   });
 
   it("multiple instances work independently", async () => {
-    const { rerender } = render(<InfoModal />);
+    const { unmount } = render(<InfoModal />);
     const fabButton = screen.getByRole("button", { name: /info/i });
 
     await userEvent.click(fabButton);
     let modal = screen.getByTestId("terminal-container");
     expect(modal).toHaveStyle("display: block");
 
-    rerender(<InfoModal initialState={false} />);
+    unmount();
+    render(<InfoModal initialState={false} />);
     modal = screen.getByTestId("terminal-container");
     expect(modal).toHaveStyle("display: none");
   });

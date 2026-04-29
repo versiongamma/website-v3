@@ -64,6 +64,7 @@ describe("TerminalContainer", () => {
       />
     );
     const container = screen.getByRole("tab");
+    container.focus();
     await userEvent.keyboard("{Enter}");
     expect(handleClick).toHaveBeenCalled();
   });

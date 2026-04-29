@@ -1,5 +1,5 @@
 import { describe, expect, it, vi, beforeEach, afterEach } from "vitest";
-import { render } from "@testing-library/react";
+import { act, render } from "@testing-library/react";
 import { createRef } from "react";
 import InputCaret from "../landing/InputCaret";
 
@@ -26,7 +26,10 @@ describe("InputCaret", () => {
       mockInputElement as any,
     );
 
-    // Mock document.getAnimations
+    // jsdom does not implement getAnimations; define it so it can be spied on
+    if (typeof document.getAnimations !== "function") {
+      (document as any).getAnimations = () => [];
+    }
     vi.spyOn(document, "getAnimations").mockReturnValue([]);
   });
 
@@ -84,6 +87,7 @@ describe("InputCaret", () => {
 
   it("calculates caret position based on selection end", () => {
     const CARET_SPACING = 10.84444444444444;
+    mockInputElement.value = "abcdefghij";
     mockInputElement.selectionEnd = 5;
 
     const { container } = render(
@@ -91,8 +95,9 @@ describe("InputCaret", () => {
     );
 
     // Trigger selectionchange event
-    const selectionChangeEvent = new Event("selectionchange");
-    mockInputElement.dispatchEvent(selectionChangeEvent);
+    act(() => {
+      mockInputElement.dispatchEvent(new Event("selectionchange"));
+    });
 
     const caret = container.firstChild as HTMLElement;
     const expectedPosition = 5 * CARET_SPACING;

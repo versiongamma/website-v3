@@ -98,7 +98,9 @@ describe("VideoThumbnail", () => {
 
   it("renders published date", () => {
     render(<VideoThumbnail {...mockProps} />);
-    expect(screen.getByText("1/15/2024")).toBeInTheDocument();
+    expect(
+      screen.getByText(mockProps.publishedDate.toLocaleDateString()),
+    ).toBeInTheDocument();
   });
 
   it("formats date according to locale", () => {

@@ -16,7 +16,7 @@ export const NavBar = ({ path, className }: Props) => {
     );
 
   return (
-    <div
+    <nav
       className={classNames(
         "bg-black/40 h-12 md:h-16 w-full flex items-center justify-center shrink-0 z-10 backdrop-blur-md drop-shadow",
         className,
@@ -39,6 +39,6 @@ export const NavBar = ({ path, className }: Props) => {
           software
         </Link>
       </div>
-    </div>
+    </nav>
   );
 };

@@ -131,7 +131,7 @@ describe("GalleryPhoto", () => {
     render(<GalleryPhoto src="test.jpg" />);
     const img = screen.getByRole("img", { hidden: true }) as HTMLImageElement;
 
-    img.onload?.(new Event("load") as any);
+    img.dispatchEvent(new Event("load"));
 
     await waitFor(() => {
       expect(img).toHaveClass("opacity-100");
