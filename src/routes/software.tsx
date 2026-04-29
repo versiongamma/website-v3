@@ -25,10 +25,10 @@ function Software() {
   return (
     <PageContainer
       path="/software"
-      className="3xl:justify-center"
+      className="3xl:justify-center-safe"
       bg="bg-[url(/assets/background/software.jpg)]"
     >
-      <div className="w-full mt-0 md:mt-8 px-0 md:px-6">
+      <div className="w-full mt-0 md:m-8 px-0 md:px-6">
         <SpacerHeader className="md:hidden mt-6 mb-0">
           {en.software.projects.title}
         </SpacerHeader>
