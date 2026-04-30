@@ -52,7 +52,7 @@ describe("requestLoggerMiddleware", () => {
     await handler({ request: makeRequest(), next });
 
     expect(withMetadata).toHaveBeenCalledTimes(1);
-    expect(info).toHaveBeenCalledWith("Request");
+    expect(info).toHaveBeenCalledWith("Request: ", "https://example.com/api/x");
   });
 
   it("includes the url and serialised headers in the metadata", async () => {
@@ -97,7 +97,7 @@ describe("requestLoggerMiddleware", () => {
     await expect(
       handler({ request: makeRequest(), next }),
     ).rejects.toBe(boom);
-    expect(info).toHaveBeenCalledWith("Request");
+    expect(info).toHaveBeenCalledWith("Request: ", "https://example.com/api/x");
   });
 });
 
@@ -107,7 +107,7 @@ describe("functionLoggerMiddleware", () => {
     info.mockClear();
   });
 
-  it("logs the context (minus next) at info level with label 'Function'", async () => {
+  it("logs the context (minus next) at info level with label 'Server Function'", async () => {
     const next = vi.fn().mockResolvedValue(undefined);
     const handler = functionLoggerMiddleware as unknown as (ctx: {
       next: () => unknown;
@@ -118,22 +118,25 @@ describe("functionLoggerMiddleware", () => {
       next,
       functionId: "myFn",
       data: { key: "value" },
+      serverFnMeta: { name: "myFn" },
     });
 
     expect(withMetadata).toHaveBeenCalledWith({
       functionId: "myFn",
       data: { key: "value" },
+      serverFnMeta: { name: "myFn" },
     });
-    expect(info).toHaveBeenCalledWith("Function");
+    expect(info).toHaveBeenCalledWith("Server Function: ", "myFn");
   });
 
   it("returns the result of next()", async () => {
     const next = vi.fn().mockResolvedValue("result");
     const handler = functionLoggerMiddleware as unknown as (ctx: {
       next: () => unknown;
+      [k: string]: unknown;
     }) => Promise<unknown>;
 
-    const result = await handler({ next });
+    const result = await handler({ next, serverFnMeta: { name: "myFn" } });
     expect(next).toHaveBeenCalled();
     expect(result).toBe("result");
   });
@@ -145,10 +148,10 @@ describe("functionLoggerMiddleware", () => {
       [k: string]: unknown;
     }) => unknown;
 
-    await handler({ next, foo: 1 });
+    await handler({ next, foo: 1, serverFnMeta: { name: "myFn" } });
 
     const metadata = withMetadata.mock.calls[0]![0];
     expect(metadata).not.toHaveProperty("next");
-    expect(metadata).toEqual({ foo: 1 });
+    expect(metadata).toEqual({ foo: 1, serverFnMeta: { name: "myFn" } });
   });
 });

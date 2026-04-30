@@ -63,9 +63,9 @@ describe("PageContainer", () => {
     expect(navbar).toBeInTheDocument();
   });
 
-  it("does not render NavBar when path prop is not provided", () => {
+  it("does not render NavBar when hideNavBar prop is true", () => {
     render(
-      <PageContainer>
+      <PageContainer hideNavBar>
         <div>Content</div>
       </PageContainer>
     );
@@ -106,9 +106,9 @@ describe("PageContainer", () => {
     expect(innerDiv).toHaveClass("md:pt-16");
   });
 
-  it("does not apply padding top when path is not provided", () => {
+  it("does not apply padding top when hideNavBar is true", () => {
     const { container } = render(
-      <PageContainer>
+      <PageContainer hideNavBar>
         <div>Content</div>
       </PageContainer>
     );
