@@ -73,6 +73,7 @@ export default defineConfig({
     environment: "jsdom",
     setupFiles: ["./src/test/setup.ts"],
     exclude: [...configDefaults.exclude, "**/.worktrees/**"],
+    teardownTimeout: 1000,
   },
   server: {
     host: "0.0.0.0",
