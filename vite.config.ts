@@ -3,10 +3,17 @@ import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import viteReact from "@vitejs/plugin-react";
 import { nitro } from "nitro/vite";
 import path from "node:path";
-import type { EnvironmentOptions } from "vite";
+import type { ServerOptions, UserConfig } from "vite";
+import type { TestUserConfig } from "vitest/config";
 import { configDefaults, defineConfig } from "vitest/config";
 
-const environments: Record<string, EnvironmentOptions> | undefined =
+const resolve: UserConfig["resolve"] = {
+  alias: {
+    "~": path.resolve(__dirname, "./src"),
+  },
+};
+
+const environments: UserConfig["environments"] =
   process.env.VITEST !== "true"
     ? {
         client: {
@@ -38,22 +45,28 @@ const environments: Record<string, EnvironmentOptions> | undefined =
       }
     : undefined;
 
-const plugins = [
-  nitro({
-    rollupConfig: { external: [/^@sentry\//], output: { sourcemap: true } },
-  }),
-  tailwindcss(),
-  // Disable TS start plugin in test environment
-  // https://github.com/TanStack/router/issues/6246
-  process.env.VITEST !== "true" &&
-    tanstackStart({
-      prerender: {
-        enabled: true,
-        autoSubfolderIndex: false,
-        filter: ({ path }) =>
-          !["/dev", "/coffee"].some((route) => path.startsWith(route)),
-      },
-    }),
+const plugins: UserConfig["plugins"] = [
+  // Runtime envionment plugins
+  ...(process.env.VITEST !== "true"
+    ? [
+        tanstackStart({
+          prerender: {
+            enabled: true,
+            autoSubfolderIndex: false,
+            filter: ({ path }) =>
+              !["/dev", "/coffee"].some((route) => path.startsWith(route)),
+          },
+        }),
+        nitro({
+          rollupConfig: {
+            external: [/^@sentry\//],
+            output: { sourcemap: true },
+          },
+        }),
+        tailwindcss(),
+      ]
+    : []),
+  // Runtime & Test environment plugins
   viteReact({
     babel: {
       plugins: ["babel-plugin-react-compiler"],
@@ -61,25 +74,22 @@ const plugins = [
   }),
 ];
 
+const test: TestUserConfig = {
+  environment: "jsdom",
+  setupFiles: ["./src/test/setup.ts"],
+  exclude: [...configDefaults.exclude, "**/.worktrees/**"],
+};
+
+const serverOptions: ServerOptions = {
+  host: "0.0.0.0",
+  port: 5173,
+};
+
 export default defineConfig({
-  resolve: {
-    alias: {
-      "~": path.resolve(__dirname, "./src"),
-    },
-  },
+  resolve,
   environments,
   plugins,
-  test: {
-    environment: "jsdom",
-    setupFiles: ["./src/test/setup.ts"],
-    exclude: [...configDefaults.exclude, "**/.worktrees/**"],
-    teardownTimeout: 1000,
-  },
-  server: {
-    host: "0.0.0.0",
-    port: 5173,
-  },
-  preview: {
-    port: 5173,
-  },
+  test,
+  server: serverOptions,
+  preview: serverOptions,
 });
