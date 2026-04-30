@@ -1,4 +1,4 @@
-name: Deploy
+name: Build, Publish & Deploy
 on:
   workflow_run:
     workflows: [Checks]

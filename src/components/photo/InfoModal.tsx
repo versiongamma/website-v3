@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FiInfo, FiX } from "react-icons/fi";
 
 import en from "~/en.json";
@@ -15,6 +15,13 @@ type Props = {
 
 export const InfoModal = ({ initialState = false }: Props) => {
   const [open, setOpen] = useState(initialState);
+
+  useEffect(() => {
+    if (initialState) {
+      clearHidePhotoModal();
+    }
+  }, [initialState]);
+
   const handleClose = () => {
     setOpen(false);
     setHidePhotoModal();
@@ -30,6 +37,7 @@ export const InfoModal = ({ initialState = false }: Props) => {
       {/* Floating action button, always visible */}
       <button
         type="button"
+        aria-label="info"
         onClick={handleOpen}
         className="fixed bottom-2 right-2 bg-black/40 hover:bg-black/60 w-10 h-10 flex items-center justify-center rounded-full transition-colors z-1 backdrop-blur-2xl"
       >

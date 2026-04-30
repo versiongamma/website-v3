@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { classNames, selectiveStyle } from "./style";
+import { classNames, selectiveStyle } from "../style";
 
 describe("selectiveStyle", () => {
   it("returns the style when apply is true", () => {
