@@ -54,7 +54,7 @@ const plugins: UserConfig["plugins"] = [
             enabled: true,
             autoSubfolderIndex: false,
             filter: ({ path }) =>
-              !["/dev", "/coffee"].some((route) => path.startsWith(route)),
+              !["/coffee"].some((route) => path.startsWith(route)),
           },
         }),
         nitro({

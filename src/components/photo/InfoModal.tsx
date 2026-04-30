@@ -7,6 +7,7 @@ import {
   setHidePhotoModal,
 } from "~/functions/photos.function";
 import { classNames } from "~/utils/style";
+import { IconButton } from "../IconButton";
 import { TerminalContainer } from "../TerminalContainer";
 
 type Props = {
@@ -34,15 +35,14 @@ export const InfoModal = ({ initialState = false }: Props) => {
 
   return (
     <>
-      {/* Floating action button, always visible */}
-      <button
-        type="button"
-        aria-label="info"
+      <IconButton
+        icon={FiInfo}
         onClick={handleOpen}
-        className="fixed bottom-2 right-2 bg-black/40 hover:bg-black/60 w-10 h-10 flex items-center justify-center rounded-full transition-colors z-1 backdrop-blur-2xl"
-      >
-        <FiInfo className="text-2xl drop-shadow-2xl" />
-      </button>
+        aria-label="info"
+        className="fixed bottom-2 right-2 w-10 h-10 z-1 backdrop-blur-md"
+        background="filled"
+        iconClassName="text-2xl"
+      />
 
       {/* Modal content */}
       <TerminalContainer
@@ -59,13 +59,12 @@ export const InfoModal = ({ initialState = false }: Props) => {
             <h2 className="text-base md:text-lg font-semibold text-black py-2 font-text">
               {en.photos.heading}
             </h2>
-            <button
-              type="button"
+            <IconButton
+              icon={FiX}
               onClick={handleClose}
-              className="hover:bg-black/20 w-8 shrink-0 h-8 flex items-center justify-center rounded-full transition-colors"
-            >
-              <FiX className="text-lg" color="black" />
-            </button>
+              className="w-8 h-8"
+              iconClassName="text-lg text-black"
+            />
           </div>
         }
         content={

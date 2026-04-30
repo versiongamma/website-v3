@@ -13,6 +13,13 @@ import {
 
 export const Route = createFileRoute("/dev")({
   component: Dev,
+  head: () => ({
+    meta: [
+      {
+        title: "Dev Tools - Version Gamma",
+      },
+    ],
+  }),
 });
 
 function Dev() {
