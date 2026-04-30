@@ -99,7 +99,7 @@ describe("GalleryPhoto", () => {
   });
 
   it("handles multiple images independently", () => {
-    const { container } = render(
+    render(
       <>
         <GalleryPhoto src="image1.jpg" />
         <GalleryPhoto src="image2.jpg" />

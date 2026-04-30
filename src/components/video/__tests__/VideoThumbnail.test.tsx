@@ -4,7 +4,7 @@ import { VideoThumbnail } from "../VideoThumbnail";
 
 // Mock the useWaitForImgLoad hook
 vi.mock("~/hooks/useWaitForImgLoad", () => ({
-  default: vi.fn((img: string) => true),
+  default: vi.fn(() => true),
 }));
 
 // Mock the Skeleton component
@@ -270,7 +270,7 @@ describe("VideoThumbnail", () => {
 
   it("renders skeleton with video recording icon when loading", () => {
     vi.mocked(useWaitForImgLoad).mockReturnValue(false);
-    const { container } = render(<VideoThumbnail {...mockProps} />);
+    render(<VideoThumbnail {...mockProps} />);
     const skeleton = screen.getByTestId("skeleton");
     const icon = skeleton.querySelector("svg");
     expect(icon).toBeInTheDocument();

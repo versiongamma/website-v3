@@ -12,7 +12,7 @@ vi.mock("~/hooks/useOnComponentMount", () => ({
 
 describe("InputCaret", () => {
   let mockInputElement: HTMLInputElement;
-  let mockInputRef: React.RefObject<HTMLInputElement>;
+  let mockInputRef: React.RefObject<HTMLInputElement | null>;
 
   beforeEach(() => {
     // Create a mock input element
@@ -41,7 +41,7 @@ describe("InputCaret", () => {
     const { container } = render(
       <InputCaret inputRef={mockInputRef} show={true} />,
     );
-    const caret = container.firstChild;
+    const caret = container.firstChild as HTMLElement | null;
     expect(caret).toBeInTheDocument();
     expect(caret?.tagName).toBe("DIV");
   });
