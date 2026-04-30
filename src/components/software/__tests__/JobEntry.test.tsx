@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
-import { JobEntry } from "../software/JobEntry";
+import { JobEntry } from "../JobEntry";
 
-vi.mock("../TerminalContainer", () => ({
+vi.mock("../../TerminalContainer", () => ({
   TerminalContainer: ({
     header,
     content,
@@ -23,7 +23,7 @@ vi.mock("../TerminalContainer", () => ({
   ),
 }));
 
-vi.mock("../software/SkillIcons", () => ({
+vi.mock("../SkillIcons", () => ({
   SkillIcons: ({ icons }: { icons: string }) => (
     <div data-testid="skill-icons" data-icons={icons} />
   ),

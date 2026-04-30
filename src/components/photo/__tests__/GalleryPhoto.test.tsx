@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { render, screen, waitFor } from "@testing-library/react";
-import { GalleryPhoto } from "../photo/GalleryPhoto";
+import { GalleryPhoto } from "../GalleryPhoto";
 
 describe("GalleryPhoto", () => {
   it("renders an img element with src", () => {

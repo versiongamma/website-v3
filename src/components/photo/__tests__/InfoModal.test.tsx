@@ -1,7 +1,7 @@
 import { describe, expect, it, vi, beforeEach } from "vitest";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { InfoModal } from "../photo/InfoModal";
+import { InfoModal } from "../InfoModal";
 
 // Mock the photos function module
 vi.mock("~/functions/photos.function", () => ({
@@ -20,7 +20,7 @@ vi.mock("~/en.json", () => ({
 }));
 
 // Mock TerminalContainer
-vi.mock("../TerminalContainer", () => ({
+vi.mock("../../TerminalContainer", () => ({
   TerminalContainer: ({
     header,
     content,

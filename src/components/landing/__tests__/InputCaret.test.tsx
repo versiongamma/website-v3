@@ -1,7 +1,7 @@
 import { describe, expect, it, vi, beforeEach, afterEach } from "vitest";
 import { act, render } from "@testing-library/react";
 import { createRef } from "react";
-import InputCaret from "../landing/InputCaret";
+import InputCaret from "../InputCaret";
 
 // Mock useOnComponentMount hook
 vi.mock("~/hooks/useOnComponentMount", () => ({

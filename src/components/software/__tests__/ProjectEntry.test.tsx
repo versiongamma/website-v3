@@ -1,9 +1,9 @@
 import { describe, expect, it, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
-import { ProjectEntry } from "../software/ProjectEntry";
+import { ProjectEntry } from "../ProjectEntry";
 
 // Mock SkillIcons component
-vi.mock("../software/SkillIcons", () => ({
+vi.mock("../SkillIcons", () => ({
   SkillIcons: ({ icons }: { icons: string }) => (
     <img data-testid="skill-icons" src={`https://skillicons.dev/icons?i=${icons}`} alt={icons} />
   ),

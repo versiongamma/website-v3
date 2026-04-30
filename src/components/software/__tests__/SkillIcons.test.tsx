@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { render, screen } from "@testing-library/react";
-import { SkillIcons } from "../software/SkillIcons";
+import { SkillIcons } from "../SkillIcons";
 
 describe("SkillIcons", () => {
   it("renders an img element", () => {

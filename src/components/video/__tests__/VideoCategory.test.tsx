@@ -2,9 +2,9 @@ import { render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 
 import type { YoutubeApiPlaylistResponse } from "~/types";
-import { VideoCategory } from "../video/VideoCategory";
+import { VideoCategory } from "../VideoCategory";
 
-vi.mock("../TerminalContainer", () => ({
+vi.mock("../../TerminalContainer", () => ({
   TerminalContainer: ({
     header,
     content,
@@ -23,7 +23,7 @@ vi.mock("../TerminalContainer", () => ({
   ),
 }));
 
-vi.mock("../software/SpacerHeader", () => ({
+vi.mock("../../software/SpacerHeader", () => ({
   SpacerHeader: ({
     children,
     className,
@@ -43,7 +43,7 @@ vi.mock("../software/SpacerHeader", () => ({
   ),
 }));
 
-vi.mock("../video/VirtualVideoList", () => ({
+vi.mock("../VirtualVideoList", () => ({
   VirtualVideoList: ({
     videos,
   }: {

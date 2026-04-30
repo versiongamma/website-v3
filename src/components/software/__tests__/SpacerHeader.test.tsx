@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { render, screen } from "@testing-library/react";
-import { SpacerHeader } from "../software/SpacerHeader";
+import { SpacerHeader } from "../SpacerHeader";
 
 describe("SpacerHeader", () => {
   it("renders a flex container", () => {

@@ -14,13 +14,13 @@ vi.mock("~/hooks/useOnComponentMount", () => ({
   },
 }));
 
-vi.mock("../landing/InputCaret", () => ({
+vi.mock("../InputCaret", () => ({
   default: ({ show }: { show: boolean }) => (
     <div data-testid="input-caret" data-show={String(show)} />
   ),
 }));
 
-import InputField from "../landing/InputField";
+import InputField from "../InputField";
 
 const renderInputField = () => {
   const ref = createRef<HTMLInputElement>();

@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
-import { VideoThumbnail } from "../video/VideoThumbnail";
+import { VideoThumbnail } from "../VideoThumbnail";
 
 // Mock the useWaitForImgLoad hook
 vi.mock("~/hooks/useWaitForImgLoad", () => ({
@@ -8,7 +8,7 @@ vi.mock("~/hooks/useWaitForImgLoad", () => ({
 }));
 
 // Mock the Skeleton component
-vi.mock("../Skeleton", () => ({
+vi.mock("../../Skeleton", () => ({
   default: ({ children, className }: { children: React.ReactNode; className?: string }) => (
     <div data-testid="skeleton" className={className}>
       {children}

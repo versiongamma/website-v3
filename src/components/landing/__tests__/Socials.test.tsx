@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { render, screen } from "@testing-library/react";
-import { Socials } from "../landing/Socials";
+import { Socials } from "../Socials";
 
 describe("Socials", () => {
   it("renders the social links container", () => {

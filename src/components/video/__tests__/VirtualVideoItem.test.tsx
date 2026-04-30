@@ -3,9 +3,9 @@ import type { VirtualItem } from "@tanstack/react-virtual";
 import { describe, expect, it, vi } from "vitest";
 
 import type { YoutubeApiVideo } from "~/types";
-import { VirtualVideoItem } from "../video/VirtualVideoItem";
+import { VirtualVideoItem } from "../VirtualVideoItem";
 
-vi.mock("../video/VideoThumbnail", () => ({
+vi.mock("../VideoThumbnail", () => ({
   VideoThumbnail: (props: {
     id: string;
     title: string;

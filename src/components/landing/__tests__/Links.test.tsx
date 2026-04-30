@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
-import Links from "../landing/Links";
+import Links from "../Links";
 
 // Mock TanStack Router Link
 vi.mock("@tanstack/react-router", () => ({

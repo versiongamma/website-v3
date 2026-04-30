@@ -31,11 +31,11 @@ vi.mock("@tanstack/react-virtual", () => ({
   useVirtualizer: vi.fn(() => virtualiser),
 }));
 
-vi.mock("../video/useVideoItemSize", () => ({
+vi.mock("../useVideoItemSize", () => ({
   useVideoItemSize: () => useVideoItemSizeMock(),
 }));
 
-vi.mock("../video/VirtualVideoItem", () => ({
+vi.mock("../VirtualVideoItem", () => ({
   VirtualVideoItem: ({
     video,
     virtualItem,
@@ -51,7 +51,7 @@ vi.mock("../video/VirtualVideoItem", () => ({
   ),
 }));
 
-vi.mock("../IconButton", () => ({
+vi.mock("../../IconButton", () => ({
   IconButton: ({
     onClick,
     disabled,
@@ -75,7 +75,7 @@ vi.mock("../IconButton", () => ({
 }));
 
 import { useVirtualizer } from "@tanstack/react-virtual";
-import { VirtualVideoList } from "../video/VirtualVideoList";
+import { VirtualVideoList } from "../VirtualVideoList";
 
 const makeVideos = (n: number): YoutubeApiPlaylistResponse["items"] =>
   Array.from({ length: n }, (_, i) => ({ id: `video-${i}` })) as unknown as YoutubeApiPlaylistResponse["items"];

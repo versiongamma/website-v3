@@ -27,7 +27,7 @@ vi.mock("~/hooks/useViewport", () => ({
   default: () => useViewportMock(),
 }));
 
-import { useVideoItemSize } from "../video/useVideoItemSize";
+import { useVideoItemSize } from "../useVideoItemSize";
 
 describe("useVideoItemSize", () => {
   beforeEach(() => {
