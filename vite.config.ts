@@ -3,26 +3,18 @@ import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import viteReact from "@vitejs/plugin-react";
 import { nitro } from "nitro/vite";
 import path from "node:path";
-import { defineConfig, type AliasOptions } from "vite";
-import tsconfigPaths from "vite-tsconfig-paths";
-
-export const aliases: AliasOptions = {
-  "~": path.resolve(__dirname, "./src"),
-};
+import { defineConfig } from "vite";
 
 export default defineConfig({
   resolve: {
-    alias: aliases,
+    alias: {
+      "~": path.resolve(__dirname, "./src"),
+    },
   },
   environments: {
     client: {
       build: {
-        minify: "terser",
-        terserOptions: {
-          compress: {
-            drop_console: true,
-          },
-        },
+        sourcemap: true,
         rollupOptions: {
           output: {
             chunkFileNames: "js/[hash].js",
@@ -38,21 +30,19 @@ export default defineConfig({
         rollupOptions: {
           input: "virtual:tanstack-start-server-entry",
           output: {
-            format: "esm",
             chunkFileNames: "js/[hash].js",
             entryFileNames: "js/[hash].js",
             assetFileNames: "[ext]/[hash][extname]",
           },
         },
-        minify: true,
-        sourcemap: false,
         copyPublicDir: false,
       },
     },
   },
   plugins: [
-    nitro({ rollupConfig: { external: [/^@sentry\//] } }),
-    tsconfigPaths({ projects: ["./tsconfig.json"] }),
+    nitro({
+      rollupConfig: { external: [/^@sentry\//], output: { sourcemap: true } },
+    }),
     tailwindcss(),
     // Disable TS start plugin in test environment
     // https://github.com/TanStack/router/issues/6246

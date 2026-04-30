@@ -63,7 +63,7 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
           script: |
-            docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.SHA }}
+            docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
             docker stop website-v3 || true
             docker rm website-v3 || true
-            docker run -d --name website-v3 -p 4173:4173 --env-file=.env ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.SHA }}
+            docker run -d --name website-v3 -p 4173:4173 --env-file=.env --restart unless-stopped ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest

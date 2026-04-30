@@ -15,15 +15,14 @@ RUN cd /temp/prod && bun install --frozen-lockfile --production
 FROM base AS build
 COPY --from=install /temp/dev/node_modules node_modules
 COPY . .
-
 ENV NODE_ENV=production
 ARG VITE_COMMIT_SHA
 RUN bun run build
 
 # Run web server
-FROM base AS release
-USER bun
+FROM base AS run
 ENV PORT=4173
+USER bun
 COPY --from=build /usr/src/app/.output .
 EXPOSE 4173/tcp
-ENTRYPOINT [ "bun", "run",  "./server/index.mjs" ]
+ENTRYPOINT [ "bun", "run", "./server/index.mjs" ]

@@ -1,14 +1,24 @@
-import { PinoTransport } from "@loglayer/transport-pino";
-import { LogLayer, LogLevel } from "loglayer";
-import { pino } from "pino";
+import CircularJSON from "circular-json";
+import { BlankTransport, LogLayer, type LogLevel } from "loglayer";
 
 export const logger = new LogLayer({
-  transport: [
-    new PinoTransport({
-      logger: pino({
-        level: process.env.LOG_LEVEL ?? LogLevel.info,
-      }),
-    }),
-  ],
-  plugins: [],
+  transport: new BlankTransport({
+    enabled: process.env.TSS_PRERENDERING !== "true",
+    level: (process.env.LOG_LEVEL as LogLevel) || "info",
+    shipToLogger: ({ logLevel, messages, data }) => {
+      const message = messages.join(" ");
+      data;
+      const log = {
+        message,
+        level: logLevel,
+        ...data,
+      };
+      console.log(
+        process.env.NODE_ENV === "production"
+          ? CircularJSON.stringify(log)
+          : `[${logLevel.toUpperCase()}] ${message}`,
+      );
+      return messages;
+    },
+  }),
 });
