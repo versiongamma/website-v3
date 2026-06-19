@@ -45,9 +45,9 @@ export const Socials = () => {
         tooltip="GitHub: versiongamma"
       />
       <SocialIconButton
-        href="https://instagram.com/matthewsphotosnz"
+        href="https://instagram.com/mattsphotosnz"
         icon={RiInstagramLine}
-        tooltip="Instagram: @matthewsphotosnz"
+        tooltip="Instagram: @mattsphotosnz"
       />
       <SocialIconButton
         href="https://bsky.app/profile/versiongamma.com"

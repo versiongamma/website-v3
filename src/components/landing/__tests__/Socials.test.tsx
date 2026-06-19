@@ -25,25 +25,37 @@ describe("Socials", () => {
   it("renders youtube social link", () => {
     render(<Socials />);
     const youtubeLink = screen.getByRole("link", { name: /youtube/i });
-    expect(youtubeLink).toHaveAttribute("href", "https://youtube.com/c/VersionGamma");
+    expect(youtubeLink).toHaveAttribute(
+      "href",
+      "https://youtube.com/c/VersionGamma",
+    );
   });
 
   it("renders github social link", () => {
     render(<Socials />);
     const githubLink = screen.getByRole("link", { name: /github/i });
-    expect(githubLink).toHaveAttribute("href", "https://github.com/versiongamma");
+    expect(githubLink).toHaveAttribute(
+      "href",
+      "https://github.com/versiongamma",
+    );
   });
 
   it("renders instagram social link", () => {
     render(<Socials />);
     const instagramLink = screen.getByRole("link", { name: /instagram/i });
-    expect(instagramLink).toHaveAttribute("href", "https://instagram.com/matthewsphotosnz");
+    expect(instagramLink).toHaveAttribute(
+      "href",
+      "https://instagram.com/mattsphotosnz",
+    );
   });
 
   it("renders bluesky social link", () => {
     render(<Socials />);
     const blueskyLink = screen.getByRole("link", { name: /bluesky/i });
-    expect(blueskyLink).toHaveAttribute("href", "https://bsky.app/profile/versiongamma.com");
+    expect(blueskyLink).toHaveAttribute(
+      "href",
+      "https://bsky.app/profile/versiongamma.com",
+    );
   });
 
   it("all social links open in new tab", () => {
@@ -64,10 +76,12 @@ describe("Socials", () => {
 
   it("renders all tooltip text", () => {
     render(<Socials />);
-    expect(screen.getByText("Email: matt@versiongamma.com")).toBeInTheDocument();
+    expect(
+      screen.getByText("Email: matt@versiongamma.com"),
+    ).toBeInTheDocument();
     expect(screen.getByText("YouTube: @VersionGamma")).toBeInTheDocument();
     expect(screen.getByText("GitHub: versiongamma")).toBeInTheDocument();
-    expect(screen.getByText("Instagram: @matthewsphotosnz")).toBeInTheDocument();
+    expect(screen.getByText("Instagram: @mattsphotosnz")).toBeInTheDocument();
     expect(screen.getByText("Bluesky: @versiongamma.com")).toBeInTheDocument();
   });
 
