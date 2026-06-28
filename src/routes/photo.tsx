@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { RowsPhotoAlbum } from "react-photo-album";
+import shuffle from "lodash.shuffle";
 import "react-photo-album/rows.css";
 
 import { PageContainer } from "~/components/PageContainer";
@@ -45,10 +46,12 @@ function Photo() {
               className: "no-scrollbar pb-4",
             },
           }}
-          photos={photos.map((photo) => ({
-            src: `${photo.url}=s640`,
-            ...getDimensions(photo.aspectRatio),
-          }))}
+          photos={shuffle(
+            photos.map((photo) => ({
+              src: `${photo.url}=s640`,
+              ...getDimensions(photo.aspectRatio),
+            })),
+          )}
           render={{
             image: (props) => <GalleryPhoto {...props} />,
           }}
