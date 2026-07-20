@@ -1,47 +1,57 @@
 # VersionGamma.com
+
 A personal website build in React 19 using the TanStack Start framework.
 
 [![Checks](https://github.com/versiongamma/website-v3/actions/workflows/checks.yml/badge.svg)](https://github.com/versiongamma/website-v3/actions/workflows/checks.yml)
 
 ## Getting Started
-This project uses Bun for package management. See [their repository](https://github.com/oven-sh/bun) for installation instructions
+
+This project uses pnpm for package management.
 
 ### Setup project:
+
 ```bash
-bun install
+pnpm install
 cp .env.sample .env
 ```
 
 ### Running Locally
+
 Run dev server:
+
 ```bash
-bun dev
+pnpm dev
 ```
 
 Build production output:
+
 ```bash
-bun run build
+pnpm build
 ```
->_Must be bun **run** to override bun's builder_
 
 Preview build:
+
 ```bash
-bun preview
+pnpm preview
 ```
 
 ### Testing
+
 This project uses vitest for unit tests. To run unit tests:
+
 ```bash
-bun run test 
+pnpm test
 ```
->_Must be bun **run** to override bun's test runner_
 
 ### Linting / Formatting
+
 This project uses Biome for linting and formatting. To run biome:
+
 ```bash
-bun format
-bun lint
+pnpm format
+pnpm lint
 ```
 
 ## Built With:
-[![](https://skills.syvixor.com/api/icons?i=ts,react,tanstack,reacthookform,tailwind,vite,vitest,nitro,bun,biome,docker)]()
+
+[![](https://skills.syvixor.com/api/icons?i=ts,react,tanstack,reacthookform,tailwind,vite,vitest,nitro,pnpm,biome,docker)]()
