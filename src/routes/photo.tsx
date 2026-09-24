@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import shuffle from "lodash.shuffle";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { RowsPhotoAlbum } from "react-photo-album";
 import "react-photo-album/rows.css";
 
@@ -12,6 +11,9 @@ import {
   isPhotoInfoModalDefaultHidden,
   loadPhotos,
 } from "~/functions/photos.function";
+import { shuffle } from "~/utils/math";
+
+const PHOTO_GALLERY_SEED = 83000000004.7;
 
 const getDimensions = (aspectRatio: number) => ({
   width: aspectRatio > 1 ? 640 : 640 * aspectRatio,
@@ -35,15 +37,12 @@ function Photo() {
   const showInfoModal = !isPhotoInfoModalDefaultHidden();
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
-  const galleryPhotos = useMemo(
-    () =>
-      shuffle(
-        photos.map((photo) => ({
-          src: `${photo.url}=s640`,
-          ...getDimensions(photo.aspectRatio),
-        })),
-      ),
-    [photos],
+  const galleryPhotos = shuffle(
+    photos.map((photo) => ({
+      src: `${photo.url}=s640`,
+      ...getDimensions(photo.aspectRatio),
+    })),
+    PHOTO_GALLERY_SEED,
   );
 
   const selectedSrc =

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { roundToNearestMultiple } from "../math";
+import { roundToNearestMultiple, seededShuffle } from "../math";
 
 describe("roundToNearestMultiple", () => {
   it("rounds down when value is below the midpoint", () => {
@@ -49,5 +49,40 @@ describe("roundToNearestMultiple", () => {
     expect(roundToNearestMultiple(0, stride)).toBe(0);
     expect(roundToNearestMultiple(stride, stride)).toBe(stride);
     expect(roundToNearestMultiple(stride * 2 - 1, stride)).toBe(stride * 2);
+  });
+});
+
+describe("seededShuffle", () => {
+  const input = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+  it("produces the same order for the same seed", () => {
+    expect(seededShuffle(input, 42)).toEqual(seededShuffle(input, 42));
+  });
+
+  it("produces a deterministic order across calls", () => {
+    expect(seededShuffle(input, 7)).toEqual(seededShuffle(input, 7));
+  });
+
+  it("produces a different order for a different seed", () => {
+    expect(seededShuffle(input, 42)).not.toEqual(seededShuffle(input, 43));
+  });
+
+  it("shuffles a copy without mutating the input array", () => {
+    const original = [...input];
+    expect(seededShuffle(input, 42)).not.toEqual(input);
+    expect(input).toEqual(original);
+  });
+
+  it("is a permutation of the input (same elements)", () => {
+    const shuffled = seededShuffle(input, 42);
+    expect([...shuffled].sort((a, b) => a - b)).toEqual(input);
+  });
+
+  it("returns an empty array for an empty input", () => {
+    expect(seededShuffle([], 42)).toEqual([]);
+  });
+
+  it("returns a single-element array unchanged", () => {
+    expect(seededShuffle([1], 42)).toEqual([1]);
   });
 });
