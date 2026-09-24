@@ -1,5 +1,5 @@
-import { describe, expect, it } from "vitest";
 import { render, screen, waitFor } from "@testing-library/react";
+import { describe, expect, it } from "vitest";
 import { GalleryPhoto } from "../GalleryPhoto";
 
 describe("GalleryPhoto", () => {
@@ -90,7 +90,7 @@ describe("GalleryPhoto", () => {
         alt="Gallery image"
         loading="lazy"
         decoding="async"
-      />
+      />,
     );
     const img = screen.getByRole("img", { hidden: true });
     expect(img).toHaveAttribute("alt", "Gallery image");
@@ -103,7 +103,7 @@ describe("GalleryPhoto", () => {
       <>
         <GalleryPhoto src="image1.jpg" />
         <GalleryPhoto src="image2.jpg" />
-      </>
+      </>,
     );
     const images = screen.getAllByRole("img", { hidden: true });
     expect(images).toHaveLength(2);

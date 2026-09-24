@@ -1,11 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { RowsPhotoAlbum } from "react-photo-album";
 import shuffle from "lodash.shuffle";
+import { useMemo, useState } from "react";
+import { RowsPhotoAlbum } from "react-photo-album";
 import "react-photo-album/rows.css";
 
 import { PageContainer } from "~/components/PageContainer";
 import { GalleryPhoto } from "~/components/photo/GalleryPhoto";
 import { InfoModal } from "~/components/photo/InfoModal";
+import { PhotoViewerModal } from "~/components/photo/PhotoViewerModal";
 import {
   isPhotoInfoModalDefaultHidden,
   loadPhotos,
@@ -31,6 +33,33 @@ export const Route = createFileRoute("/photo")({
 function Photo() {
   const photos = Route.useLoaderData();
   const showInfoModal = !isPhotoInfoModalDefaultHidden();
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+
+  const galleryPhotos = useMemo(
+    () =>
+      shuffle(
+        photos.map((photo) => ({
+          src: `${photo.url}=s640`,
+          ...getDimensions(photo.aspectRatio),
+        })),
+      ),
+    [photos],
+  );
+
+  const selectedSrc =
+    selectedIndex !== null
+      ? `${galleryPhotos[selectedIndex]?.src.replace("=s640", "")}=s1600`
+      : undefined;
+
+  const total = galleryPhotos.length;
+
+  const handleClose = () => setSelectedIndex(null);
+  const handlePrevious = () =>
+    setSelectedIndex((prev) =>
+      prev === null ? prev : (prev - 1 + total) % total,
+    );
+  const handleNext = () =>
+    setSelectedIndex((prev) => (prev === null ? prev : (prev + 1) % total));
 
   return (
     <PageContainer path="/photo" bg="bg-[url(/assets/background/photo.jpg)]">
@@ -46,17 +75,23 @@ function Photo() {
               className: "no-scrollbar pb-4",
             },
           }}
-          photos={shuffle(
-            photos.map((photo) => ({
-              src: `${photo.url}=s640`,
-              ...getDimensions(photo.aspectRatio),
-            })),
-          )}
+          photos={galleryPhotos}
+          onClick={({ index }) => setSelectedIndex(index)}
           render={{
             image: (props) => <GalleryPhoto {...props} />,
           }}
         />
       </div>
+      {selectedIndex !== null && selectedSrc && (
+        <PhotoViewerModal
+          src={selectedSrc}
+          index={selectedIndex}
+          total={total}
+          onClose={handleClose}
+          onPrevious={handlePrevious}
+          onNext={handleNext}
+        />
+      )}
     </PageContainer>
   );
 }

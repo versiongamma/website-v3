@@ -1,6 +1,6 @@
-import { describe, expect, it, vi, beforeEach } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import { InfoModal } from "../InfoModal";
 
 // Mock the photos function module
@@ -33,7 +33,9 @@ vi.mock("../../TerminalContainer", () => ({
     <div
       className={classes?.container}
       data-testid="terminal-container"
-      style={{ display: classes?.container?.includes("invisible") ? "none" : "block" }}
+      style={{
+        display: classes?.container?.includes("invisible") ? "none" : "block",
+      }}
     >
       <div className={classes?.header} data-testid="modal-header">
         {header}
@@ -45,7 +47,10 @@ vi.mock("../../TerminalContainer", () => ({
   ),
 }));
 
-import { setHidePhotoModal, clearHidePhotoModal } from "~/functions/photos.function";
+import {
+  clearHidePhotoModal,
+  setHidePhotoModal,
+} from "~/functions/photos.function";
 
 describe("InfoModal", () => {
   beforeEach(() => {
