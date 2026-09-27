@@ -26,6 +26,10 @@ export const PhotoViewerModal = ({
   return (
     <>
       <TerminalContainer
+        classes={{
+          container: "fixed top-1/2 left-1/2 z-10 translate-[-50%]",
+          content: "h-[80vh] w-[80vw] p-4 md:rounded-b-3xl drop-shadow-2xl backdrop-blur-2xl",
+        }}
         header={
           <div className="flex w-full justify-between items-center px-4 min-h-12">
             <span className="text-base md:text-lg font-semibold text-black py-2 font-text">
@@ -41,14 +45,14 @@ export const PhotoViewerModal = ({
           </div>
         }
         content={
-          <div className="flex items-center justify-center gap-4 p-4 w-full">
+          <div className="flex items-center justify-between gap-4 p-4 w-full h-full">
             <IconButton
               icon={FiArrowLeft}
               onClick={onPrevious}
               disabled={!canNavigate}
               aria-label="previous photo"
               className="w-10 h-10 shrink-0"
-              iconClassName="text-xl text-black"
+              iconClassName="text-xl text-white"
               background="filled"
             />
             <div className="relative flex justify-center min-w-0 max-h-[70vh]">
@@ -65,16 +69,11 @@ export const PhotoViewerModal = ({
               disabled={!canNavigate}
               aria-label="next photo"
               className="w-10 h-10 shrink-0"
-              iconClassName="text-xl text-black"
+              iconClassName="text-xl text-white"
               background="filled"
             />
           </div>
         }
-        classes={{
-          container: "fixed top-1/2 left-1/2 z-10 translate-[-50%]",
-          content:
-            "max-w-4xl max-h-[80vh] min-h-0 w-screen p-4 md:rounded-b-3xl drop-shadow-2xl backdrop-blur-2xl",
-        }}
       />
 
       {/* Overlay */}

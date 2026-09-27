@@ -77,7 +77,7 @@ function Photo() {
           photos={galleryPhotos}
           onClick={({ index }) => setSelectedIndex(index)}
           render={{
-            image: (props) => <GalleryPhoto {...props} />,
+            image: (props) => <GalleryPhoto {...props} clickable />,
           }}
         />
       </div>
