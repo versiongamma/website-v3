@@ -20,7 +20,7 @@
     "@tanstack/react-router": "1.166.7",
     "@tanstack/react-router-devtools": "1.166.7",
     "@tanstack/react-router-ssr-query": "1.166.7",
-    "@tanstack/react-start": "1.166.7",
+    "@tanstack/react-start": "1.168.60",
     "@tanstack/react-virtual": "3.13.23",
     "@tanstack/router-plugin": "1.166.7",
     "circular-json": "^0.5.9",
