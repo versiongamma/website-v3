@@ -24,7 +24,7 @@ export const Route = createRootRouteWithContext<RouterContext>()({
         content: "width=device-width, initial-scale=1",
       },
       {
-        title: ctx.match.globalNotFound
+        title: ctx.match._notFound
           ? "404 Not Found - Version Gamma"
           : "Version Gamma",
       },

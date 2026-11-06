@@ -9,7 +9,7 @@ import { configDefaults, defineConfig } from "vitest/config";
 
 const resolve: UserConfig["resolve"] = {
   alias: {
-    "~": path.resolve(__dirname, "./src"),
+    "~": path.resolve(import.meta.dirname, "./src"),
   },
 };
 
