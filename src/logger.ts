@@ -1,4 +1,4 @@
-import CircularJSON from "circular-json";
+import {stringify} from "flatted";
 import { BlankTransport, LogLayer, type LogLevel } from "loglayer";
 
 export const logger = new LogLayer({
@@ -15,7 +15,7 @@ export const logger = new LogLayer({
       };
       console.log(
         process.env.NODE_ENV === "production"
-          ? CircularJSON.stringify(log)
+          ? stringify(log)
           : `[${logLevel.toUpperCase()}] ${message}`,
       );
       return messages;
