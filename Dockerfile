@@ -33,4 +33,4 @@ WORKDIR /usr/src/app/.output
 ENV PORT=4173
 COPY --from=build /usr/src/app/.output .
 EXPOSE 4173/tcp
-CMD [ "sh", "-c", "unzstd --rm ./server/app.zst && ./server/app" ]
+CMD [ "sh", "-c", "unzstd --rm -f ./server/app.zst && ./server/app" ]
